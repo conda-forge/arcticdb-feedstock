@@ -10,14 +10,10 @@ source:
   sha256:  911d99fcb0907d9b80c0f8e3fbecbd15d1357fc832c50396c5e57cd18c092f3c
 
 build:
-  # We skip the build on Windows because one of the dependencies (folly)
-  # is not available for Windows on conda-forge
-  # See: https://github.com/conda-forge/folly-feedstock/pull/98
-  skip: true  # [win]
   # Compiling ArcticDB with all cores might freeze machines.
   # We build with only 1 core to prevent freezes from happening.
   script: ARCTICDB_USING_CONDA=1 CMAKE_BUILD_PARALLEL_LEVEL=1 {{ PYTHON }} -m pip install . -vv
-  number: 3
+  number: 4
 
 requirements:
   build:
@@ -93,12 +89,12 @@ about:
   home: https://arcticdb.io/
   summary: "ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem."
   description: |
-    "**ArcticDB** is a high performance, serverless **DataFrame database** built for
+    **ArcticDB** is a high performance, serverless **DataFrame database** built for
     the Python Data Science ecosystem. Launched in March 2023, it is the successor
     to [Arctic](https://github.com/man-group/arctic).
     ArcticDB offers an intuitive Python-centric API enabling you to read and write
     Pandas DataFrames to S3 or LMDB utilising a fast C++ data-processing and
-    compression engine."
+    compression engine.
   license: BUSL-1.1
   license_family: OTHER
   license_file: LICENSE.txt

@@ -28,6 +28,8 @@ libevent:
 - 2.1.12
 lz4_c:
 - 1.9.3
+msgpack_c:
+- '6'
 pcre:
 - '8'
 pin_run_as_build:

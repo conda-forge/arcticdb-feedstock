@@ -1,5 +1,5 @@
 aws_crt_cpp:
-- 0.20.1
+- 0.20.2
 aws_sdk_cpp:
 - 1.10.57
 c_compiler:
@@ -28,6 +28,8 @@ libevent:
 - 2.1.12
 lz4_c:
 - 1.9.3
+msgpack_c:
+- '6'
 pcre:
 - '8'
 pin_run_as_build:

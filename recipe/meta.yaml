@@ -10,6 +10,7 @@ source:
   sha256:  911d99fcb0907d9b80c0f8e3fbecbd15d1357fc832c50396c5e57cd18c092f3c
   patches:
     - patches/0001-cmake-Remove-generator-for-windows-cl-conda.patch
+    - patches/0002-Replace-FindLZ4.cmake.patch
 
 build:
   script: {{ PYTHON }} -m pip install . -vv

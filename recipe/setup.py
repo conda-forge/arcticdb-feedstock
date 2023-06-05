@@ -150,6 +150,7 @@ class CMakeBuild(build_ext):
             preset = ("windows-cl" if platform.system() == "Windows" else platform.system().lower()) + suffix
         _log_and_run(
             cmake,
+            "_DTEST=OFF",
             f"-DBUILD_PYTHON_VERSION={sys.version_info[0]}.{sys.version_info[1]}",
             f"-DCMAKE_INSTALL_PREFIX={os.path.dirname(dest)}",
             "--preset",

@@ -14,9 +14,6 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  # Compiling ArcticDB with all cores might freeze machines.
-  # We build with only 1 core to prevent freezes from happening.
-  script: ARCTICDB_USING_CONDA=1 CMAKE_BUILD_PARALLEL_LEVEL=1 {{ PYTHON }} -m pip install . -vv
   number: 4
 
 requirements:
@@ -25,7 +22,10 @@ requirements:
     - {{ compiler('c') }}
     - cmake
     - make
-
+    - python
+    - grpcio-tools
+    - protobuf
+    
   host:
     - python
     - pip

@@ -48,6 +48,8 @@ requirements:
     - krb5 =1.20.1
     - xxhash
     - semimap
+    - grpcio-tools  # [build_platform == target_platform]
+    - protobuf  # [build_platform == target_platform]
     - spdlog
     - robin_hood
     - recycle

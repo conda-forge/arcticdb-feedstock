@@ -100,7 +100,7 @@ class CompileProto(Command):
 
         # get env var CONDA_P
 
-        cmd = [python_executable, "-mgrpc_tools.protoc", "-Icpp/proto", "--python_out=" + version_output_dir]
+        cmd = [str(python_executable), "-mgrpc_tools.protoc", "-Icpp/proto", "--python_out=" + version_output_dir]
         _log_and_run(*cmd, *glob.glob(os.path.normpath("cpp/proto/arcticc/pb2/*.proto")), env=env)
 
         shutil.rmtree(pythonpath)

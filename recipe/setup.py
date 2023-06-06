@@ -95,11 +95,7 @@ class CompileProto(Command):
             raise ValueError("BUILD_PREFIX environment variable not set")
         build_prefix = Path(build_prefix)
         python_executable = build_prefix / "bin" / "python"
-
-
-
-        # get env var CONDA_P
-
+        
         cmd = [str(python_executable), "-mgrpc_tools.protoc", "-Icpp/proto", "--python_out=" + version_output_dir]
         _log_and_run(*cmd, *glob.glob(os.path.normpath("cpp/proto/arcticc/pb2/*.proto")), env=env)
 

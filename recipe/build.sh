@@ -7,4 +7,7 @@ export ARCTICDB_USING_CONDA=1
 # do this only when cross compiling TODO
 cp $BUILD_PREFIX/bin/protoc $PREFIX/bin/protoc
 
+cp $BUILD_PREFIX/lib/libprotoc*  $PREFIX/lib/
+
+
 CMAKE_BUILD_PARALLEL_LEVEL=1 $PYTHON -m pip install . -vv

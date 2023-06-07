@@ -37,7 +37,7 @@ requirements:
     - double-conversion
     - libevent {{ libevent }}
     - libprotobuf <4  # [py<311]
-    - libprotobuf >=4  # [py>=py311]
+    - libprotobuf >=4  # [py>=311]
     - libmongocxx
     - zstd
     - pybind11

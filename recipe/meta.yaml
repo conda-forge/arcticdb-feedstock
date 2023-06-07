@@ -26,8 +26,8 @@ requirements:
     - grpcio-tools  # [build_platform != target_platform]
     - protobuf  # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - libprotobuf <4  # [build_platform != target_platform && not py311]
-    - libprotobuf >=4  # [build_platform != target_platform && not py311]
+    - libprotobuf <4  # [build_platform != target_platform and not py311]
+    - libprotobuf >=4  # [build_platform != target_platform and not py311]
   host:
     - python
     - pip

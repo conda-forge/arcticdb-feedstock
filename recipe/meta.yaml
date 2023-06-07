@@ -26,8 +26,8 @@ requirements:
     - grpcio-tools  # [build_platform != target_platform]
     - protobuf  # [build_platform != target_platform]
     - cross-python_{{ target_platform }}  # [build_platform != target_platform]
-    - libprotobuf <4  # [build_platform != target_platform and not py311]
-    - libprotobuf >=4  # [build_platform != target_platform and not py311]
+    - libprotobuf <4  # [build_platform != target_platform and py<311]
+    - libprotobuf >=4  # [build_platform != target_platform and py>=311]
   host:
     - python
     - pip
@@ -36,8 +36,8 @@ requirements:
     - prometheus-cpp
     - double-conversion
     - libevent {{ libevent }}
-    - libprotobuf <4  # [not py311]
-    - libprotobuf >=4  # [ py311]
+    - libprotobuf <4  # [py<311]
+    - libprotobuf >=4  # [py>=py311]
     - libmongocxx
     - zstd
     - pybind11

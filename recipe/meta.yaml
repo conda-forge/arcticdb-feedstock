@@ -14,7 +14,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 4
+  number: 5
 
 requirements:
   build:
@@ -80,7 +80,7 @@ requirements:
     # Required at runtime for their dynamically shared objects.
     - folly
     - remotery
-    - aws-crt-cpp
+    - aws-crt-cpp >=0.19.8
     - prometheus-cpp
     - protobuf
     - lmdb

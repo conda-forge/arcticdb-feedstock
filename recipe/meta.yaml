@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "1.2.1" %}
+{% set version = "1.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256:  911d99fcb0907d9b80c0f8e3fbecbd15d1357fc832c50396c5e57cd18c092f3c
+  sha256: ed6bdae8a23638df07423c6e90e51c576c91c009d4f91b9a6168bab2181340a9
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 5
+  number: 0
 
 requirements:
   build:
@@ -92,7 +92,7 @@ test:
 
 about:
   home: https://arcticdb.io/
-  summary: "ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem."
+  summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.
   description: |
     "**ArcticDB** is a high performance, serverless **DataFrame database** built for
     the Python Data Science ecosystem. Launched in March 2023, it is the successor

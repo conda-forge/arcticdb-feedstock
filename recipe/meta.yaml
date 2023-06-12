@@ -82,9 +82,6 @@ requirements:
     - prometheus-cpp
     - protobuf
     - lmdb
-    # required to prevent a bug manifesting with aws-crt-cpp<0.19.8
-    - aws-crt-cpp >=0.19.8
-
 test:
   imports:
     - arcticdb

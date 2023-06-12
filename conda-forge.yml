@@ -4,6 +4,8 @@ github:
 conda_build:
   error_overlinking: true
 conda_forge_output_validation: true
+
+# Allows building and distributing for Apple Silicon.
 build_platform:
   osx_arm64: osx_64
 test: native_and_emulated

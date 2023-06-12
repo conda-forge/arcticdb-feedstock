@@ -56,7 +56,6 @@ requirements:
     - lmdb ==0.9.22
     - lmdbxx ==0.9.14
     - fmt
-    - remotery
     - glog
     - gtest
   run:
@@ -79,12 +78,12 @@ requirements:
     - prometheus_client
     # Required at runtime for their dynamically shared objects.
     - folly
-    - remotery
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
     - protobuf
     - lmdb
-
+    # required to prevent a bug manifesting with aws-crt-cpp<0.19.8
+    - aws-crt-cpp >=0.19.8
 
 test:
   imports:

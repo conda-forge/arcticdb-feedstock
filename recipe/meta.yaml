@@ -14,7 +14,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -66,7 +66,6 @@ requirements:
     - pandas <2
     - attrs
     - dataclasses # backport for Python < 3.7
-    - enum-compat
     - decorator
     - grpcio-tools
     - python-xxhash

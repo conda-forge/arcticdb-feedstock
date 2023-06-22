@@ -55,7 +55,7 @@ requirements:
     - recycle
     - lmdb ==0.9.22
     - lmdbxx ==0.9.14
-    - fmt < 10
+    - fmt <10
     - glog
     - gtest
   run:

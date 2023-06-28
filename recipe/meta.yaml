@@ -28,6 +28,8 @@ requirements:
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
     - libprotobuf <4                          # [build_platform != target_platform]
   host:
+  # This environment specification must be maintained in sync with the one upstream:
+  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
     - pip
     - folly
@@ -59,6 +61,9 @@ requirements:
     - glog
     - gtest
   run:
+  # This environment specification must be maintained in sync with the one upstream:
+  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+  # See install_requires: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.

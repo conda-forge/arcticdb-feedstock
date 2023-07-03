@@ -14,7 +14,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -28,6 +28,8 @@ requirements:
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
     - libprotobuf <4                          # [build_platform != target_platform]
   host:
+  # This environment specification must be maintained in sync with the one upstream:
+  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
     - pip
     - folly
@@ -59,6 +61,9 @@ requirements:
     - glog
     - gtest
   run:
+  # This environment specification must be maintained in sync with the one upstream:
+  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+  # See install_requires: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
@@ -90,12 +95,12 @@ about:
   home: https://arcticdb.io/
   summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.
   description: |
-    "**ArcticDB** is a high performance, serverless **DataFrame database** built for
+    **ArcticDB** is a high performance, serverless **DataFrame database** built for
     the Python Data Science ecosystem. Launched in March 2023, it is the successor
     to [Arctic](https://github.com/man-group/arctic).
     ArcticDB offers an intuitive Python-centric API enabling you to read and write
     Pandas DataFrames to S3 or LMDB utilising a fast C++ data-processing and
-    compression engine."
+    compression engine.
   license: BUSL-1.1
   license_family: OTHER
   license_file: LICENSE.txt
@@ -110,3 +115,8 @@ extra:
     - jamesmunro
     - qc00
     - willdealtry
+    - poodlewars
+    - vasil-pashov
+    - GemDot
+    - phoebusm
+    - alexowens90

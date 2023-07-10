@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "1.4.1" %}
+{% set version = "1.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 61690fc56bca1a85fd042b7b90b6dae3182933b8e2047f0bff5258b82e7a4545
+  sha256: 56d0fda4c5e15a05d11bfae52a0d457b61c3469b774513c0f3e741714673d82f
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 2
+  number: 0
 
 requirements:
   build:

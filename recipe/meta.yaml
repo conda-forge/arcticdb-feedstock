@@ -8,6 +8,10 @@ package:
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: d009dd36064e6e936c6441ab039d7c5fd5ab23f44288489f0ce9b199c3dc7b92
+  patches:
+    # TODO: remove this patch once this PR is merged
+    # https://github.com/man-group/ArcticDB/pull/578
+    - 0001-fix-Remove-uneeded-FMT_COMPILE.patch  # [linux]
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)

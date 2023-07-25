@@ -1,17 +1,13 @@
 {% set name = "arcticdb" %}
-{% set version = "1.5.0" %}
+{% set version = "1.6.0" %}
 
 package:
   name: {{ name|lower }}
-  version: {{ version }}
+  version: {{ version }}rc0
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d009dd36064e6e936c6441ab039d7c5fd5ab23f44288489f0ce9b199c3dc7b92
-  patches:
-    # TODO: remove this patch once this PR is merged
-    # https://github.com/man-group/ArcticDB/pull/578
-    - 0001-fix-Remove-uneeded-FMT_COMPILE.patch  # [linux]
+  sha256: ede72b1a1f6430ce346f9374742643c217506f7034d801e02c38cdde18ec93d8
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)

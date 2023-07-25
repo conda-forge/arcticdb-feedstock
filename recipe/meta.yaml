@@ -1,9 +1,10 @@
 {% set name = "arcticdb" %}
 {% set version = "1.6.0" %}
+{% set version_suffix = "rc0" %}
 
 package:
   name: {{ name|lower }}
-  version: 1.6.0rc0
+  version: {{ version }}{{ version_suffix }}
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz

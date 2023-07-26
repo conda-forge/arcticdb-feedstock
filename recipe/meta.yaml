@@ -51,7 +51,7 @@ requirements:
     - aws-sdk-cpp
     - bitmagic
     - krb5 =1.20.1
-    - xxhash
+    - xxhash <0.8.2
     - semimap
     - grpcio-tools
     - protobuf

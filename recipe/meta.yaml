@@ -52,6 +52,9 @@ requirements:
     - aws-sdk-cpp
     - bitmagic
     - krb5 =1.20.1
+    # TODO: remove the pin once python-xxhash has been rebuilt for
+    # xxhash 0.8.2.
+    # See: https://github.com/conda-forge/python-xxhash-feedstock/pull/30
     - xxhash <0.8.2
     - semimap
     - grpcio-tools

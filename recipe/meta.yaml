@@ -14,7 +14,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -27,6 +27,8 @@ requirements:
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
     - libprotobuf <4                          # [build_platform != target_platform]
+    - pkg-config                              # [build_platform != target_platform]
+    - gnuconfig                               # [build_platform != target_platform]
   host:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -51,6 +53,9 @@ requirements:
     - aws-sdk-cpp
     - bitmagic
     - krb5 =1.20.1
+    # TODO: remove the pin once python-xxhash has been rebuilt for
+    # xxhash 0.8.2.
+    # See: https://github.com/conda-forge/python-xxhash-feedstock/pull/30
     - xxhash <0.8.2
     - semimap
     - grpcio-tools

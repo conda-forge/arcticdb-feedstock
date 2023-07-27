@@ -6,15 +6,17 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: ede72b1a1f6430ce346f9374742643c217506f7034d801e02c38cdde18ec93d8
+  #url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
+  git_url: https://github.com/man-group/ArcticDB
+  git_rev: cross_compile_exp
+
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 1
+  number: 2
 
 requirements:
   build:

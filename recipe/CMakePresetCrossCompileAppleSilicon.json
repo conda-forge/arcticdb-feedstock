@@ -12,10 +12,23 @@
           "CMAKE_BUILD_TYPE" : "RelWithDebInfo"
         },
         "environment": {"cmakepreset_expected_host_system": "Darwin"}
+      },
+      {
+        "name": "darwin-conda-debug",
+        "hidden": false,
+        "generator": "Unix Makefiles",
+        "cacheVariables": {
+          "ARCTICDB_USING_CONDA": "ON",
+          "CMAKE_MAKE_PROGRAM": "make",
+          "STATIC_LINK_STD_LIB": "OFF",
+          "CMAKE_BUILD_TYPE" : "Debug"
+        },
+        "environment": {"cmakepreset_expected_host_system": "Darwin"}
       }
     ],
     "buildPresets": [
-      {"name": "darwin-conda-release",      "configurePreset": "darwin-conda-release",      "targets": "arcticdb_ext" }
+      {"name": "darwin-conda-release",      "configurePreset": "darwin-conda-release",      "targets": "arcticdb_ext" },
+      {"name": "darwin-conda-debug",      "configurePreset": "darwin-conda-debug",      "targets": "arcticdb_ext" }
     ]
 }
   

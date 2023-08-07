@@ -10,6 +10,10 @@ source:
   sha256: ede72b1a1f6430ce346f9374742643c217506f7034d801e02c38cdde18ec93d8
 
   patches:
+  # When cross-compiling for apple-silicon, we absolutely need to make sure
+  # that there is no hard-coded compiler in the cmake-preset / cmake-config.
+  # While man-group/ArcticDB#662 is not merged,
+  # we use a patch to remove the hard coded clang
     - patches/patch_compiler_for_darwin.patch 
 
 build:

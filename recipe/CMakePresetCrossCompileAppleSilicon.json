@@ -3,7 +3,7 @@
     "configurePresets": [
       {
         "name": "darwin-conda-release",
-        "hidden": true,
+        "hidden": false,
         "generator": "Unix Makefiles",
         "cacheVariables": {
           "ARCTICDB_USING_CONDA": "ON",

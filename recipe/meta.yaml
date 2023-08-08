@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: e3b0c44298fc1c149afbf4c8996fb92427ae41e4649b934ca495991b7852b855
+  sha256: f25ee584dfbe4b4cd5345c011bab8efab1836f2dc35019b12a9a9d2730e74bf7
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)

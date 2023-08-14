@@ -21,7 +21,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 1
+  number: 2
 
 requirements:
   build:
@@ -93,7 +93,10 @@ requirements:
     - decorator
     - prometheus_client
     # Required at runtime for their dynamically shared objects.
-    - folly
+    # Pin to prevent errors such as:
+    # E   ImportError: .../arcticdb_ext.cpython-39-x86_64-linux-gnu.so: undefined symbol: 
+    # _ZNK5folly7futures6detail8CoreBase11getExecutorEv
+    - folly ==2023.08.07.00
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp

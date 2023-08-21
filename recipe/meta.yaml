@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f25ee584dfbe4b4cd5345c011bab8efab1836f2dc35019b12a9a9d2730e74bf7
+  sha256: a77c3f9579a9e4dc907adb799c98f6aa4e2fcfb0d470e8067bd438f77d81acd6
 
   patches:
   # When cross-compiling for apple-silicon, we absolutely need to make sure

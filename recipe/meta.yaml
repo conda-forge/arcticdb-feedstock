@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "1.6.1rc2" %}
+{% set version = "2.0.0rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -21,7 +21,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 2
+  number: 0
 
 requirements:
   build:
@@ -41,7 +41,8 @@ requirements:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
     - pip
-    - folly
+    # See reason for pin below
+    - folly <=2023.08.07.00
     - lz4-c
     - prometheus-cpp
     - double-conversion
@@ -93,7 +94,10 @@ requirements:
     - decorator
     - prometheus_client
     # Required at runtime for their dynamically shared objects.
-    - folly
+    # Pin to prevent errors such as:
+    # E   ImportError: .../arcticdb_ext.cpython-39-x86_64-linux-gnu.so: undefined symbol: 
+    # _ZNK5folly7futures6detail8CoreBase11getExecutorEv
+    - folly <=2023.08.07.00
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp

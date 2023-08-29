@@ -97,6 +97,7 @@ requirements:
     - prometheus-cpp
     - protobuf
     - lmdb
+    - packaging
 test:
   imports:
     - arcticdb

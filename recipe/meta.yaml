@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "1.6.1" %}
+{% set version = "2.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 28f6f3f109b1cd0b02f40a9333c110aa252f61b3a7e5819229d56d774c6ae636
+  sha256: 149660905f2a1169a8bfeeb0f58e35e496747589a7d2147252181c4e826b3683
 
   patches:
   # When cross-compiling for apple-silicon, we absolutely need to make sure
@@ -21,7 +21,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 3
+  number: 0
 
 requirements:
   build:
@@ -97,6 +97,7 @@ requirements:
     - prometheus-cpp
     - protobuf
     - lmdb
+    - packaging
 test:
   imports:
     - arcticdb

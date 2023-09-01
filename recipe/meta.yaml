@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "2.0.0" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 149660905f2a1169a8bfeeb0f58e35e496747589a7d2147252181c4e826b3683
+  sha256: 6d2d68e8b931d8a871f9034eaabe48acdfe3578d7c5862122dce119b7d867947
 
   patches:
   # When cross-compiling for apple-silicon, we absolutely need to make sure
@@ -22,6 +22,9 @@ build:
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
   number: 0
+
+  entry_points:
+    - arcticdb_update_storage = arcticdb.scripts.update_storage:main
 
 requirements:
   build:

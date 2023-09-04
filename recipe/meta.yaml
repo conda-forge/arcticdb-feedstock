@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "2.0.0rc0" %}
+{% set version = "3.0.0rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: a77c3f9579a9e4dc907adb799c98f6aa4e2fcfb0d470e8067bd438f77d81acd6
+  sha256: d6af45647e1027f81dfac9979042607f432538eec43c8ccac2efa2b8be6f8a03
 
   patches:
   # When cross-compiling for apple-silicon, we absolutely need to make sure
@@ -21,7 +21,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 1
+  number: 0
 
 requirements:
   build:

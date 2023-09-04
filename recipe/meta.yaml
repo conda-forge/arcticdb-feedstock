@@ -9,12 +9,6 @@ source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: d6af45647e1027f81dfac9979042607f432538eec43c8ccac2efa2b8be6f8a03
 
-  patches:
-  # When cross-compiling for apple-silicon, we absolutely need to make sure
-  # that there is no hard-coded compiler in the cmake-preset / cmake-config.
-  # While man-group/ArcticDB#662 is not merged,
-  # we use a patch to remove the hard coded clang
-    - patches/patch_compiler_for_darwin.patch
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)

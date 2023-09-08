@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "3.0.0rc1" %}
+{% set version = "3.0.0rc2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 9beec318b6aa52334c371a2804288b1c03d20c44a9435549d7dfdc4ea35b4c31
+  sha256: c6682fa42488d3aec79b3d7df5c15a31ad28e010d86cfbcd5aaf68470fce992b
 
 
 build:
@@ -66,6 +66,8 @@ requirements:
     - fmt <10
     - glog
     - gtest
+    - azure-identity-cpp
+    - azure-storage-blobs-cpp
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml

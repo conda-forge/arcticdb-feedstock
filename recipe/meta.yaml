@@ -66,6 +66,7 @@ requirements:
     - fmt <10
     - glog
     - gtest
+    - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp
   run:

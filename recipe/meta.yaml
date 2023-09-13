@@ -7,14 +7,14 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 6d2d68e8b931d8a871f9034eaabe48acdfe3578d7c5862122dce119b7d867947
+  sha256: 85b3bb3e853e4fcd855cd3edd8a2f50b5d16b2fdf0136553944b093ddaa3446a
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "2.0.0" %}
+{% set version = "3.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,21 +7,17 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 149660905f2a1169a8bfeeb0f58e35e496747589a7d2147252181c4e826b3683
-
-  patches:
-  # When cross-compiling for apple-silicon, we absolutely need to make sure
-  # that there is no hard-coded compiler in the cmake-preset / cmake-config.
-  # While man-group/ArcticDB#662 is not merged,
-  # we use a patch to remove the hard coded clang
-    - patches/patch_compiler_for_darwin.patch
+  sha256: 85b3bb3e853e4fcd855cd3edd8a2f50b5d16b2fdf0136553944b093ddaa3446a
 
 build:
   # We skip the build on Windows because one of the dependencies (folly)
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 1
+  number: 0
+
+  entry_points:
+    - arcticdb_update_storage = arcticdb.scripts.update_storage:main
 
 requirements:
   build:
@@ -58,6 +54,9 @@ requirements:
     - cyrus-sasl =2.1.27
     - msgpack-c
     - aws-sdk-cpp
+    - azure-core-cpp
+    - azure-identity-cpp
+    - azure-storage-blobs-cpp
     - bitmagic
     - krb5 =1.20.1
     - xxhash

@@ -54,6 +54,7 @@ requirements:
     - cyrus-sasl =2.1.27
     - msgpack-c
     - aws-sdk-cpp
+    - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic

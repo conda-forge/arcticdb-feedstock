@@ -14,7 +14,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 1
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -82,7 +82,7 @@ requirements:
     - python
     # To keep in sync with `install_requires` in setup.cfg.
     - numpy
-    - pandas <2
+    - pandas
     - attrs
     - dataclasses # backport for Python < 3.7
     - decorator

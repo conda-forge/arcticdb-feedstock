@@ -14,7 +14,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -51,14 +51,12 @@ requirements:
     - pybind11 <2.11
     - pcre
     - gflags
-    - cyrus-sasl =2.1.27
     - msgpack-c
     - aws-sdk-cpp
     - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic
-    - krb5 =1.20.1
     - xxhash
     - semimap
     - grpcio-tools
@@ -66,9 +64,9 @@ requirements:
     - spdlog
     - robin_hood
     - recycle
-    - lmdb ==0.9.22
-    - lmdbxx ==0.9.14
-    - fmt <10
+    - lmdb
+    - lmdbxx
+    - fmt
     - glog
     - gtest
   run:

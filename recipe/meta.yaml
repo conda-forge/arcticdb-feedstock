@@ -14,7 +14,7 @@ build:
   # is not available for Windows on conda-forge
   # See: https://github.com/conda-forge/folly-feedstock/pull/98
   skip: true  # [win]
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -41,7 +41,7 @@ requirements:
     - lz4-c
     - prometheus-cpp
     - double-conversion
-    - libevent {{ libevent }}
+    - libevent
     - libprotobuf <4
     - libmongocxx
     - zstd

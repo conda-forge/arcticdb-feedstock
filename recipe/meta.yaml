@@ -67,6 +67,9 @@ requirements:
     - fmt <10
     - glog
     - gtest
+    - azure-core-cpp
+    - azure-identity-cpp
+    - azure-storage-blobs-cpp
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -75,7 +78,7 @@ requirements:
     - python
     # To keep in sync with `install_requires` in setup.cfg.
     - numpy
-    - pandas <2
+    - pandas
     - attrs
     - dataclasses # backport for Python < 3.7
     - decorator
@@ -93,6 +96,7 @@ requirements:
     - protobuf
     - lmdb
     - packaging
+    - pymongo
 test:
   imports:
     - arcticdb

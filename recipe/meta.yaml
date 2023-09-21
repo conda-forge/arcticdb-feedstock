@@ -29,7 +29,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf <4                          # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -41,8 +41,8 @@ requirements:
     - lz4-c
     - prometheus-cpp
     - double-conversion
-    - libevent {{ libevent }}
-    - libprotobuf <4
+    - libevent
+    - libprotobuf
     - libmongocxx
     - zstd
     # TODO: pybind 2.11.X became stricter regarding the handling of reference counts
@@ -58,7 +58,7 @@ requirements:
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic
-    - krb5 =1.20.1
+    - krb5
     - xxhash
     - semimap
     - grpcio-tools
@@ -66,9 +66,9 @@ requirements:
     - spdlog
     - robin_hood
     - recycle
-    - lmdb ==0.9.22
+    - lmdb
     - lmdbxx ==0.9.14
-    - fmt <10
+    - fmt
     - glog
     - gtest
   run:
@@ -93,6 +93,8 @@ requirements:
     - prometheus_client
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
+    # another line to pick up pinning
+    - aws-crt-cpp
     - prometheus-cpp
     - protobuf
     - lmdb

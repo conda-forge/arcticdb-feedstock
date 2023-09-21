@@ -7,3 +7,6 @@ libevent:
   - "2.1.12"
 msgpack_c:
   - 6
+
+channel_targets:
+  - conda-forge arcticdb_rc

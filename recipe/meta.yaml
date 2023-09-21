@@ -66,7 +66,7 @@ requirements:
     - spdlog
     - robin_hood
     - recycle
-    - lmdb ==0.9.22
+    - lmdb
     - lmdbxx ==0.9.14
     - fmt <10
     - glog

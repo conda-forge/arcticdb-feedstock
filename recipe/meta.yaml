@@ -10,9 +10,8 @@ source:
   sha256: 85b3bb3e853e4fcd855cd3edd8a2f50b5d16b2fdf0136553944b093ddaa3446a
 
 build:
-  # We skip the build on Windows because one of the dependencies (folly)
-  # is not available for Windows on conda-forge
-  # See: https://github.com/conda-forge/folly-feedstock/pull/98
+  # We skip the build on Windows because of linkage problems with libprotobuf.
+  # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
   number: 1
 

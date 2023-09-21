@@ -16,6 +16,8 @@ cxx_compiler_version:
 - '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
+fmt:
+- '9'
 gflags:
 - '2.2'
 glog:
@@ -24,6 +26,8 @@ libev:
 - '4.33'
 libevent:
 - 2.1.12
+lmdb:
+- 0.9.29
 lz4_c:
 - 1.9.3
 msgpack_c:

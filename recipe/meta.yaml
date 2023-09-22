@@ -10,6 +10,9 @@ source:
   sha256: 3e2bbd667f1cf198956219590752476bb59aecfd11e580a34f19340debe33401
 
 build:
+  # We skip the build on Windows because of linkage problems with libprotobuf.
+  # See: https://github.com/man-group/ArcticDB/pull/449
+  skip: true  # [win]
   number: 0
 
   entry_points:

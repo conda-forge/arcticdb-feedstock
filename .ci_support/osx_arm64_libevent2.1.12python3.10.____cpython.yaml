@@ -14,8 +14,6 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '15'
-fmt:
-- '9'
 gflags:
 - '2.2'
 glog:
@@ -25,7 +23,7 @@ libev:
 libevent:
 - 2.1.12
 lmdb:
-- 0.9.22
+- 0.9.29
 lz4_c:
 - 1.9.3
 macos_machine:

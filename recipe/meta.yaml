@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "3.0.0" %}
+{% set version = "4.0.0rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,16 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 85b3bb3e853e4fcd855cd3edd8a2f50b5d16b2fdf0136553944b093ddaa3446a
+  sha256: 0b48cd344d630e5f2c23b13898f6b022f3285875d4a269badcc9cd0c4df34ac6
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
   number: 1
+
+  entry_points:
+    - arcticdb_update_storage = arcticdb.scripts.update_storage:main
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -71,6 +74,9 @@ requirements:
     - fmt <10
     - glog
     - gtest
+    - azure-core-cpp
+    - azure-identity-cpp
+    - azure-storage-blobs-cpp
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -79,7 +85,7 @@ requirements:
     - python
     # To keep in sync with `install_requires` in setup.cfg.
     - numpy
-    - pandas <2
+    - pandas
     - attrs
     - dataclasses # backport for Python < 3.7
     - decorator
@@ -97,6 +103,7 @@ requirements:
     - protobuf
     - lmdb
     - packaging
+    - pymongo
 test:
   imports:
     - arcticdb

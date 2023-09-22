@@ -40,6 +40,7 @@ requirements:
     - lz4-c
     - prometheus-cpp
     - double-conversion
+    # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent {{ libevent }}
     - libprotobuf <4
     - libmongocxx
@@ -63,9 +64,9 @@ requirements:
     - spdlog
     - robin_hood
     - recycle
-    - lmdb
+    - lmdb 0.9.22
     - lmdbxx
-    - fmt
+    - fmt <10
     - glog
     - gtest
   run:

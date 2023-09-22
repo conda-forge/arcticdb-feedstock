@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.0.0rc0" %}
+{% set version = "4.0.0rc1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,12 +7,11 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 0b48cd344d630e5f2c23b13898f6b022f3285875d4a269badcc9cd0c4df34ac6
+  sha256: 3e2bbd667f1cf198956219590752476bb59aecfd11e580a34f19340debe33401
 
 build:
-  # We skip the build on Windows because one of the dependencies (folly)
-  # is not available for Windows on conda-forge
-  # See: https://github.com/conda-forge/folly-feedstock/pull/98
+  # We skip the build on Windows because of linkage problems with libprotobuf.
+  # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
   number: 0
 

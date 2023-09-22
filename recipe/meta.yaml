@@ -64,7 +64,9 @@ requirements:
     - spdlog
     - robin_hood
     - recycle
-    - lmdb 0.9.22
+    # lmdb's version is constrained in `conda_build_config.yaml` because
+    # specifying it here does not overide the conda-forge's global pinning.
+    - lmdb
     - lmdbxx
     - fmt <10
     - glog

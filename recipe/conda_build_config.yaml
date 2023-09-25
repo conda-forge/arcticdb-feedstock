@@ -5,8 +5,10 @@ MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
 libevent:
   - "2.1.10"
   - "2.1.12"
+msgpack_c:
+  - 6
 lmdb:
-  - "0.9.22"
+  - 0.9.22
 
 channel_targets:
   - conda-forge arcticdb_rc

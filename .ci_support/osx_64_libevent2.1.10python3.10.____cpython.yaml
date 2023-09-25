@@ -24,6 +24,8 @@ libev:
 - '4.33'
 libevent:
 - 2.1.10
+lmdb:
+- 0.9.22
 lz4_c:
 - 1.9.3
 macos_machine:

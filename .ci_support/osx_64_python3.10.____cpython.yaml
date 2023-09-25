@@ -11,7 +11,7 @@ c_compiler_version:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge arcticdb_libevent_2_1_10
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
@@ -23,7 +23,9 @@ glog:
 libev:
 - '4.33'
 libevent:
-- 2.1.12
+- 2.1.10
+lmdb:
+- 0.9.29
 lz4_c:
 - 1.9.3
 macos_machine:

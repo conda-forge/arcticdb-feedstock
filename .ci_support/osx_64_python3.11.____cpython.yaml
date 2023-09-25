@@ -11,7 +11,7 @@ c_compiler_version:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge arcticdb_libevent_2_1_10
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
@@ -24,6 +24,8 @@ libev:
 - '4.33'
 libevent:
 - 2.1.10
+lmdb:
+- 0.9.29
 lz4_c:
 - 1.9.3
 macos_machine:
@@ -37,7 +39,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.11.* *_cpython
 spdlog:
 - '1.11'
 target_platform:

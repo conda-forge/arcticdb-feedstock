@@ -23,7 +23,9 @@ glog:
 libev:
 - '4.33'
 libevent:
-- 2.1.12
+- 2.1.10
+lmdb:
+- 0.9.22
 lz4_c:
 - 1.9.3
 macos_machine:
@@ -37,7 +39,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.11.* *_cpython
 spdlog:
 - '1.11'
 target_platform:

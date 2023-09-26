@@ -8,6 +8,3 @@ lmdb:
   - "0.9.22"
 msgpack_c:
   - 6
-
-channel_targets:
-  - conda-forge arcticdb_libevent_2_1_10

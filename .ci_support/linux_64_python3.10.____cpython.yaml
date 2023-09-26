@@ -20,10 +20,10 @@ gflags:
 - '2.2'
 glog:
 - '0.6'
-libev:
-- '4.33'
 libevent:
-- 2.1.10
+- 2.1.12
+lmdb:
+- 0.9.22
 lz4_c:
 - 1.9.3
 msgpack_c:
@@ -35,7 +35,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.10.* *_cpython
 spdlog:
 - '1.11'
 target_platform:

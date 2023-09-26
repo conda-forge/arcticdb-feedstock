@@ -1,31 +1,31 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
 aws_sdk_cpp:
 - 1.10.57
 c_compiler:
-- clang
+- gcc
 c_compiler_version:
-- '15'
+- '12'
+cdt_name:
+- cos6
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
+- gxx
 cxx_compiler_version:
-- '15'
+- '12'
+docker_image:
+- quay.io/condaforge/linux-anvil-cos7-x86_64
 gflags:
 - '2.2'
 glog:
 - '0.6'
-libev:
-- '4.33'
 libevent:
-- 2.1.10
+- 2.1.12
+lmdb:
+- 0.9.22
 lz4_c:
 - 1.9.3
-macos_machine:
-- arm64-apple-darwin20.0.0
 msgpack_c:
 - '6'
 pcre:
@@ -35,11 +35,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.9.* *_cpython
 spdlog:
 - '1.11'
 target_platform:
-- osx-arm64
+- linux-64
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

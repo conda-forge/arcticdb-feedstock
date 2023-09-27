@@ -6,5 +6,3 @@ libevent:
   - "2.1.10"
 lmdb:
   - "0.9.22"
-msgpack_c:
-  - 6

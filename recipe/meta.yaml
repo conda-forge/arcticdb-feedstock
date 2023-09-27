@@ -13,7 +13,7 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -41,7 +41,7 @@ requirements:
     - prometheus-cpp
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
-    - libevent {{ libevent }}
+    - libevent
     - libprotobuf <4
     - libmongocxx
     - zstd
@@ -71,9 +71,6 @@ requirements:
     - fmt <10
     - glog
     - gtest
-    - azure-core-cpp
-    - azure-identity-cpp
-    - azure-storage-blobs-cpp
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml

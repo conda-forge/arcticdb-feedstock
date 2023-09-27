@@ -81,7 +81,7 @@ requirements:
     - python
     # To keep in sync with `install_requires` in setup.cfg.
     - numpy
-    - pandas <2
+    - pandas
     - attrs
     - dataclasses # backport for Python < 3.7
     - decorator
@@ -99,6 +99,7 @@ requirements:
     - protobuf
     - lmdb
     - packaging
+    - pymongo
 test:
   imports:
     - arcticdb

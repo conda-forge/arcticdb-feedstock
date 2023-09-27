@@ -20,8 +20,6 @@ gflags:
 - '2.2'
 glog:
 - '0.6'
-libev:
-- '4.33'
 libevent:
 - 2.1.10
 lmdb:

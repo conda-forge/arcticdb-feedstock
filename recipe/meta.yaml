@@ -10,11 +10,10 @@ source:
   sha256: 52969d055ca622209e430f96deff33004113f0df29a0f1cb7a3538925986f529
 
 build:
-  # We skip the build on Windows because one of the dependencies (folly)
-  # is not available for Windows on conda-forge
-  # See: https://github.com/conda-forge/folly-feedstock/pull/98
+  # We skip the build on Windows because of linkage problems with libprotobuf.
+  # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  number: 1
+  number: 2
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -41,6 +40,7 @@ requirements:
     - lz4-c
     - prometheus-cpp
     - double-conversion
+    # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
     - libprotobuf <4
     - libmongocxx
@@ -51,14 +51,12 @@ requirements:
     - pybind11 <2.11
     - pcre
     - gflags
-    - cyrus-sasl =2.1.27
     - msgpack-c
     - aws-sdk-cpp
     - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic
-    - krb5 =1.20.1
     - xxhash
     - semimap
     - grpcio-tools
@@ -69,7 +67,7 @@ requirements:
     # lmdb's version is constrained in `conda_build_config.yaml` because
     # specifying it here does not overide the conda-forge's global pinning.
     - lmdb
-    - lmdbxx ==0.9.14
+    - lmdbxx
     - fmt <10
     - glog
     - gtest

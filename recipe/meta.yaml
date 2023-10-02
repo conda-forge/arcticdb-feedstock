@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "1.6.1" %}
+{% set version = "1.6.2.rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 28f6f3f109b1cd0b02f40a9333c110aa252f61b3a7e5819229d56d774c6ae636
+  sha256: e32eb8e9e18adbd5c99840f6e4b21f8e97d8675c9f57f1aafec00931f431420d
 
   patches:
   # When cross-compiling for apple-silicon, we absolutely need to make sure

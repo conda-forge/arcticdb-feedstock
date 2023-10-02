@@ -14,14 +14,13 @@ source:
   # that there is no hard-coded compiler in the cmake-preset / cmake-config.
   # While man-group/ArcticDB#662 is not merged,
   # we use a patch to remove the hard coded clang
-    - patches/patch_compiler_for_darwin.patch 
+    - patches/patch_compiler_for_darwin.patch
 
 build:
-  # We skip the build on Windows because one of the dependencies (folly)
-  # is not available for Windows on conda-forge
-  # See: https://github.com/conda-forge/folly-feedstock/pull/98
+  # We skip the build on Windows because of linkage problems with libprotobuf.
+  # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -45,7 +44,8 @@ requirements:
     - lz4-c
     - prometheus-cpp
     - double-conversion
-    - libevent {{ libevent }}
+    # See libevent variants' definition in `recipe/conda_build_config.yaml`
+    - libevent
     - libprotobuf <4
     - libmongocxx
     - zstd
@@ -55,23 +55,20 @@ requirements:
     - pybind11 <2.11
     - pcre
     - gflags
-    - cyrus-sasl =2.1.27
     - msgpack-c
     - aws-sdk-cpp
     - bitmagic
-    - krb5 =1.20.1
-    # TODO: remove the pin once python-xxhash has been rebuilt for
-    # xxhash 0.8.2.
-    # See: https://github.com/conda-forge/python-xxhash-feedstock/pull/30
-    - xxhash <0.8.2
+    - xxhash
     - semimap
     - grpcio-tools
     - protobuf
     - spdlog
     - robin_hood
     - recycle
-    - lmdb ==0.9.22
-    - lmdbxx ==0.9.14
+    # lmdb's version is constrained in `conda_build_config.yaml` because
+    # specifying it here does not overide the conda-forge's global pinning.
+    - lmdb
+    - lmdbxx
     - fmt <10
     - glog
     - gtest
@@ -95,13 +92,12 @@ requirements:
     - pyyaml
     - decorator
     - prometheus_client
-    # Required at runtime for their dynamically shared objects.
-    - folly
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
     - protobuf
     - lmdb
+    - packaging
 test:
   imports:
     - arcticdb
@@ -124,6 +120,8 @@ about:
 
 extra:
   recipe-maintainers:
+    - Hind-M
+    - Klaim
     - JohanMabille
     - DerThorsten
     - jjerphan

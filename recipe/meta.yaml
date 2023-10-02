@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "1.6.1" %}
+{% set version = "1.6.2rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 28f6f3f109b1cd0b02f40a9333c110aa252f61b3a7e5819229d56d774c6ae636
+  sha256: 9848149b67ca65c347d69517f05d42c4309c9df66d8540a635f653842e51a719
 
   patches:
   # When cross-compiling for apple-silicon, we absolutely need to make sure
@@ -20,7 +20,7 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  number: 1
+  number: 0
 
 requirements:
   build:

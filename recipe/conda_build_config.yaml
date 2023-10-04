@@ -7,5 +7,5 @@ libevent:
   - "2.1.12"
 lmdb:
   - 0.9.22
-channel_targets: 
-  - conda-forge arcticdb_rc 
+aws_sdk_cpp:
+  - 1.10.57

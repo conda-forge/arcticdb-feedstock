@@ -13,7 +13,7 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  number: 2
+  number: 3
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -42,7 +42,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf <4
+    - libprotobuf
     - libmongocxx
     - zstd
     # TODO: pybind 2.11.X became stricter regarding the handling of reference counts

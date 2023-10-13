@@ -13,6 +13,10 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
+  # The build of libprotobuf is lacking the _CFRelease symbol
+  # Fixing requires to rebuild the whole stack while OSX build 
+  # for python 3.8 is not used  by anyone.
+  skip: true  # [osx and py<39]
   number: 3
 
   entry_points:

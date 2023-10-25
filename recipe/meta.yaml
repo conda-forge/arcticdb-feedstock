@@ -38,7 +38,6 @@ requirements:
   host:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
-    - libcxx  # [osx]
     - python
     - pip
     - folly

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.0.0" %}
+{% set version = "4.0.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 52969d055ca622209e430f96deff33004113f0df29a0f1cb7a3538925986f529
+  sha256: a786d40a5abfe89452899f779d92bfa218ae7931f3e6f42d8f2ccdc483a4a50b
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
@@ -17,7 +17,7 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build 
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 4
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.1.0rc0" %}
+{% set version = "4.1.0rc1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 612d0ba55fae05e030e622d54111d058c519277933e61bbf37a4397ccd4157b0
+  sha256: 8044c2708dcef532f15770a447b9b0f9b0c29a610cf299f534b958db9716bf6c
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.

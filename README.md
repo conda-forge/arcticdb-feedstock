@@ -239,7 +239,6 @@ Feedstock Maintainers
 
 * [@DerThorsten](https://github.com/DerThorsten/)
 * [@G-D-Petrov](https://github.com/G-D-Petrov/)
-* [@GemDot](https://github.com/GemDot/)
 * [@Hind-M](https://github.com/Hind-M/)
 * [@JohanMabille](https://github.com/JohanMabille/)
 * [@Klaim](https://github.com/Klaim/)

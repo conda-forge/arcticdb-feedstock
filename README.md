@@ -252,7 +252,6 @@ Feedstock Maintainers
 =====================
 
 * [@DerThorsten](https://github.com/DerThorsten/)
-* [@GemDot](https://github.com/GemDot/)
 * [@JohanMabille](https://github.com/JohanMabille/)
 * [@alexowens90](https://github.com/alexowens90/)
 * [@jamesmunro](https://github.com/jamesmunro/)

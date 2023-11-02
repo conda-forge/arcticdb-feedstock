@@ -7,3 +7,7 @@ github:
   branch_name: main
   tooling_branch_name: main
 test: native_and_emulated
+bot:
+  abi_migration_branches:
+    - rc
+    - libevent-2.1.10

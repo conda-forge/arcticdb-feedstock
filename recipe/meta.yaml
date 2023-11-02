@@ -13,6 +13,10 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
+  # The build of libprotobuf is lacking the _CFRelease symbol
+  # Fixing requires to rebuild the whole stack while OSX build
+  # for python 3.8 is not used  by anyone.
+  skip: true  # [osx and py<39]
   number: 0
 
   entry_points:
@@ -28,7 +32,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf <4                          # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -42,7 +46,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf <4
+    - libprotobuf
     - libmongocxx
     - zstd
     # TODO: pybind 2.11.X became stricter regarding the handling of reference counts
@@ -120,6 +124,10 @@ about:
 
 extra:
   recipe-maintainers:
+    - joe-iddon
+    - G-D-Petrov
+    - Hind-M
+    - Klaim
     - JohanMabille
     - DerThorsten
     - jjerphan

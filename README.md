@@ -238,10 +238,14 @@ Feedstock Maintainers
 =====================
 
 * [@DerThorsten](https://github.com/DerThorsten/)
+* [@G-D-Petrov](https://github.com/G-D-Petrov/)
+* [@Hind-M](https://github.com/Hind-M/)
 * [@JohanMabille](https://github.com/JohanMabille/)
+* [@Klaim](https://github.com/Klaim/)
 * [@alexowens90](https://github.com/alexowens90/)
 * [@jamesmunro](https://github.com/jamesmunro/)
 * [@jjerphan](https://github.com/jjerphan/)
+* [@joe-iddon](https://github.com/joe-iddon/)
 * [@mehertz](https://github.com/mehertz/)
 * [@phoebusm](https://github.com/phoebusm/)
 * [@poodlewars](https://github.com/poodlewars/)

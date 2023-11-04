@@ -21,7 +21,7 @@ glog:
 libevent:
 - 2.1.10
 libprotobuf:
-- 4.24.3
+- 4.24.4
 lmdb:
 - 0.9.22
 lz4_c:

@@ -1,21 +1,13 @@
 aws_sdk_cpp:
 - 1.11.182
 c_compiler:
-- gcc
-c_compiler_version:
-- '12'
-cdt_name:
-- cos6
+- vs2019
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- gxx
-cxx_compiler_version:
-- '12'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- vs2019
 folly:
 - 2023.09.25.00
 gflags:
@@ -39,13 +31,10 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.10.* *_cpython
 spdlog:
 - '1.11'
 target_platform:
-- linux-64
-zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
+- win-64
 zstd:
 - '1.5'

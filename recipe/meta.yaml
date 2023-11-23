@@ -20,7 +20,7 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  number: 0
+  number: 1
 
 requirements:
   build:
@@ -47,7 +47,9 @@ requirements:
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
     - libprotobuf <4
-    - libmongocxx
+    # TODO: Fix builds for missing symbols
+    # See: https://github.com/man-group/ArcticDB/pull/1050
+    - libmongocxx <3.9
     - zstd
     # TODO: pybind 2.11.X became stricter regarding the handling of reference counts
     # See: https://github.com/pybind/pybind11/issues/4748#issuecomment-1639445403
@@ -131,6 +133,5 @@ extra:
     - willdealtry
     - poodlewars
     - vasil-pashov
-    - GemDot
     - phoebusm
     - alexowens90

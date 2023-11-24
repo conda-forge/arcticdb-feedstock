@@ -7,6 +7,9 @@ libevent:
   - "2.1.12"
 lmdb:
   - 0.9.22
+folly:
+  # This version of folly is used to make the build usable by more environments
+  - "2023.09.25.00"	
 
 channel_targets:
   - conda-forge arcticdb_rc

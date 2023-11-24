@@ -13,7 +13,7 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 3
+  number: 4
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -28,7 +28,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf                             # [build_platform != target_platform]
+    - libprotobuf <4                          # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -42,7 +42,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf
+    - libprotobuf <4
     # TODO: Fix builds for missing symbols
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9

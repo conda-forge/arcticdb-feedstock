@@ -23,7 +23,7 @@ gflags:
 glog:
 - '0.6'
 libevent:
-- 2.1.10
+- 2.1.12
 libprotobuf:
 - 4.24.4
 lmdb:
@@ -41,7 +41,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.8.* *_cpython
 spdlog:
 - '1.11'
 target_platform:

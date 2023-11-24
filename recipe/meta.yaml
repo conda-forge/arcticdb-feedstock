@@ -46,7 +46,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf
+    - libprotobuf <4
     # TODO: Fix builds for missing symbols
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9

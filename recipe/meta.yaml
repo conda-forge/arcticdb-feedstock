@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.2.0rc" %}
+{% set version = "4.2.0rc0" %}
 
 package:
   name: {{ name|lower }}

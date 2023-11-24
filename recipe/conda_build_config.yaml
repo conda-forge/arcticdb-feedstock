@@ -6,6 +6,17 @@ libevent:
   - "2.1.10"
 lmdb:
   - "0.9.22"
+# Pin specific versions of some dependencies which we know are supported
+# by a previous build, `linux-64_arcticdb-4.0.0-py39h1278ff5_2`.
+# Pinning less is not sufficient, pinning more would constrain the
+# environment too much.
 folly:
-  # This version of folly is used to make the build usable by more environments
   - "2023.09.25.00"
+aws-sdk-cpp:
+  - "1.10.57"
+azure-core-cpp:
+  - "1.10.2"
+azure-identity-cpp:
+  - "1.5.1"
+azure-storage-blobs-cpp:
+  - "12.9.0"

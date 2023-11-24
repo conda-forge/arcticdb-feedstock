@@ -8,4 +8,7 @@ lmdb:
   - "0.9.22"
 folly:
   # This version of folly is used to make the build usable by more environments
-  - "2023.09.25.00"	
+  - "2023.09.25.00"
+llibprotobuf:
+  # This version of libprotobuf is used to make the build ubasable by BQNT
+  - "3.21.12"

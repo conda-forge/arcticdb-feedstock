@@ -12,11 +12,11 @@ lmdb:
 # environment too much.
 folly:
   - "2023.09.25.00"
-aws-sdk-cpp:
+aws_sdk_cpp:
   - "1.10.57"
-azure-core-cpp:
+azure_core_cpp:
   - "1.10.2"
-azure-identity-cpp:
+azure_identity_cpp:
   - "1.5.1"
-azure-storage-blobs-cpp:
+azure_storage_blobs_cpp:
   - "12.9.0"

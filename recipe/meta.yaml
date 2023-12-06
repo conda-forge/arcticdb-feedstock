@@ -87,23 +87,16 @@ requirements:
     - numpy
     - pandas
     - attrs
-    - dataclasses # backport for Python < 3.7
     - decorator
-    - grpcio-tools
-    - python-xxhash
-    - six
     - msgpack-python
     - psutil
     - pyyaml
-    - decorator
-    - prometheus_client
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
     - protobuf
     - lmdb
     - packaging
-    - pymongo
 test:
   imports:
     - arcticdb

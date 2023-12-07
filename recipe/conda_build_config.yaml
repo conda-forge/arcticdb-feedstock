@@ -2,11 +2,37 @@ MACOSX_SDK_VERSION:        # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
 MACOSX_DEPLOYMENT_TARGET:  # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
+lmdb:
+  - 0.9.22
+folly:
+  # This version of folly is used to make the build usable by more environments
+  - "2023.09.25.00"	
+
+# Coupling dependencies specification together.
+# The first  lines come from the specifications of the `libevent-2.1.10` branch. 
+# The second lines come from the specifications of the `main` branch.
+# See: https://docs.conda.io/projects/conda-build/en/stable/resources/variants.html#coupling-keys
 libevent:
   - "2.1.10"
   - "2.1.12"
-lmdb:
-  - 0.9.22
+aws_sdk_cpp:
+  - "1.10.57"
+  - "*"
+azure_core_cpp:
+  - "1.10.2"
+  - "*"
+azure_identity_cpp:
+  - "1.5.1"
+  - "*"
+azure_storage_blobs_cpp:
+  - "12.9.0"
+  - "*"
+zip_keys:
+  - libevent
+  - aws_sdk_cpp
+  - azure_core_cpp
+  - azure_identity_cpp
+  - azure_storage_blobs_cpp
 
 channel_targets:
   - conda-forge arcticdb_rc

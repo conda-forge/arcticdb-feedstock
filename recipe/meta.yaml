@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.1.0rc2" %}
+{% set version = "4.2.0rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c72724b6e70ad913aaf1cb0eb1aa8d734af560fdd1a71f549549bbaa3aa76ed8
+  sha256: 365bed911941a5d0a832833a2296a54c87472508cc132beeb546b0d53294d8f7
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
@@ -17,7 +17,7 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 3
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -87,23 +87,16 @@ requirements:
     - numpy
     - pandas
     - attrs
-    - dataclasses # backport for Python < 3.7
     - decorator
-    - grpcio-tools
-    - python-xxhash
-    - six
     - msgpack-python
     - psutil
     - pyyaml
-    - decorator
-    - prometheus_client
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
     - protobuf
     - lmdb
     - packaging
-    - pymongo
 test:
   imports:
     - arcticdb

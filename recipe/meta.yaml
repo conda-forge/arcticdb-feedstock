@@ -102,6 +102,9 @@ requirements:
     - pymongo
 test:
   requires:
+  # This environment specification must be maintained in sync with the one upstream:
+  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+  # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
     - pyarrow
     - pytest-cpp
@@ -121,12 +124,12 @@ test:
     - asv
     - virtualenv
     - pymongo
+  source_files:
+    - python/tests
   imports:
     - arcticdb
   commands:
-    # TODO: directly use the tests once they are packaged.
-    - cp -R $SRC_DIR/python/tests .
-    - pytest --pyargs arcticdb -n 2 tests
+    - pytest tests -n2
 about:
   home: https://arcticdb.io/
   summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.

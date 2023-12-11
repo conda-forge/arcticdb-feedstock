@@ -124,8 +124,9 @@ test:
   imports:
     - arcticdb
   commands:
-    - cd python
-    - python -m pytest -n 2 tests
+    # TODO: directly use the tests once they are packaged.
+    - cp -R $SRC_DIR/python/tests .
+    - pytest --pyargs arcticdb -n 2 tests
 about:
   home: https://arcticdb.io/
   summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.

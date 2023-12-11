@@ -13,7 +13,7 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 4
+  number: 5
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -101,9 +101,31 @@ requirements:
     - packaging
     - pymongo
 test:
+  requires:
+    - pytest
+    - pyarrow
+    - pytest-cpp
+    - pytest-timeout
+    - pytest-xdist
+    - packaging
+    - future
+    - mock
+    - boto3
+    - moto
+    - flask  # Used by moto
+    - flask-cors
+    - hypothesis <6.73
+    - azure-storage-blob
+    - azure-identity
+    - coverage
+    - asv
+    - virtualenv
+    - pymongo
   imports:
     - arcticdb
-
+  commands:
+    - cd python
+    - python -m pytest -n 2 tests
 about:
   home: https://arcticdb.io/
   summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.1.0" %}
+{% set version = "4.2.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 207b8951e4623bb2e87e0a3b3014ae12b7c4a696e7377b1910d9978dd1ad28eb
+  sha256: 835d82f8bdfe1c54ab20f6f519fb96e4caa5355c19fb456680e314c2618f9cfd
 
 build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 4
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -83,23 +83,16 @@ requirements:
     - numpy
     - pandas
     - attrs
-    - dataclasses # backport for Python < 3.7
     - decorator
-    - grpcio-tools
-    - python-xxhash
-    - six
     - msgpack-python
     - psutil
     - pyyaml
-    - decorator
-    - prometheus_client
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
     - protobuf
     - lmdb
     - packaging
-    - pymongo
 test:
   imports:
     - arcticdb

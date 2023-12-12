@@ -109,8 +109,7 @@ test:
     - pyarrow
     - pytest-cpp
     - pytest-timeout
-    # Unused for conda-forge CI machines.
-    # - pytest-xdist
+    - pytest-xdist
     - packaging
     - future
     - mock
@@ -130,7 +129,8 @@ test:
   imports:
     - arcticdb
   commands:
-    - pytest python/tests
+    - pytest python/tests -n 2
+
 about:
   home: https://arcticdb.io/
   summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.

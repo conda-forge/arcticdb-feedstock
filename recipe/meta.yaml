@@ -129,7 +129,7 @@ test:
   imports:
     - arcticdb
   commands:
-    - pytest tests -n2
+    - pytest python/tests -nauto
 about:
   home: https://arcticdb.io/
   summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.

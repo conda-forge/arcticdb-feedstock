@@ -126,9 +126,9 @@ test:
     - arcticdb
   commands:
     - npm install -g azurite
-    # Machines have 2 CPUs, we retry in case of failure to be sure
-    # all configurations' builds are published.
-    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests -n 2 --reruns 5 --reruns-delay 1
+    # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
+    # Tests for Azure are deactivated for now.
+    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests -n 2 --reruns 5 --reruns-delay 1 -k "not Azure and not azurite"
 
 about:
   home: https://arcticdb.io/

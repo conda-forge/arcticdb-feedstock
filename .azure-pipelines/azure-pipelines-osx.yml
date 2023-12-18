@@ -8,53 +8,101 @@ jobs:
     vmImage: macOS-11
   strategy:
     matrix:
-      osx_64_libevent2.1.10python3.10.____cpython:
-        CONFIG: osx_64_libevent2.1.10python3.10.____cpython
+      osx_64_libevent2.1.10nodejs18python3.10.____cpython:
+        CONFIG: osx_64_libevent2.1.10nodejs18python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libevent2.1.10python3.11.____cpython:
-        CONFIG: osx_64_libevent2.1.10python3.11.____cpython
+      osx_64_libevent2.1.10nodejs18python3.11.____cpython:
+        CONFIG: osx_64_libevent2.1.10nodejs18python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libevent2.1.10python3.8.____cpython:
-        CONFIG: osx_64_libevent2.1.10python3.8.____cpython
+      osx_64_libevent2.1.10nodejs18python3.8.____cpython:
+        CONFIG: osx_64_libevent2.1.10nodejs18python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libevent2.1.10python3.9.____cpython:
-        CONFIG: osx_64_libevent2.1.10python3.9.____cpython
+      osx_64_libevent2.1.10nodejs18python3.9.____cpython:
+        CONFIG: osx_64_libevent2.1.10nodejs18python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libevent2.1.12python3.10.____cpython:
-        CONFIG: osx_64_libevent2.1.12python3.10.____cpython
+      osx_64_libevent2.1.10nodejs20python3.10.____cpython:
+        CONFIG: osx_64_libevent2.1.10nodejs20python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libevent2.1.12python3.11.____cpython:
-        CONFIG: osx_64_libevent2.1.12python3.11.____cpython
+      osx_64_libevent2.1.10nodejs20python3.11.____cpython:
+        CONFIG: osx_64_libevent2.1.10nodejs20python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libevent2.1.12python3.8.____cpython:
-        CONFIG: osx_64_libevent2.1.12python3.8.____cpython
+      osx_64_libevent2.1.10nodejs20python3.8.____cpython:
+        CONFIG: osx_64_libevent2.1.10nodejs20python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_64_libevent2.1.12python3.9.____cpython:
-        CONFIG: osx_64_libevent2.1.12python3.9.____cpython
+      osx_64_libevent2.1.10nodejs20python3.9.____cpython:
+        CONFIG: osx_64_libevent2.1.10nodejs20python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libevent2.1.10python3.10.____cpython:
-        CONFIG: osx_arm64_libevent2.1.10python3.10.____cpython
+      osx_64_libevent2.1.12nodejs18python3.10.____cpython:
+        CONFIG: osx_64_libevent2.1.12nodejs18python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libevent2.1.10python3.11.____cpython:
-        CONFIG: osx_arm64_libevent2.1.10python3.11.____cpython
+      osx_64_libevent2.1.12nodejs18python3.11.____cpython:
+        CONFIG: osx_64_libevent2.1.12nodejs18python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libevent2.1.10python3.8.____cpython:
-        CONFIG: osx_arm64_libevent2.1.10python3.8.____cpython
+      osx_64_libevent2.1.12nodejs18python3.8.____cpython:
+        CONFIG: osx_64_libevent2.1.12nodejs18python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libevent2.1.10python3.9.____cpython:
-        CONFIG: osx_arm64_libevent2.1.10python3.9.____cpython
+      osx_64_libevent2.1.12nodejs18python3.9.____cpython:
+        CONFIG: osx_64_libevent2.1.12nodejs18python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libevent2.1.12python3.10.____cpython:
-        CONFIG: osx_arm64_libevent2.1.12python3.10.____cpython
+      osx_64_libevent2.1.12nodejs20python3.10.____cpython:
+        CONFIG: osx_64_libevent2.1.12nodejs20python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libevent2.1.12python3.11.____cpython:
-        CONFIG: osx_arm64_libevent2.1.12python3.11.____cpython
+      osx_64_libevent2.1.12nodejs20python3.11.____cpython:
+        CONFIG: osx_64_libevent2.1.12nodejs20python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libevent2.1.12python3.8.____cpython:
-        CONFIG: osx_arm64_libevent2.1.12python3.8.____cpython
+      osx_64_libevent2.1.12nodejs20python3.8.____cpython:
+        CONFIG: osx_64_libevent2.1.12nodejs20python3.8.____cpython
         UPLOAD_PACKAGES: 'True'
-      osx_arm64_libevent2.1.12python3.9.____cpython:
-        CONFIG: osx_arm64_libevent2.1.12python3.9.____cpython
+      osx_64_libevent2.1.12nodejs20python3.9.____cpython:
+        CONFIG: osx_64_libevent2.1.12nodejs20python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.10nodejs18python3.10.____cpython:
+        CONFIG: osx_arm64_libevent2.1.10nodejs18python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.10nodejs18python3.11.____cpython:
+        CONFIG: osx_arm64_libevent2.1.10nodejs18python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.10nodejs18python3.8.____cpython:
+        CONFIG: osx_arm64_libevent2.1.10nodejs18python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.10nodejs18python3.9.____cpython:
+        CONFIG: osx_arm64_libevent2.1.10nodejs18python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.10nodejs20python3.10.____cpython:
+        CONFIG: osx_arm64_libevent2.1.10nodejs20python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.10nodejs20python3.11.____cpython:
+        CONFIG: osx_arm64_libevent2.1.10nodejs20python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.10nodejs20python3.8.____cpython:
+        CONFIG: osx_arm64_libevent2.1.10nodejs20python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.10nodejs20python3.9.____cpython:
+        CONFIG: osx_arm64_libevent2.1.10nodejs20python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.12nodejs18python3.10.____cpython:
+        CONFIG: osx_arm64_libevent2.1.12nodejs18python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.12nodejs18python3.11.____cpython:
+        CONFIG: osx_arm64_libevent2.1.12nodejs18python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.12nodejs18python3.8.____cpython:
+        CONFIG: osx_arm64_libevent2.1.12nodejs18python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.12nodejs18python3.9.____cpython:
+        CONFIG: osx_arm64_libevent2.1.12nodejs18python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.12nodejs20python3.10.____cpython:
+        CONFIG: osx_arm64_libevent2.1.12nodejs20python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.12nodejs20python3.11.____cpython:
+        CONFIG: osx_arm64_libevent2.1.12nodejs20python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.12nodejs20python3.8.____cpython:
+        CONFIG: osx_arm64_libevent2.1.12nodejs20python3.8.____cpython
+        UPLOAD_PACKAGES: 'True'
+      osx_arm64_libevent2.1.12nodejs20python3.9.____cpython:
+        CONFIG: osx_arm64_libevent2.1.12nodejs20python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
 

@@ -127,6 +127,7 @@ test:
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
+    - pytest-server-fixtures
   source_files:
     - python/tests
   imports:

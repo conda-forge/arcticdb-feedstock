@@ -17,9 +17,9 @@ source:
     - patches/patch_compiler_for_darwin.patch
 
 build:
-  # We skip the build on Windows because of linkage problems with libprotobuf.
-  # See: https://github.com/man-group/ArcticDB/pull/449
-  skip: true  # [win]
+  # Only build for Linux and Python 3.9
+  skip: true  # [not linux]
+  skip: true  # [not py==39]
   number: 2
 
 requirements:

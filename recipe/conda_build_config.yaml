@@ -6,7 +6,9 @@ lmdb:
   - 0.9.22
 folly:
   # This version of folly is used to make the build usable by more environments
-  - "2023.09.25.00"	
+  - "2023.09.25.00"
+nodejs:
+  - "18"
 
 # Coupling dependencies specification together.
 # The first  lines come from the specifications of the `libevent-2.1.10` branch. 

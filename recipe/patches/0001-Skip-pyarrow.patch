@@ -1,0 +1,25 @@
+From 273819b14d685fc8cc65b662dbd279b28dcb5c0c Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Tue, 19 Dec 2023 16:30:10 +0100
+Subject: [PATCH] Skip pyarrow
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ python/tests/unit/arcticdb/version_store/test_normalization.py | 1 +
+ 1 file changed, 1 insertion(+)
+
+diff --git a/python/tests/unit/arcticdb/version_store/test_normalization.py b/python/tests/unit/arcticdb/version_store/test_normalization.py
+index de488f55..b2a01aaf 100644
+--- a/python/tests/unit/arcticdb/version_store/test_normalization.py
++++ b/python/tests/unit/arcticdb/version_store/test_normalization.py
+@@ -482,6 +482,7 @@ def test_no_inplace_index_array_modification(lmdb_version_store, sym, datetime64
+     not IS_PANDAS_TWO, reason="The full-support of pyarrow-backed pandas objects is pandas 2.0-specific."
+ )
+ def test_pyarrow_error(lmdb_version_store):
++    _ = pytest.importorskip("pyarrow")
+     error_msg_intro = "PyArrow-backed pandas DataFrame and Series are not currently supported by ArcticDB."
+     df = pd.DataFrame(data=[[1.0, 0.2], [0.2, 0.5]], dtype="float32[pyarrow]")
+     with pytest.raises(ArcticDbNotYetImplemented, match=error_msg_intro):
+-- 
+2.41.0
+

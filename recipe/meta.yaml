@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 365bed911941a5d0a832833a2296a54c87472508cc132beeb546b0d53294d8f7
+  patches:
+    - patches/0001-Skip-pyarrow.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
@@ -103,7 +105,9 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    - pyarrow
+    # We disable pyarrow because the environement is too constrained.
+    # Only one test is skipped via the patch applied above.
+    # - pyarrow
     - pytest-cpp
     - pytest-timeout
     - pytest-xdist

@@ -17,7 +17,7 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -98,8 +98,44 @@ requirements:
     - lmdb
     - packaging
 test:
+  requires:
+  # This environment specification must be maintained in sync with the one upstream:
+  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+  # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
+    - pytest
+    - pyarrow
+    - pytest-cpp
+    - pytest-timeout
+    - pytest-xdist
+    - packaging
+    - future
+    - mock
+    - boto3
+    - moto
+    - flask  # Used by moto
+    - flask-cors
+    - hypothesis <6.73
+    - azure-storage-blob
+    - azure-identity
+    - coverage
+    - asv
+    - virtualenv
+    - pymongo
+  # Extra dependencies
+    - pytest-rerunfailures
+    - nodejs  # for npm
+  source_files:
+    - python/tests
   imports:
     - arcticdb
+  commands:
+    - npm install -g azurite
+    # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
+    #
+    # For now, we skip the following tests:
+    #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
+    #  - `test_lmdb_warnings_when_reopened` also currently fails.
+    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose -n 2 --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened"
 
 about:
   home: https://arcticdb.io/

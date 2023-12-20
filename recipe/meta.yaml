@@ -109,7 +109,7 @@ test:
     - pyarrow
     - pytest-cpp
     - pytest-timeout
-    # We disable running tests in parallel for 1.6.x
+    # We disable running tests in parallel for 1.6.x (some tests' parametrization's ordering is off).
     # - pytest-xdist
     - packaging
     - future

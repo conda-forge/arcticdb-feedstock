@@ -19,6 +19,11 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
+  # Protobuf 3 support for Python ended in 23Q2, i.e. when Python 3.11 was the last version.
+  # Python 3.11 and newer versions does not officially support it, so we do not build against it.
+  # See: https://protobuf.dev/support/version-support/#python
+  # See: https://pypi.org/project/protobuf/3.20.3/#files
+  skip: true  # [py>310]
   number: 2
 
   entry_points:

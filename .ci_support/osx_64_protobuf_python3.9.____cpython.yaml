@@ -40,6 +40,8 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
+protobuf:
+- '*'
 python:
 - 3.9.* *_cpython
 spdlog:

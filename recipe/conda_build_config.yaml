@@ -6,3 +6,6 @@ lmdb:
   - 0.9.22
 nodejs:
   - "18"
+protobuf:
+  - "<4"
+  - "*"

@@ -5,9 +5,6 @@ export ARCTICDB_USING_CONDA=1
 # We build with only 1 core to prevent these freezes from happening.
 export CMAKE_BUILD_PARALLEL_LEVEL=1
 
-# We only build against protobuf 3 on the branch of the feedstock.
-export ARCTICDB_PROTOC_VERS="3"
-
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   # Get an updated config.sub and config.guess
   # (see https://conda-forge.org/docs/maintainer/knowledge_base.html#cross-compilation)

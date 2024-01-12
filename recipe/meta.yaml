@@ -131,7 +131,7 @@ test:
     # For now, we skip the following tests:
     #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
     #  - `test_lmdb_warnings_when_reopened` also currently fails.
-    - ARCTICDB_RAND_SEED=$RANDOM ARCTICDB_all_loglevel=TRACE pytest -s python/tests -vvv  -k "test_library_creation_deletion and Azure" --maxfail=1
+    - ARCTICDB_RAND_SEED=$RANDOM ARCTICC_TEST_LOG_LEVEL=TRACE pytest -s python/tests -vvv  -k "test_library_creation_deletion and Azure" --maxfail=1
 
 about:
   home: https://arcticdb.io/

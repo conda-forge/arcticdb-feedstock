@@ -28,6 +28,8 @@ gflags:
 - '2.2'
 glog:
 - '0.6'
+libcurl:
+- '8'
 libevent:
 - 2.1.12
 lmdb:
@@ -40,6 +42,8 @@ msgpack_c:
 - '6'
 nodejs:
 - '18'
+openssl:
+- '3'
 pcre:
 - '8'
 pin_run_as_build:

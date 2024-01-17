@@ -20,7 +20,7 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 2
+  number: 3
 
 requirements:
   build:
@@ -47,6 +47,8 @@ requirements:
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
     - libprotobuf <4
+    - openssl
+    - libcurl
     # TODO: Fix builds for missing symbols
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9

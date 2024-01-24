@@ -13,7 +13,7 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 2
+  number: 3
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -61,7 +61,7 @@ requirements:
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic
-    - xxhash
+    - xxhash ==0.8.2
     - semimap
     - grpcio-tools
     - protobuf

@@ -17,7 +17,7 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 3
+  number: 4
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -65,7 +65,7 @@ requirements:
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic
-    - xxhash
+    - xxhash ==0.8.2
     - semimap
     - grpcio-tools
     - protobuf

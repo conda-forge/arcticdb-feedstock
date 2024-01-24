@@ -52,6 +52,8 @@ spdlog:
 - '1.11'
 target_platform:
 - osx-64
+xxhash:
+- 0.8.2
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version

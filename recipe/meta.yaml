@@ -65,7 +65,7 @@ requirements:
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic
-    - xxhash ==0.8.2
+    - xxhash
     - semimap
     - grpcio-tools
     - protobuf

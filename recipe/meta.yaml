@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.2.0rc0" %}
+{% set version = "4.3.0rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 365bed911941a5d0a832833a2296a54c87472508cc132beeb546b0d53294d8f7
+  sha256: b4df8749f36e0fed7d3f53f660f0ff4d43b72593067e43aedf94fcccb8778847
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -19,7 +19,7 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 3
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -81,6 +81,7 @@ requirements:
     - fmt <10
     - glog
     - gtest
+    - benchmark
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -90,7 +91,6 @@ requirements:
     # To keep in sync with `install_requires` in setup.cfg.
     - numpy
     - pandas
-    - attrs
     - decorator
     - msgpack-python
     - psutil
@@ -127,6 +127,7 @@ test:
     - asv
     - virtualenv
     - pymongo
+    - mock
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm

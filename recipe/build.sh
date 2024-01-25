@@ -1,9 +1,6 @@
 #!/bin/bash
 
 export ARCTICDB_USING_CONDA=1
-# Compiling ArcticDB with all cores might freeze machines due to swapping.
-# We build with only 1 core to prevent these freezes from happening.
-export CMAKE_BUILD_PARALLEL_LEVEL=1
 
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   # Get an updated config.sub and config.guess

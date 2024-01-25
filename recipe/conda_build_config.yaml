@@ -9,6 +9,8 @@ folly:
   - "2023.09.25.00"
 nodejs:
   - "18"
+xxhash:
+  - 0.8.2
 
 # Coupling dependencies specification together.
 # The first  lines come from the specifications of the `libevent-2.1.10` branch. 

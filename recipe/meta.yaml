@@ -137,6 +137,10 @@ test:
     - arcticdb
   commands:
     - npm install -g azurite
+    # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
+    # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
+    # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
+    - export ARCTICDB_FAST_TESTS_ONLY=1
     # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
     #
     # For now, we skip the following tests:

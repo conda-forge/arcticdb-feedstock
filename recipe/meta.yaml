@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: d35eb00605a63a7db4c0d33389c33e80605967260d58148ec7a298c2a0f9305a
+  patches:
+    - patches/0001-build-Remove-the-check-around-the-GIL.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.

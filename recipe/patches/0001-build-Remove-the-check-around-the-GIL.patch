@@ -1,0 +1,45 @@
+From 493ef6ad407b19c303cd24bf66514b594e208c18 Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Tue, 30 Jan 2024 15:39:18 +0100
+Subject: [PATCH] build: Remove the check around the GIL (e.g. for incref and
+ decref)
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ cpp/arcticdb/CMakeLists.txt | 4 ++++
+ environment_unix.yml        | 4 +---
+ 2 files changed, 5 insertions(+), 3 deletions(-)
+
+diff --git a/cpp/arcticdb/CMakeLists.txt b/cpp/arcticdb/CMakeLists.txt
+index b3b600a5..7e6d607b 100644
+--- a/cpp/arcticdb/CMakeLists.txt
++++ b/cpp/arcticdb/CMakeLists.txt
+@@ -520,6 +520,10 @@ if(${ARCTICDB_PYTHON_EXPLICIT_LINK})
+     )
+ endif()
+ 
++# Remove the checks around the GIL (e.g. for incref and decref).
++# See: https://pybind11.readthedocs.io/en/stable/changelog.html#version-2-11-1-july-17-2023
++add_compile_definitions(PYBIND11_NO_ASSERT_GIL_HELD_INCREF_DECREF)
++
+ # Dependencies expose different names of their libraries depending
+ # on their origin (i.e. vendored source or packages on conda-forge).
+ if(${ARCTICDB_USING_CONDA})
+diff --git a/environment_unix.yml b/environment_unix.yml
+index 2df079d9..e90657d2 100644
+--- a/environment_unix.yml
++++ b/environment_unix.yml
+@@ -22,9 +22,7 @@ dependencies:
+   # TODO: Fix builds for missing symbols.
+   - libmongocxx < 3.9
+   - zstd
+-  # TODO: pybind 2.11.X became stricter regarding the handling of reference counts
+-  # See: https://github.com/pybind/pybind11/issues/4748#issuecomment-1639445403
+-  - pybind11 < 2.11
++  - pybind11
+   - pcre
+   - cyrus-sasl
+   - aws-sdk-cpp
+-- 
+2.43.0
+

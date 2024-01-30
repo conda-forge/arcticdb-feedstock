@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.2.1" %}
+{% set version = "4.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -19,7 +19,7 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 4
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -78,6 +78,7 @@ requirements:
     - fmt <10
     - glog
     - gtest
+    - benchmark
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -122,6 +123,7 @@ test:
     - asv
     - virtualenv
     - pymongo
+    - mock
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
@@ -131,6 +133,10 @@ test:
     - arcticdb
   commands:
     - npm install -g azurite
+    # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
+    # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
+    # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
+    - export ARCTICDB_FAST_TESTS_ONLY=1
     # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
     #
     # For now, we skip the following tests:

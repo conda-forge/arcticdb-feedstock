@@ -84,7 +84,8 @@ requirements:
     - python
     # To keep in sync with `install_requires` in setup.cfg.
     - numpy
-    - pandas
+    # See: https://github.com/conda-forge/arcticdb-feedstock/pull/149#issuecomment-1910448953
+    - pandas <2.2.0
     - attrs
     - decorator
     - msgpack-python

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.3.0rc0" %}
+{% set version = "4.3.0rc1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b4df8749f36e0fed7d3f53f660f0ff4d43b72593067e43aedf94fcccb8778847
+  sha256: 8f9d65c37bc586443f88aa525c0f0a66da65b0b38a3f04a38bebd32e85dd22a2
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -19,7 +19,7 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 1
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

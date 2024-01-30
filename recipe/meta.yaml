@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.2.1" %}
+{% set version = "4.3.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d35eb00605a63a7db4c0d33389c33e80605967260d58148ec7a298c2a0f9305a
+  sha256: 32e8cd339e0c8e22f9fbe38a5afd4208e6eb2cec4994d6561e47be6998d1fbc2
 
 build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 2
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -75,6 +75,7 @@ requirements:
     - fmt <10
     - glog
     - gtest
+    - benchmark
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -83,7 +84,8 @@ requirements:
     - python
     # To keep in sync with `install_requires` in setup.cfg.
     - numpy
-    - pandas
+    # See: https://github.com/conda-forge/arcticdb-feedstock/pull/149#issuecomment-1910448953
+    - pandas <2.2.0
     - attrs
     - decorator
     - msgpack-python
@@ -119,6 +121,7 @@ test:
     - asv
     - virtualenv
     - pymongo
+    - mock
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
@@ -128,6 +131,10 @@ test:
     - arcticdb
   commands:
     - npm install -g azurite
+    # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
+    # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
+    # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
+    - export ARCTICDB_FAST_TESTS_ONLY=1
     # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
     #
     # For now, we skip the following tests:

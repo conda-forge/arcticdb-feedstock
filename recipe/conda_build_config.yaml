@@ -12,6 +12,8 @@ lmdb:
 # environment too much.
 folly:
   - "2023.09.25.00"
+xxhash:
+  - 0.8.2
 aws_sdk_cpp:
   - "1.10.57"
 azure_core_cpp:

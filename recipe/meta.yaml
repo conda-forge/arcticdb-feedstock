@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d35eb00605a63a7db4c0d33389c33e80605967260d58148ec7a298c2a0f9305a
+  sha256: 32e8cd339e0c8e22f9fbe38a5afd4208e6eb2cec4994d6561e47be6998d1fbc2
   patches:
     - patches/0001-build-Remove-the-check-around-the-GIL.patch
 

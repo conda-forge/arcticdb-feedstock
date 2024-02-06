@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.3.0rc1" %}
+{% set version = "4.3.0rc2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 8f9d65c37bc586443f88aa525c0f0a66da65b0b38a3f04a38bebd32e85dd22a2
+  sha256: 32e8cd339e0c8e22f9fbe38a5afd4208e6eb2cec4994d6561e47be6998d1fbc2
   patches:
     - patches/0001-Skip-pyarrow.patch
 

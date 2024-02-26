@@ -27,7 +27,7 @@ folly:
 gflags:
 - '2.2'
 glog:
-- '0.6'
+- '0.7'
 libcurl:
 - '8'
 libevent:
@@ -53,7 +53,7 @@ pin_run_as_build:
 python:
 - 3.9.* *_cpython
 spdlog:
-- '1.11'
+- '1.12'
 target_platform:
 - osx-64
 xxhash:

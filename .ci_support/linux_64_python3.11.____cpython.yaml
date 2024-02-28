@@ -17,7 +17,7 @@ cxx_compiler_version:
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
 folly:
-- 2023.09.25.00
+- 2024.02.19.00
 gflags:
 - '2.2'
 glog:

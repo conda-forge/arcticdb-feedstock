@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 246e497a5ecae04d012172bb066082b26d69f228caddd492ec1fbb19db9802f8
+  patches:
+    - patches/0001-Skip-pyarrow.patch
 
 build:
   # Only build for Linux and Python 3.9
@@ -103,7 +105,9 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    - pyarrow
+    # We disable pyarrow because the environement is too constrained.
+    # Only one test is skipped via the patch applied above.
+    # - pyarrow
     - pytest-cpp
     - pytest-timeout
     - pytest-xdist

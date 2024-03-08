@@ -5,7 +5,8 @@ export ARCTICDB_USING_CONDA=1
 # We build with only 1 core to prevent these freezes from happening.
 export CMAKE_BUILD_PARALLEL_LEVEL=1
 
-# Required to be able to include headers from glog since glog 0.7
+# Workaround for: https://github.com/conda-forge/glog-feedstock/issues/26
+# Required to be able to include headers from glog since glog 0.7.
 # See: https://github.com/google/glog/pull/1030
 export CXXFLAGS="$CXXFLAGS -DGLOG_USE_GLOG_EXPORT"
 

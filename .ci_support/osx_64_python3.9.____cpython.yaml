@@ -16,8 +16,10 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '16'
+fmt:
+- '10'
 folly:
-- 2023.09.25.00
+- 2024.02.19.00
 gflags:
 - '2.2'
 glog:
@@ -27,7 +29,7 @@ libcurl:
 libevent:
 - 2.1.12
 libprotobuf:
-- 4.25.1
+- 4.25.2
 lmdb:
 - 0.9.22
 lz4_c:

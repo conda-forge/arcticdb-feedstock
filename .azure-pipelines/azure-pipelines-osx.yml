@@ -45,6 +45,7 @@ jobs:
         CONFIG: osx_arm64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
+  variables: {}
 
   steps:
   # TODO: Fast finish on azure pipelines?

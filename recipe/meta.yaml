@@ -20,12 +20,13 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 3
+  number: 4
 
 requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - cmake
     - make
     - python                                  # [build_platform != target_platform]
@@ -83,7 +84,9 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
-    - numpy
+    # Enforce the same major version of NumPy at runtime.
+    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
+    - {{ pin_compatible('numpy') }}
     - pandas <2
     - attrs
     - dataclasses # backport for Python < 3.7

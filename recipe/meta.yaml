@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.3.2rc2" %}
+{% set version = "4.4.0rc1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d18d2ef8471aef4b71a8dd1cd80e4d6a90200229530b1eaafcfaa7e521de9b6d
+  sha256: fce4302f4bcc323900251690136724dd8726da02473638c69af817b29de0eaa8
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -19,7 +19,9 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 1
+  # TODO: publish unordered_dense for `osx_arm64` on conda-forge
+  skip: true  # [osx]
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -28,9 +30,11 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - cmake
     - make
     - python                                  # [build_platform != target_platform]
+    - numpy                                   # [build_platform != target_platform]
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
@@ -41,6 +45,7 @@ requirements:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
+    - numpy
     - pip
     - folly
     - lz4-c
@@ -72,13 +77,13 @@ requirements:
     - grpcio-tools
     - protobuf
     - spdlog
-    - robin_hood
+    - unordered_dense
     - recycle
     # lmdb's version is constrained in `conda_build_config.yaml` because
     # specifying it here does not overide the conda-forge's global pinning.
     - lmdb
     - lmdbxx
-    - fmt <10
+    - fmt
     - glog
     - gtest
     - benchmark
@@ -89,7 +94,9 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
-    - numpy
+    # Enforce the same major NumPy version at runtime.
+    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
+    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator
@@ -99,7 +106,7 @@ requirements:
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
-    - protobuf
+    - protobuf >=3.5.1, <5
     - lmdb
     - packaging
 test:

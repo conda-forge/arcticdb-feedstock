@@ -1,15 +1,19 @@
 aws_sdk_cpp:
-- '*'
+- 1.10.57
 azure_core_cpp:
-- '*'
+- 1.10.2
 azure_identity_cpp:
-- '*'
+- 1.5.1
 azure_storage_blobs_cpp:
-- '*'
+- 12.9.0
 c_compiler:
 - gcc
 c_compiler_version:
 - '12'
+c_stdlib:
+- sysroot
+c_stdlib_version:
+- '2.12'
 cdt_name:
 - cos6
 channel_sources:
@@ -22,6 +26,8 @@ cxx_compiler_version:
 - '12'
 docker_image:
 - quay.io/condaforge/linux-anvil-cos7-x86_64
+fmt:
+- '10'
 folly:
 - 2023.09.25.00
 gflags:
@@ -31,7 +37,7 @@ glog:
 libcurl:
 - '8'
 libevent:
-- 2.1.12
+- 2.1.10
 lmdb:
 - 0.9.22
 lz4_c:
@@ -40,6 +46,8 @@ msgpack_c:
 - '6'
 nodejs:
 - '18'
+numpy:
+- '1.23'
 openssl:
 - '3'
 pcre:
@@ -59,10 +67,14 @@ xxhash:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
+- - c_stdlib_version
+  - cdt_name
 - - libevent
   - aws_sdk_cpp
   - azure_core_cpp
   - azure_identity_cpp
   - azure_storage_blobs_cpp
+- - python
+  - numpy
 zstd:
 - '1.5'

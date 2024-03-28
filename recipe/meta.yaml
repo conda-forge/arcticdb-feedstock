@@ -99,7 +99,7 @@ requirements:
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
-    - protobuf >=3.5.0.post1, <5
+    - protobuf >=3.5.1, <5
     - lmdb
     - packaging
 test:

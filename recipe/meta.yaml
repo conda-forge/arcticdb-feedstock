@@ -19,6 +19,8 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
+  # TODO: publish unordered_dense for `osx_arm64` on conda-forge
+  skip: true  # [osx]
   number: 0
 
   entry_points:

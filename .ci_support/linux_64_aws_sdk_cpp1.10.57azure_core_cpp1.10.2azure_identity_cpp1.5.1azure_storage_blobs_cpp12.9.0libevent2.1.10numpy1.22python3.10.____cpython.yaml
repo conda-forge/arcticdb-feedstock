@@ -1,11 +1,11 @@
 aws_sdk_cpp:
-- '*'
+- 1.10.57
 azure_core_cpp:
-- '*'
+- 1.10.2
 azure_identity_cpp:
-- '*'
+- 1.5.1
 azure_storage_blobs_cpp:
-- '*'
+- 12.9.0
 c_compiler:
 - gcc
 c_compiler_version:
@@ -37,7 +37,7 @@ glog:
 libcurl:
 - '8'
 libevent:
-- 2.1.12
+- 2.1.10
 lmdb:
 - 0.9.22
 lz4_c:
@@ -46,6 +46,8 @@ msgpack_c:
 - '6'
 nodejs:
 - '18'
+numpy:
+- '1.22'
 openssl:
 - '3'
 pcre:
@@ -72,5 +74,7 @@ zip_keys:
   - azure_core_cpp
   - azure_identity_cpp
   - azure_storage_blobs_cpp
+- - python
+  - numpy
 zstd:
 - '1.5'

@@ -38,6 +38,8 @@ msgpack_c:
 - '6'
 nodejs:
 - '18'
+numpy:
+- '1.22'
 openssl:
 - '3'
 pcre:
@@ -57,5 +59,7 @@ zip_keys:
   - cxx_compiler_version
 - - c_stdlib_version
   - cdt_name
+- - python
+  - numpy
 zstd:
 - '1.5'

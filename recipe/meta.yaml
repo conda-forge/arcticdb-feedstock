@@ -19,7 +19,7 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  number: 5
+  number: 6
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -28,6 +28,7 @@ requirements:
   build:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
+    - {{ stdlib("c") }}
     - cmake
     - make
     - python                                  # [build_platform != target_platform]
@@ -89,7 +90,9 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
-    - numpy
+    # Enforce the same major version of NumPy at runtime.
+    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
+    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator

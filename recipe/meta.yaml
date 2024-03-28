@@ -42,7 +42,7 @@ requirements:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
     - pip
-    - folly ==2023.09.25.00
+    - folly
     - lz4-c
     - prometheus-cpp
     - double-conversion

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.4.0rc1" %}
+{% set version = "4.4.0rc2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: fce4302f4bcc323900251690136724dd8726da02473638c69af817b29de0eaa8
+  sha256: 1d6bf00e7c9927f83f7ca25de69e25b7fcb106b3eb5de835802b99a0757d5349
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -19,8 +19,6 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  # TODO: publish unordered_dense for `osx_arm64` on conda-forge
-  skip: true  # [osx]
   number: 0
 
   entry_points:

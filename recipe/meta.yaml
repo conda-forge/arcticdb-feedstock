@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.3.1" %}
+{% set version = "4.4.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 246e497a5ecae04d012172bb066082b26d69f228caddd492ec1fbb19db9802f8
+  sha256: 11a307d8d05c5d4c7cb57a3357d5f3eccc273498dde8a57beebc373db82141c7
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -15,7 +15,7 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 2
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -71,13 +71,13 @@ requirements:
     - grpcio-tools
     - protobuf
     - spdlog
-    - robin_hood
+    - unordered_dense
     - recycle
     # lmdb's version is constrained in `conda_build_config.yaml` because
     # specifying it here does not overide the conda-forge's global pinning.
     - lmdb
     - lmdbxx
-    - fmt <10
+    - fmt
     - glog
     - gtest
     - benchmark
@@ -101,7 +101,7 @@ requirements:
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
-    - protobuf
+    - protobuf >=3.5.1, <5
     - lmdb
     - packaging
 test:

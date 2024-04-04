@@ -8,16 +8,16 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_nodejs18python3.9.____cpython:
-        CONFIG: linux_64_nodejs18python3.9.____cpython
+      linux_64_nodejs18numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_nodejs18numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: linux_64_nodejs18python3.9.____cpython
-      linux_64_nodejs20python3.9.____cpython:
-        CONFIG: linux_64_nodejs20python3.9.____cpython
+        SHORT_CONFIG: linux_64_nodejs18numpy1.22python3.9.____cpython
+      linux_64_nodejs20numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_nodejs20numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: linux_64_nodejs20python3.9.____cpython
+        SHORT_CONFIG: linux_64_nodejs20numpy1.22python3.9.____cpython
   timeoutInMinutes: 360
   variables: {}
 

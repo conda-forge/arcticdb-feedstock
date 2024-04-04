@@ -39,17 +39,17 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_nodejs18python3.9.____cpython</td>
+              <td>linux_64_nodejs18numpy1.22python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_nodejs18python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_nodejs18numpy1.22python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_nodejs20python3.9.____cpython</td>
+              <td>linux_64_nodejs20numpy1.22python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_nodejs20python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_nodejs20numpy1.22python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr>
@@ -184,6 +184,7 @@ Feedstock Maintainers
 * [@DerThorsten](https://github.com/DerThorsten/)
 * [@G-D-Petrov](https://github.com/G-D-Petrov/)
 * [@Hind-M](https://github.com/Hind-M/)
+* [@IvoDD](https://github.com/IvoDD/)
 * [@JohanMabille](https://github.com/JohanMabille/)
 * [@Klaim](https://github.com/Klaim/)
 * [@alexowens90](https://github.com/alexowens90/)

@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 6359344dbf25bc0b11cd22570744768bdec5a6417beb935ddbe8b4fbd42b2a06
+  sha256: d1a6c912e1bff57ca55635993d7a9e594d0e7d4df1a764790230ee6c1fd320a8
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.

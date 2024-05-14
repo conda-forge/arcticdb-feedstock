@@ -1,0 +1,78 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
+aws_sdk_cpp:
+- '*'
+azure_core_cpp:
+- '*'
+azure_identity_cpp:
+- '*'
+azure_storage_blobs_cpp:
+- '*'
+c_compiler:
+- clang
+c_compiler_version:
+- '16'
+c_stdlib:
+- macosx_deployment_target
+c_stdlib_version:
+- '11.0'
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge arcticdb_rc
+cxx_compiler:
+- clangxx
+cxx_compiler_version:
+- '16'
+fmt:
+- '10'
+folly:
+- 2023.09.25.00
+gflags:
+- '2.2'
+glog:
+- '0.7'
+libcurl:
+- '8'
+libevent:
+- 2.1.12
+lmdb:
+- 0.9.22
+lz4_c:
+- 1.9.3
+macos_machine:
+- arm64-apple-darwin20.0.0
+msgpack_c:
+- '6'
+nodejs:
+- '18'
+numpy:
+- '1.26'
+openssl:
+- '3'
+pcre:
+- '8'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.12.* *_cpython
+spdlog:
+- '1.12'
+target_platform:
+- osx-arm64
+xxhash:
+- 0.8.2
+zip_keys:
+- - c_compiler_version
+  - cxx_compiler_version
+- - libevent
+  - aws_sdk_cpp
+  - azure_core_cpp
+  - azure_identity_cpp
+  - azure_storage_blobs_cpp
+- - python
+  - numpy
+zstd:
+- '1.5'

@@ -1,7 +1,9 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 aws_sdk_cpp:
-- 1.10.57
+- 1.11.329
 azure_core_cpp:
 - 1.10.2
 azure_identity_cpp:
@@ -47,7 +49,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '1.26'
 openssl:
 - '3'
 pcre:
@@ -57,7 +59,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.12.* *_cpython
 spdlog:
 - '1.13'
 target_platform:

@@ -17,8 +17,6 @@ build:
   # Fixing requires to rebuild the whole stack while OSX build
   # for python 3.8 is not used  by anyone.
   skip: true  # [osx and py<39]
-  # not ready yet; needs to unpin pybind11
-  skip: true  # [py>=312]
   number: 1
 
   entry_points:

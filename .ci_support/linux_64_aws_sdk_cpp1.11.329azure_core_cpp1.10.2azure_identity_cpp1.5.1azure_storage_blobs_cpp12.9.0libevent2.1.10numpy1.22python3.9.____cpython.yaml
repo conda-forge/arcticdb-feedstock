@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- 1.10.57
+- 1.11.329
 azure_core_cpp:
 - 1.10.2
 azure_identity_cpp:
@@ -57,7 +57,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.9.* *_cpython
 spdlog:
 - '1.13'
 target_platform:

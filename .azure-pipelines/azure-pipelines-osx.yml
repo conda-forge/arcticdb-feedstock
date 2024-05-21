@@ -17,9 +17,6 @@ jobs:
       ? osx_64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.23python3.11.____cpython
       : CONFIG: osx_64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.23python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      ? osx_64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.26python3.12.____cpython
-      : CONFIG: osx_64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.26python3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
       osx_64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.22python3.10.____cpython:
         CONFIG: osx_64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.22python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -28,9 +25,6 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       osx_64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.23python3.11.____cpython:
         CONFIG: osx_64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.23python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-      osx_64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.26python3.12.____cpython:
-        CONFIG: osx_64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.26python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
       ? osx_arm64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.22python3.10.____cpython
       : CONFIG: osx_arm64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.22python3.10.____cpython
@@ -41,9 +35,6 @@ jobs:
       ? osx_arm64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.23python3.11.____cpython
       : CONFIG: osx_arm64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.23python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
-      ? osx_arm64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.26python3.12.____cpython
-      : CONFIG: osx_arm64_aws_sdk_cpp1.11.329azure_core_cpp1.10.2azure_identity_cpp1.5.1azure_storage_blobs_cpp12.9.0libevent2.1.10numpy1.26python3.12.____cpython
-        UPLOAD_PACKAGES: 'True'
       ? osx_arm64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.22python3.10.____cpython
       : CONFIG: osx_arm64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.22python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -52,9 +43,6 @@ jobs:
         UPLOAD_PACKAGES: 'True'
       ? osx_arm64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.23python3.11.____cpython
       : CONFIG: osx_arm64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.23python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-      ? osx_arm64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.26python3.12.____cpython
-      : CONFIG: osx_arm64_aws_sdk_cpp_azure_core_cpp_azure_identity_cpp_azure_storage_blobs_cpp_libevent2.1.12numpy1.26python3.12.____cpython
         UPLOAD_PACKAGES: 'True'
   timeoutInMinutes: 360
   variables: {}

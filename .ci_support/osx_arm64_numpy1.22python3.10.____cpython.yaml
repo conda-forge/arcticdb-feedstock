@@ -1,7 +1,9 @@
 MACOSX_DEPLOYMENT_TARGET:
 - '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 aws_sdk_cpp:
-- 1.11.267
+- 1.11.329
 c_compiler:
 - clang
 c_compiler_version:

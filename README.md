@@ -239,6 +239,7 @@ Feedstock Maintainers
 
 * [@Alex-PLACET](https://github.com/Alex-PLACET/)
 * [@DerThorsten](https://github.com/DerThorsten/)
+* [@DrNickClarke](https://github.com/DrNickClarke/)
 * [@G-D-Petrov](https://github.com/G-D-Petrov/)
 * [@Hind-M](https://github.com/Hind-M/)
 * [@IvoDD](https://github.com/IvoDD/)

@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- 1.11.267
+- 1.11.329
 c_compiler:
 - gcc
 c_compiler_version:

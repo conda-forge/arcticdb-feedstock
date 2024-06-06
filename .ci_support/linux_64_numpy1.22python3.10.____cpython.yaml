@@ -23,7 +23,7 @@ docker_image:
 fmt:
 - '10'
 folly:
-- 2023.09.25.00
+- 2024.02.19.00
 gflags:
 - '2.2'
 glog:

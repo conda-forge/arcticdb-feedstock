@@ -23,7 +23,7 @@ cxx_compiler_version:
 fmt:
 - '10'
 folly:
-- 2024.02.19.00
+- 2023.09.25.00
 gflags:
 - '2.2'
 glog:

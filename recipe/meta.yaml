@@ -113,7 +113,9 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    - pyarrow
+    - python {{ python }}
+    - pyarrow >=13
+    - aws-crt-cpp 0.26.9
     - pytest-cpp
     - pytest-timeout
     - pytest-xdist

@@ -15,7 +15,7 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 2
+  number: 3
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -90,7 +90,6 @@ requirements:
     # To keep in sync with `install_requires` in setup.cfg.
     # Enforce the same major version of NumPy at runtime.
     # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
-    - {{ pin_compatible('numpy') }}
     # See: https://github.com/conda-forge/arcticdb-feedstock/pull/149#issuecomment-1910448953
     - pandas <2.2.0
     - attrs

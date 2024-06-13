@@ -13,7 +13,7 @@ c_stdlib:
 c_stdlib_version:
 - '11.0'
 channel_sources:
-- conda-forge
+- conda-forge/label/numpy_rc,conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -45,7 +45,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '2.0'
 openssl:
 - '3'
 pcre:

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.4.2rc0" %}
+{% set version = "4.4.3rc1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b19fe8ba00098ff89b109e5b79ceae5feb5907cf712f214a684c9bf06994a188
+  sha256: 39f41487024eb0ed64b23c1adcc0305523aa106758ad3acacfb68fec00d97d53
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -21,7 +21,7 @@ build:
   skip: true  # [osx and py<39]
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
-  number: 2
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

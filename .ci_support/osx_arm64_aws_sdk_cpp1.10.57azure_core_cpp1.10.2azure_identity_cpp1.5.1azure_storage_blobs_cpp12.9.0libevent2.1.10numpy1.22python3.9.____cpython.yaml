@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 MACOSX_SDK_VERSION:
 - '11.0'
 aws_sdk_cpp:
-- 1.11.329
+- 1.10.57
 azure_core_cpp:
 - 1.10.2
 azure_identity_cpp:
@@ -43,7 +43,7 @@ lmdb:
 lz4_c:
 - 1.9.3
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 msgpack_c:
 - '6'
 nodejs:
@@ -63,7 +63,7 @@ python:
 spdlog:
 - '1.13'
 target_platform:
-- osx-64
+- osx-arm64
 xxhash:
 - 0.8.2
 zip_keys:

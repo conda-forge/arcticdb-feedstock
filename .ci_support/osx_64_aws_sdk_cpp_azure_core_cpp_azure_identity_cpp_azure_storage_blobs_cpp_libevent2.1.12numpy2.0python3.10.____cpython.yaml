@@ -3,13 +3,13 @@ MACOSX_DEPLOYMENT_TARGET:
 MACOSX_SDK_VERSION:
 - '11.0'
 aws_sdk_cpp:
-- 1.10.57
+- '*'
 azure_core_cpp:
-- 1.10.2
+- '*'
 azure_identity_cpp:
-- 1.5.1
+- '*'
 azure_storage_blobs_cpp:
-- 12.9.0
+- '*'
 c_compiler:
 - clang
 c_compiler_version:
@@ -37,19 +37,19 @@ glog:
 libcurl:
 - '8'
 libevent:
-- 2.1.10
+- 2.1.12
 lmdb:
 - 0.9.22
 lz4_c:
 - 1.9.3
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 msgpack_c:
 - '6'
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '2.0'
 openssl:
 - '3'
 pcre:
@@ -59,11 +59,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.10.* *_cpython
 spdlog:
 - '1.13'
 target_platform:
-- osx-arm64
+- osx-64
 xxhash:
 - 0.8.2
 zip_keys:

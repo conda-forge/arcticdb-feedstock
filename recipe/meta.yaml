@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 021e00b825a6d5728c9e64f76766a528de5f3175d1c5da66d923ae053d33aab0
+  sha256: cef2a75e50588b4a2683305c99f5eadd507c6ee0f302675c9a833252668a61d8
   patches:
     - patches/0001-Skip-pyarrow.patch
 

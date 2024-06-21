@@ -4,6 +4,12 @@ MACOSX_SDK_VERSION:
 - '11.0'
 aws_sdk_cpp:
 - 1.11.329
+azure_core_cpp:
+- 1.12.0
+azure_identity_cpp:
+- 1.8.0
+azure_storage_blobs_cpp:
+- 12.11.0
 c_compiler:
 - clang
 c_compiler_version:

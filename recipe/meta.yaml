@@ -34,7 +34,7 @@ requirements:
     - cmake
     - make
     - python                                  # [build_platform != target_platform]
-    - numpy <2                                # [build_platform != target_platform]
+    - numpy                                   # [build_platform != target_platform]
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
@@ -45,7 +45,7 @@ requirements:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
-    - numpy <2
+    - numpy
     - pip
     - folly
     - lz4-c
@@ -68,7 +68,7 @@ requirements:
     - gflags
     - msgpack-c
     - aws-sdk-cpp
-    - azure-core-cpp
+    - azure-core-cpp >=1.11.0
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic

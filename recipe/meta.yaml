@@ -45,7 +45,7 @@ requirements:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
-    - numpy
+    - numpy <2
     - pip
     - folly
     - lz4-c
@@ -109,7 +109,6 @@ requirements:
     - protobuf >=3.5.1, <5
     - lmdb
     - packaging
-    - trustme
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:
@@ -137,6 +136,7 @@ test:
     - virtualenv
     - pymongo
     - mock
+    - trustme
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm

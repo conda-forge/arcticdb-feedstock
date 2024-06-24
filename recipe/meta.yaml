@@ -68,7 +68,9 @@ requirements:
     - gflags
     - msgpack-c
     - aws-sdk-cpp
-    - azure-core-cpp >=1.11.0
+    # Pinned to >=1.11.0 for the `main` specification
+    # See `./conda_build_config.yaml`.
+    - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp
     - bitmagic

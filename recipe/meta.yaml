@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.4.3rc1" %}
+{% set version = "4.5.0rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 39f41487024eb0ed64b23c1adcc0305523aa106758ad3acacfb68fec00d97d53
+  sha256: 6c4638d8a9762f8e618fa0c05cbf9c768c8c29fc53355e474881902a1c62efe5
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -34,7 +34,7 @@ requirements:
     - cmake
     - make
     - python                                  # [build_platform != target_platform]
-    - numpy                                   # [build_platform != target_platform]
+    - numpy < 2                               # [build_platform != target_platform]
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
@@ -100,7 +100,7 @@ requirements:
     - pandas
     - attrs
     - decorator
-    - msgpack-python
+    - msgpack-python >= 0.5.0
     - psutil
     - pyyaml
     # Resolves https://github.com/man-group/ArcticDB/issues/465
@@ -109,6 +109,7 @@ requirements:
     - protobuf >=3.5.1, <5
     - lmdb
     - packaging
+    - trustme
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:

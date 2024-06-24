@@ -34,7 +34,7 @@ requirements:
     - cmake
     - make
     - python                                  # [build_platform != target_platform]
-    - numpy < 2                               # [build_platform != target_platform]
+    - numpy <2                                # [build_platform != target_platform]
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
@@ -100,7 +100,7 @@ requirements:
     - pandas
     - attrs
     - decorator
-    - msgpack-python >= 0.5.0
+    - msgpack-python >=0.5.0
     - psutil
     - pyyaml
     # Resolves https://github.com/man-group/ArcticDB/issues/465

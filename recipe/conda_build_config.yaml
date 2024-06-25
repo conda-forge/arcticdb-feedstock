@@ -25,9 +25,6 @@ aws_sdk_cpp:
 zip_keys:
   - libevent
   - aws_sdk_cpp
-  - azure_core_cpp
-  - azure_identity_cpp
-  - azure_storage_blobs_cpp
 
 channel_targets:
   - conda-forge arcticdb_rc

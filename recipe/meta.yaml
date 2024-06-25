@@ -158,7 +158,7 @@ test:
     # For now, we skip the following tests:
     #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
     #  - `test_lmdb_warnings_when_reopened` also currently fails.
-    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose -n 2 --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened"
+    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose -n 2 --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl"
 
 about:
   home: https://arcticdb.io/

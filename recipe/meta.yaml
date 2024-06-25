@@ -47,6 +47,7 @@ requirements:
     - python
     - numpy
     - pip
+    - libboost
     - folly
     - lz4-c
     - prometheus-cpp

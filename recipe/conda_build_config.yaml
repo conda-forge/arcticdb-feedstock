@@ -22,15 +22,6 @@ libevent:
 aws_sdk_cpp:
   - "1.10.57"
   - "*"
-azure_core_cpp:
-  - "1.10.2"
-  - ">=1.11.0"
-azure_identity_cpp:
-  - "1.5.1"
-  - "*"
-azure_storage_blobs_cpp:
-  - "12.9.0"
-  - "*"
 zip_keys:
   - libevent
   - aws_sdk_cpp

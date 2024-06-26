@@ -10,6 +10,7 @@ source:
   sha256: 6c4638d8a9762f8e618fa0c05cbf9c768c8c29fc53355e474881902a1c62efe5
   patches:
     - patches/0001-Skip-pyarrow.patch
+    - patches/0002-Add-more-translation-units-for-binary-operators.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.

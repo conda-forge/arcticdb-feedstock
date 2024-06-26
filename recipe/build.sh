@@ -4,8 +4,10 @@ export ARCTICDB_USING_CONDA=1
 # Compiling ArcticDB with all cores might freeze machines due to swapping
 # around binary operators' template specialization expansion and compilation.
 # See: https://github.com/man-group/ArcticDB/blob/master/cpp/arcticdb/processing/operation_dispatch_binary.hpp#L451-L473
-# We build with only 2 cores to prevent these freezes from happening.
-export CMAKE_BUILD_PARALLEL_LEVEL=2
+#
+# The feedstock's machine have 6.759GiB of RAM and 2 (physical?) cores so we cap it to that.
+# We build with only 4 threads to prevent these freezes from happening.
+export CMAKE_BUILD_PARALLEL_LEVEL=4
 
 # Required to be able to include headers from glog since glog 0.7
 # See: https://github.com/google/glog/pull/1030

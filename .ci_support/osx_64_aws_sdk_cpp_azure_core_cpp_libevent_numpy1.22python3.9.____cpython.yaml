@@ -37,19 +37,19 @@ glog:
 libcurl:
 - '8'
 libevent:
-- 2.1.12
+- '*'
 lmdb:
 - 0.9.22
 lz4_c:
 - 1.9.3
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 msgpack_c:
 - '6'
 nodejs:
 - '18'
 numpy:
-- '1.23'
+- '1.22'
 openssl:
 - '3'
 pcre:
@@ -59,11 +59,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.9.* *_cpython
 spdlog:
 - '1.13'
 target_platform:
-- osx-arm64
+- osx-64
 xxhash:
 - 0.8.2
 zip_keys:

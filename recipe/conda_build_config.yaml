@@ -13,24 +13,25 @@ xxhash:
   - 0.8.2
 
 # Coupling dependencies specification together.
-# The first  lines come from the specifications of the `libevent-2.1.10` branch. 
+# The first  lines come from the specifications of the `libevent-2.1.10` branch.
 # The second lines come from the specifications of the `main` branch.
 # See: https://docs.conda.io/projects/conda-build/en/stable/resources/variants.html#coupling-keys
 libevent:
   - "2.1.10"
-  - "2.1.12"
+  - "*"
 aws_sdk_cpp:
   - "1.10.57"
   - "*"
 azure_core_cpp:
-  - "1.10.2"
+  - "1.11.1"
   - "*"
 azure_identity_cpp:
-  - "1.5.1"
+  - "*"
   - "*"
 azure_storage_blobs_cpp:
-  - "12.9.0"
   - "*"
+  - "*"
+
 zip_keys:
   - libevent
   - aws_sdk_cpp

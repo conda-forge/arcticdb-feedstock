@@ -1,31 +1,31 @@
+MACOSX_DEPLOYMENT_TARGET:
+- '11.0'
+MACOSX_SDK_VERSION:
+- '11.0'
 aws_sdk_cpp:
 - 1.10.57
 azure_core_cpp:
-- 1.10.2
+- 1.11.1
 azure_identity_cpp:
-- 1.5.1
+- '*'
 azure_storage_blobs_cpp:
-- 12.9.0
+- '*'
 c_compiler:
-- gcc
+- clang
 c_compiler_version:
-- '12'
+- '16'
 c_stdlib:
-- sysroot
+- macosx_deployment_target
 c_stdlib_version:
-- '2.12'
-cdt_name:
-- cos6
+- '11.0'
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge arcticdb_rc
 cxx_compiler:
-- gxx
+- clangxx
 cxx_compiler_version:
-- '12'
-docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- '16'
 fmt:
 - '10'
 folly:
@@ -42,12 +42,14 @@ lmdb:
 - 0.9.22
 lz4_c:
 - 1.9.3
+macos_machine:
+- arm64-apple-darwin20.0.0
 msgpack_c:
 - '6'
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '1.23'
 openssl:
 - '3'
 pcre:
@@ -57,18 +59,16 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.11.* *_cpython
 spdlog:
 - '1.13'
 target_platform:
-- linux-64
+- osx-arm64
 xxhash:
 - 0.8.2
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - c_stdlib_version
-  - cdt_name
 - - libevent
   - aws_sdk_cpp
   - azure_core_cpp

@@ -1,11 +1,11 @@
 aws_sdk_cpp:
 - 1.10.57
 azure_core_cpp:
-- 1.10.2
+- 1.11.1
 azure_identity_cpp:
-- 1.5.1
+- '*'
 azure_storage_blobs_cpp:
-- 12.9.0
+- '*'
 c_compiler:
 - gcc
 c_compiler_version:
@@ -47,7 +47,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '1.23'
+- '1.22'
 openssl:
 - '3'
 pcre:
@@ -57,7 +57,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.10.* *_cpython
 spdlog:
 - '1.13'
 target_platform:

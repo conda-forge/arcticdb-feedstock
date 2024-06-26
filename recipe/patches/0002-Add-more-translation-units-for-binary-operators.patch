@@ -1,0 +1,228 @@
+From a570bc707a5dc08e58d8f3bfad9d753db1764825 Mon Sep 17 00:00:00 2001
+From: Muhammad Hamza Sajjad <muhammadhamzasajjad@gmail.com>
+Date: Wed, 26 Jun 2024 11:14:23 +0100
+Subject: [PATCH] Add more translation units for binary operators.
+
+---
+ cpp/arcticdb/CMakeLists.txt                       |  8 +++++++-
+ .../processing/operation_dispatch_binary_eq.cpp   |  1 -
+ .../processing/operation_dispatch_binary_gt.cpp   |  1 -
+ .../processing/operation_dispatch_binary_gte.cpp  | 15 +++++++++++++++
+ .../processing/operation_dispatch_binary_lt.cpp   |  1 -
+ .../processing/operation_dispatch_binary_lte.cpp  | 15 +++++++++++++++
+ .../processing/operation_dispatch_binary_neq.cpp  | 15 +++++++++++++++
+ ...operation_dispatch_binary_operator_divide.cpp} |  9 ++-------
+ .../operation_dispatch_binary_operator_minus.cpp  | 13 +++++++++++++
+ .../operation_dispatch_binary_operator_plus.cpp   | 14 ++++++++++++++
+ .../operation_dispatch_binary_operator_times.cpp  | 13 +++++++++++++
+ 11 files changed, 94 insertions(+), 11 deletions(-)
+ create mode 100644 cpp/arcticdb/processing/operation_dispatch_binary_gte.cpp
+ create mode 100644 cpp/arcticdb/processing/operation_dispatch_binary_lte.cpp
+ create mode 100644 cpp/arcticdb/processing/operation_dispatch_binary_neq.cpp
+ rename cpp/arcticdb/processing/{operation_dispatch_binary_operator.cpp => operation_dispatch_binary_operator_divide.cpp} (55%)
+ create mode 100644 cpp/arcticdb/processing/operation_dispatch_binary_operator_minus.cpp
+ create mode 100644 cpp/arcticdb/processing/operation_dispatch_binary_operator_plus.cpp
+ create mode 100644 cpp/arcticdb/processing/operation_dispatch_binary_operator_times.cpp
+
+diff --git a/cpp/arcticdb/CMakeLists.txt b/cpp/arcticdb/CMakeLists.txt
+index 62c0759778..f793e72001 100644
+--- a/cpp/arcticdb/CMakeLists.txt
++++ b/cpp/arcticdb/CMakeLists.txt
+@@ -434,9 +434,15 @@ set(arcticdb_srcs
+         processing/operation_dispatch_unary.cpp
+         processing/operation_dispatch_binary.cpp
+         processing/operation_dispatch_binary_eq.cpp
++        processing/operation_dispatch_binary_neq.cpp
+         processing/operation_dispatch_binary_gt.cpp
++        processing/operation_dispatch_binary_gte.cpp
+         processing/operation_dispatch_binary_lt.cpp
+-        processing/operation_dispatch_binary_operator.cpp
++        processing/operation_dispatch_binary_lte.cpp
++        processing/operation_dispatch_binary_operator_plus.cpp
++        processing/operation_dispatch_binary_operator_minus.cpp
++        processing/operation_dispatch_binary_operator_times.cpp
++        processing/operation_dispatch_binary_operator_divide.cpp
+         processing/sorted_aggregation.cpp
+         processing/unsorted_aggregation.cpp
+         python/python_to_tensor_frame.cpp
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_eq.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_eq.cpp
+index 7114ec36ab..1deeca512f 100644
+--- a/cpp/arcticdb/processing/operation_dispatch_binary_eq.cpp
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_eq.cpp
+@@ -11,6 +11,5 @@
+ namespace arcticdb {
+ 
+ template VariantData visit_binary_comparator<EqualsOperator>(const VariantData&, const VariantData&, EqualsOperator&&);
+-template VariantData visit_binary_comparator<NotEqualsOperator>(const VariantData&, const VariantData&, NotEqualsOperator&&);
+ 
+ }
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_gt.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_gt.cpp
+index 6cf80de407..f5f69edff7 100644
+--- a/cpp/arcticdb/processing/operation_dispatch_binary_gt.cpp
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_gt.cpp
+@@ -11,6 +11,5 @@
+ namespace arcticdb {
+ 
+ template VariantData visit_binary_comparator<GreaterThanOperator>(const VariantData&, const VariantData&, GreaterThanOperator&&);
+-template VariantData visit_binary_comparator<GreaterThanEqualsOperator>(const VariantData&, const VariantData&, GreaterThanEqualsOperator&&);
+ 
+ }
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_gte.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_gte.cpp
+new file mode 100644
+index 0000000000..1451bde86f
+--- /dev/null
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_gte.cpp
+@@ -0,0 +1,15 @@
++/*
++ * Copyright 2023 Man Group Operations Limited
++ *
++ * Use of this software is governed by the Business Source License 1.1 included in the file licenses/BSL.txt.
++ *
++ * As of the Change Date specified in that file, in accordance with the Business Source License, use of this software will be governed by the Apache License, version 2.0.
++ */
++
++#include <arcticdb/processing/operation_dispatch_binary.hpp>
++
++namespace arcticdb {
++
++template VariantData visit_binary_comparator<GreaterThanEqualsOperator>(const VariantData&, const VariantData&, GreaterThanEqualsOperator&&);
++
++}
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_lt.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_lt.cpp
+index 66cdb48cea..5e8b3573d6 100644
+--- a/cpp/arcticdb/processing/operation_dispatch_binary_lt.cpp
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_lt.cpp
+@@ -11,6 +11,5 @@
+ namespace arcticdb {
+ 
+ template VariantData visit_binary_comparator<LessThanOperator>(const VariantData&, const VariantData&, LessThanOperator&&);
+-template VariantData visit_binary_comparator<LessThanEqualsOperator>(const VariantData&, const VariantData&, LessThanEqualsOperator&&);
+ 
+ }
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_lte.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_lte.cpp
+new file mode 100644
+index 0000000000..9bf3aa66af
+--- /dev/null
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_lte.cpp
+@@ -0,0 +1,15 @@
++/*
++ * Copyright 2023 Man Group Operations Limited
++ *
++ * Use of this software is governed by the Business Source License 1.1 included in the file licenses/BSL.txt.
++ *
++ * As of the Change Date specified in that file, in accordance with the Business Source License, use of this software will be governed by the Apache License, version 2.0.
++ */
++
++#include <arcticdb/processing/operation_dispatch_binary.hpp>
++
++namespace arcticdb {
++
++template VariantData visit_binary_comparator<LessThanEqualsOperator>(const VariantData&, const VariantData&, LessThanEqualsOperator&&);
++
++}
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_neq.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_neq.cpp
+new file mode 100644
+index 0000000000..5277712110
+--- /dev/null
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_neq.cpp
+@@ -0,0 +1,15 @@
++/*
++ * Copyright 2023 Man Group Operations Limited
++ *
++ * Use of this software is governed by the Business Source License 1.1 included in the file licenses/BSL.txt.
++ *
++ * As of the Change Date specified in that file, in accordance with the Business Source License, use of this software will be governed by the Apache License, version 2.0.
++ */
++
++#include <arcticdb/processing/operation_dispatch_binary.hpp>
++
++namespace arcticdb {
++
++template VariantData visit_binary_comparator<NotEqualsOperator>(const VariantData&, const VariantData&, NotEqualsOperator&&);
++
++}
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_operator.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_operator_divide.cpp
+similarity index 55%
+rename from cpp/arcticdb/processing/operation_dispatch_binary_operator.cpp
+rename to cpp/arcticdb/processing/operation_dispatch_binary_operator_divide.cpp
+index ca69dd619b..90b216c05b 100644
+--- a/cpp/arcticdb/processing/operation_dispatch_binary_operator.cpp
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_operator_divide.cpp
+@@ -1,5 +1,5 @@
+ /*
+- * Copyright 2023 Man Group Operations Limited
++ * Copyright 2024 Man Group Operations Limited
+  *
+  * Use of this software is governed by the Business Source License 1.1 included in the file licenses/BSL.txt.
+  *
+@@ -9,10 +9,5 @@
+ #include <arcticdb/processing/operation_dispatch_binary.hpp>
+ 
+ namespace arcticdb {
+-
+-template VariantData visit_binary_operator<PlusOperator>(const VariantData&, const VariantData&, PlusOperator&&);
+-template VariantData visit_binary_operator<MinusOperator>(const VariantData&, const VariantData&, MinusOperator&&);
+-template VariantData visit_binary_operator<TimesOperator>(const VariantData&, const VariantData&, TimesOperator&&);
+ template VariantData visit_binary_operator<DivideOperator>(const VariantData&, const VariantData&, DivideOperator&&);
+-
+-}
+\ No newline at end of file
++}
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_operator_minus.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_operator_minus.cpp
+new file mode 100644
+index 0000000000..4cec619514
+--- /dev/null
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_operator_minus.cpp
+@@ -0,0 +1,13 @@
++/*
++ * Copyright 2024 Man Group Operations Limited
++ *
++ * Use of this software is governed by the Business Source License 1.1 included in the file licenses/BSL.txt.
++ *
++ * As of the Change Date specified in that file, in accordance with the Business Source License, use of this software will be governed by the Apache License, version 2.0.
++ */
++
++#include <arcticdb/processing/operation_dispatch_binary.hpp>
++
++namespace arcticdb {
++template VariantData visit_binary_operator<MinusOperator>(const VariantData&, const VariantData&, MinusOperator&&);
++}
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_operator_plus.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_operator_plus.cpp
+new file mode 100644
+index 0000000000..041a7daac8
+--- /dev/null
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_operator_plus.cpp
+@@ -0,0 +1,14 @@
++/*
++ * Copyright 2024 Man Group Operations Limited
++ *
++ * Use of this software is governed by the Business Source License 1.1 included in the file licenses/BSL.txt.
++ *
++ * As of the Change Date specified in that file, in accordance with the Business Source License, use of this software will be governed by the Apache License, version 2.0.
++ */
++
++#include <arcticdb/processing/operation_dispatch_binary.hpp>
++
++namespace arcticdb {
++
++template VariantData visit_binary_operator<PlusOperator>(const VariantData&, const VariantData&, PlusOperator&&);
++}
+diff --git a/cpp/arcticdb/processing/operation_dispatch_binary_operator_times.cpp b/cpp/arcticdb/processing/operation_dispatch_binary_operator_times.cpp
+new file mode 100644
+index 0000000000..914792bdd7
+--- /dev/null
++++ b/cpp/arcticdb/processing/operation_dispatch_binary_operator_times.cpp
+@@ -0,0 +1,13 @@
++/*
++ * Copyright 2024 Man Group Operations Limited
++ *
++ * Use of this software is governed by the Business Source License 1.1 included in the file licenses/BSL.txt.
++ *
++ * As of the Change Date specified in that file, in accordance with the Business Source License, use of this software will be governed by the Apache License, version 2.0.
++ */
++
++#include <arcticdb/processing/operation_dispatch_binary.hpp>
++
++namespace arcticdb {
++template VariantData visit_binary_operator<TimesOperator>(const VariantData&, const VariantData&, TimesOperator&&);
++}

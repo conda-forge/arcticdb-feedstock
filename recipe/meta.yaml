@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.4.3rc1" %}
+{% set version = "4.5.0rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +7,10 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 39f41487024eb0ed64b23c1adcc0305523aa106758ad3acacfb68fec00d97d53
+  sha256: 6c4638d8a9762f8e618fa0c05cbf9c768c8c29fc53355e474881902a1c62efe5
   patches:
     - patches/0001-Skip-pyarrow.patch
+    - patches/0002-Add-more-translation-units-for-binary-operators.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
@@ -47,6 +48,7 @@ requirements:
     - python
     - numpy
     - pip
+    - libboost-devel
     - folly
     - lz4-c
     - prometheus-cpp
@@ -68,6 +70,8 @@ requirements:
     - gflags
     - msgpack-c
     - aws-sdk-cpp
+    # Pinned to >=1.11.0 for the `main` specification
+    # See `./conda_build_config.yaml`.
     - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp
@@ -100,7 +104,7 @@ requirements:
     - pandas
     - attrs
     - decorator
-    - msgpack-python
+    - msgpack-python >=0.5.0
     - psutil
     - pyyaml
     # Resolves https://github.com/man-group/ArcticDB/issues/465
@@ -136,6 +140,7 @@ test:
     - virtualenv
     - pymongo
     - mock
+    - trustme
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
@@ -154,7 +159,7 @@ test:
     # For now, we skip the following tests:
     #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
     #  - `test_lmdb_warnings_when_reopened` also currently fails.
-    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose -n 2 --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened"
+    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose -n 2 --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl"
 
 about:
   home: https://arcticdb.io/

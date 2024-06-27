@@ -7,9 +7,15 @@ libevent:
 lmdb:
   - "0.9.22"
 # Pin specific versions of some dependencies which we know are supported
-# by a previous build, `linux-64_arcticdb-4.0.0-py39h1278ff5_2`.
 # Pinning less is not sufficient, pinning more would constrain the
 # environment too much.
+#
+# Those were originally pinned based on a previous build's
+# (namely `linux-64_arcticdb-4.0.0-py39h1278ff5_2`) but have to
+# sporadically be updated to newer versions.
+#
+# For an instance of an update, see:
+# https://github.com/conda-forge/arcticdb-feedstock/pull/239
 folly:
   - "2023.09.25.00"
 xxhash:
@@ -17,8 +23,8 @@ xxhash:
 aws_sdk_cpp:
   - "1.10.57"
 azure_core_cpp:
-  - "1.10.2"
+  - "1.11.1"
 azure_identity_cpp:
-  - "1.5.1"
+  - "*"
 azure_storage_blobs_cpp:
-  - "12.9.0"
+  - "*"

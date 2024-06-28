@@ -24,10 +24,10 @@ build:
   number: 1
   # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
   # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
-  # TODO: the specific on py==39 does not work for now, we need to investigate why.
-  {% if libevent == "2.1.10" and not (linux and py==39) %}
-  skip: True
-  {% endif %}
+  skip: true  # [libevent == "2.1.10" and osx]
+  # TODO: the specific on python does not work for now, we need to investigate why.
+  # skip: true  # [libevent == "2.1.10" and py>39]
+  # skip: true  # [libevent == "2.1.10" and py<39]
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

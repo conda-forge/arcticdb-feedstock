@@ -34,6 +34,8 @@ gflags:
 - '2.2'
 glog:
 - '0.7'
+libboost_devel:
+- '1.84'
 libcurl:
 - '8'
 libevent:

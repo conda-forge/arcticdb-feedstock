@@ -22,9 +22,10 @@ build:
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
   number: 1
-  # Skip all builds but the ones for Python 3.9 on Linux for the `libevent-2.1.10` specification.
+  # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
   # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
-  {% if libevent == "2.1.10" and not (linux and py39) %}
+  # TODO: the specific on py==39 does not work for now, we need to investigate why.
+  {% if libevent == "2.1.10" and not (linux and py==39) %}
   skip: True
   {% endif %}
 

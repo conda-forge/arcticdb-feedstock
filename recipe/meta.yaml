@@ -22,15 +22,9 @@ build:
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
   number: 1
-  # Skip all builds but the ones for Python 3.9 on Linux.
-  # TODO: is there a way to adapt the condition but using elements defined
-  # within `conda_build_config.yaml` so that:
-  #  - we build for all platforms and python version for the `main` specification
-  #  - we build only for Linux and Python 3.9 for the `libevent-2.1.10` specification
-  # ?
-  # See: https://github.com/conda-forge/arcticdb-feedstock/blob/06157b62ce9527a34e1117ce26fa003cbe7b1926/recipe/conda_build_config.yaml#L15-L33
+  # Skip all builds but the ones for Python 3.9 on Linux for the `libevent-2.1.10` specification.
   # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
-  {% if not (linux and py==39) %}
+  {% if libevent == "2.1.10" and not (linux and py39) %}
   skip: True
   {% endif %}
 

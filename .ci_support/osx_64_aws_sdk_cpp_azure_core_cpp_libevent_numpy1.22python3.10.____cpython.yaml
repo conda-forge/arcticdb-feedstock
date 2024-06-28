@@ -36,8 +36,6 @@ glog:
 - '0.7'
 libcurl:
 - '8'
-libev:
-- '4.33'
 libevent:
 - '*'
 lmdb:

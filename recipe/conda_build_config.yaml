@@ -19,9 +19,6 @@ xxhash:
 libevent:
   - "2.1.10"
   - "*"
-aws_sdk_cpp:
-  - "1.10.57"
-  - "*"
 azure_core_cpp:
   - "1.11.1"
   - "*"
@@ -34,7 +31,6 @@ azure_storage_blobs_cpp:
 
 zip_keys:
   - libevent
-  - aws_sdk_cpp
   - azure_core_cpp
   - azure_identity_cpp
   - azure_storage_blobs_cpp

@@ -1,7 +1,7 @@
 aws_sdk_cpp:
-- 1.10.57
+- 1.11.329
 azure_core_cpp:
-- 1.11.1
+- '*'
 azure_identity_cpp:
 - '*'
 azure_storage_blobs_cpp:
@@ -39,7 +39,7 @@ libboost_devel:
 libcurl:
 - '8'
 libevent:
-- 2.1.10
+- '*'
 lmdb:
 - 0.9.22
 lz4_c:
@@ -72,7 +72,6 @@ zip_keys:
 - - c_stdlib_version
   - cdt_name
 - - libevent
-  - aws_sdk_cpp
   - azure_core_cpp
   - azure_identity_cpp
   - azure_storage_blobs_cpp

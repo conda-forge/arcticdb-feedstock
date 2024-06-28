@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- '*'
+- 1.11.329
 azure_core_cpp:
 - '*'
 azure_identity_cpp:
@@ -49,7 +49,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '1.23'
 openssl:
 - '3'
 pcre:
@@ -59,7 +59,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.8.* *_cpython
+- 3.11.* *_cpython
 spdlog:
 - '1.13'
 target_platform:
@@ -72,7 +72,6 @@ zip_keys:
 - - c_stdlib_version
   - cdt_name
 - - libevent
-  - aws_sdk_cpp
   - azure_core_cpp
   - azure_identity_cpp
   - azure_storage_blobs_cpp

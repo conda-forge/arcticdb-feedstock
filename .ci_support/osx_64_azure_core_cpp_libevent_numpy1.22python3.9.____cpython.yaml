@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 MACOSX_SDK_VERSION:
 - '11.0'
 aws_sdk_cpp:
-- '*'
+- 1.11.329
 azure_core_cpp:
 - '*'
 azure_identity_cpp:
@@ -61,7 +61,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.9.* *_cpython
 spdlog:
 - '1.13'
 target_platform:
@@ -72,7 +72,6 @@ zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
 - - libevent
-  - aws_sdk_cpp
   - azure_core_cpp
   - azure_identity_cpp
   - azure_storage_blobs_cpp

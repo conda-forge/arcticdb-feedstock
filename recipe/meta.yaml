@@ -21,6 +21,12 @@ build:
   skip: true  # [osx and py<39]
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
+  # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
+  # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
+  skip: true  # [libevent == "2.1.10" and osx]
+  # TODO: the specific on python does not work for now, we need to investigate why.
+  # skip: true  # [libevent == "2.1.10" and py>39]
+  # skip: true  # [libevent == "2.1.10" and py<39]
   number: 0
 
   entry_points:

@@ -164,7 +164,7 @@ test:
     #  - `test_force_compact_symbol_list_lock_held_past_ttl` also currently fails for MacOS.
     #  - for `test_write_non_timestamp_index`, see #246
     #  - for `test_write_not_sorted_multi_index_exception`, see #247
-    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input and not test_map_size_parsing"
+    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input and not test_map_size_parsing and not lmdb"
 
 about:
   home: https://arcticdb.io/

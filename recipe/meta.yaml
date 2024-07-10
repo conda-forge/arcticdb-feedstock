@@ -75,6 +75,11 @@ requirements:
     - gflags
     - msgpack-c
     - aws-sdk-cpp
+    # DEBUG
+    # See: https://github.com/conda-forge/arcticdb-feedstock/pull/249?notification_referrer_id=NT_kwDOAMbRz7QxMTQ0ODI3OTQwNjoxMzAyOTgzOQ#issuecomment-2220703759
+    - aws-c-cal <0.7.0
+    - aws-c-s3 <0.6.0
+    - aws-crt-cpp <0.27
     - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp

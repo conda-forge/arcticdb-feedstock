@@ -80,6 +80,7 @@ requirements:
     - aws-c-cal <0.7.0
     - aws-c-s3 <0.6.0
     - aws-crt-cpp <0.27
+    - libcxx <18
     - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp

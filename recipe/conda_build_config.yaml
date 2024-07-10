@@ -14,10 +14,14 @@ xxhash:
 
 # Coupling dependencies specification together.
 # The first  line comes from the specifications of the `libevent-2.1.10` branch.
-# The second line comes from the alternative specifications of the `libevent-2.1.10` branch.
-# The third  line comes from the specifications of the `main` branch.
+# The second and third line come from the alternative specifications of the `libevent-2.1.10` branch.
+# The fourth line comes from the specifications of the `main` branch.
 # See: https://docs.conda.io/projects/conda-build/en/stable/resources/variants.html#coupling-keys
+# "*" means that the dependency is chosen implicitly to be the one of
+# conda-forge global pinning:
+# See: https://github.com/conda-forge/conda-forge-pinning-feedstock/blob/main/recipe/conda_build_config.yaml
 libevent:
+  - "2.1.10"
   - "2.1.10"
   - "2.1.10"
   - "*"
@@ -25,7 +29,9 @@ aws_sdk_cpp:
   - "1.10.57"
   - "1.11.210"
   - "*"
+  - "*"
 azure_core_cpp:
+  - "1.11.1"
   - "1.11.1"
   - "1.11.1"
   - "*"
@@ -33,7 +39,9 @@ azure_identity_cpp:
   - "*"
   - "*"
   - "*"
+  - "*"
 azure_storage_blobs_cpp:
+  - "*"
   - "*"
   - "*"
   - "*"

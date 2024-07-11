@@ -18,6 +18,8 @@ c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
 - '11.0'
+cdt_name:
+- cos6
 channel_sources:
 - conda-forge
 channel_targets:

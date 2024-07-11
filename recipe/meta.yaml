@@ -152,6 +152,10 @@ test:
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
+    # TODO: Understand the problem with libcxx 18.1.8
+    # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
+    # See: https://github.com/man-group/ArcticDB/pull/1680
+    - libcxx <18
   source_files:
     - python/tests
   imports:

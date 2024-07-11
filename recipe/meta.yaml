@@ -47,6 +47,10 @@ requirements:
     - libprotobuf <4                          # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
+    # TODO: Understand the problem with libcxx 18.1.8
+    # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
+    # See: https://github.com/man-group/ArcticDB/pull/1680
+    - libcxx <18  # [osx]
   host:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -100,6 +104,10 @@ requirements:
     - glog
     - gtest
     - benchmark
+    # TODO: Understand the problem with libcxx 18.1.8
+    # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
+    # See: https://github.com/man-group/ArcticDB/pull/1680
+    - libcxx <18  # [osx]
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -122,6 +130,10 @@ requirements:
     - protobuf >=3.5.1, <5
     - lmdb
     - packaging
+    # TODO: Understand the problem with libcxx 18.1.8
+    # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
+    # See: https://github.com/man-group/ArcticDB/pull/1680
+    - libcxx <18  # [osx]
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:
@@ -155,7 +167,7 @@ test:
     # TODO: Understand the problem with libcxx 18.1.8
     # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
     # See: https://github.com/man-group/ArcticDB/pull/1680
-    - libcxx <18
+    - libcxx <18  # [osx]
   source_files:
     - python/tests
   imports:

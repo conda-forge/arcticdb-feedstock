@@ -12,12 +12,6 @@ nodejs:
 xxhash:
   - 0.8.2
 
-# DEBUG
-c_stdlib_version:
-  - '2.12'
-cdt_name:
-  - cos6
-
 # Coupling dependencies specification together.
 # The first  line comes from the specifications of the `libevent-2.1.10` branch.
 # The second and third line come from the alternative specifications of the `libevent-2.1.10` branch.

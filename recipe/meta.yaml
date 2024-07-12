@@ -47,10 +47,9 @@ requirements:
     - libprotobuf <4                          # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
-    # TODO: Understand the problem with libcxx 18.1.8
-    # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
-    # See: https://github.com/man-group/ArcticDB/pull/1680
-    - libcxx <18  # [osx]
+    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
+    # https://github.com/conda-forge/libcxx-feedstock/issues/162
+    - libcxx !=18.1.8=hef8daea_0  # [osx and build_platform == target_platform]
   host:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -79,12 +78,9 @@ requirements:
     - gflags
     - msgpack-c
     - aws-sdk-cpp
-    # DEBUG
-    # See: https://github.com/conda-forge/arcticdb-feedstock/pull/249?notification_referrer_id=NT_kwDOAMbRz7QxMTQ0ODI3OTQwNjoxMzAyOTgzOQ#issuecomment-2220703759
-    - aws-c-cal <0.7.0
-    - aws-c-s3 <0.6.0
-    - aws-crt-cpp <0.27
-    - libcxx <18
+    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
+    # https://github.com/conda-forge/libcxx-feedstock/issues/162
+    - libcxx !=18.1.8=hef8daea_0  # [osx and build_platform == target_platform]
     - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp
@@ -104,10 +100,9 @@ requirements:
     - glog
     - gtest
     - benchmark
-    # TODO: Understand the problem with libcxx 18.1.8
-    # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
-    # See: https://github.com/man-group/ArcticDB/pull/1680
-    - libcxx <18  # [osx]
+    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
+    # https://github.com/conda-forge/libcxx-feedstock/issues/162
+    - libcxx !=18.1.8=hef8daea_0  # [osx and build_platform == target_platform]
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -130,10 +125,9 @@ requirements:
     - protobuf >=3.5.1, <5
     - lmdb
     - packaging
-    # TODO: Understand the problem with libcxx 18.1.8
-    # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
-    # See: https://github.com/man-group/ArcticDB/pull/1680
-    - libcxx <18  # [osx]
+    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
+    # https://github.com/conda-forge/libcxx-feedstock/issues/162
+    - libcxx !=18.1.8=hef8daea_0  # [osx and build_platform == target_platform]
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:
@@ -164,10 +158,9 @@ test:
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
-    # TODO: Understand the problem with libcxx 18.1.8
-    # See: https://github.com/conda-forge/libcxx-feedstock/pull/155
-    # See: https://github.com/man-group/ArcticDB/pull/1680
-    - libcxx <18  # [osx]
+    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
+    # https://github.com/conda-forge/libcxx-feedstock/issues/162
+    - libcxx !=18.1.8=hef8daea_0  # [osx and build_platform == target_platform]
   source_files:
     - python/tests
   imports:

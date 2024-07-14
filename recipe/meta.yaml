@@ -27,6 +27,9 @@ build:
   # TODO: the specific on python does not work for now, we need to investigate why.
   # skip: true  # [libevent == "2.1.10" and py>39]
   # skip: true  # [libevent == "2.1.10" and py<39]
+
+  # debug
+  skip: true  # [not osx]
   number: 1
 
   entry_points:

@@ -17,9 +17,7 @@ xxhash:
 # The second and third line come from the alternative specifications of the `libevent-2.1.10` branch.
 # The fourth line comes from the specifications of the `main` branch.
 # See: https://docs.conda.io/projects/conda-build/en/stable/resources/variants.html#coupling-keys
-# "*" means that the dependency is chosen implicitly to be the one of
-# conda-forge global pinning:
-# See: https://github.com/conda-forge/conda-forge-pinning-feedstock/blob/main/recipe/conda_build_config.yaml
+# "*" specifies to use the latest compatible version of the package.
 libevent:
   - "2.1.10"
   - "2.1.10"

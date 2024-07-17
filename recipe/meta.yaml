@@ -44,7 +44,7 @@ requirements:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
-    - libcxx 17.*   # [osx]
+    - libcxx >=18   # [osx]
     - numpy
     - pip
     - folly
@@ -105,6 +105,7 @@ requirements:
     - protobuf >=3.5.1, <5
     - lmdb
     - packaging
+    - libcxx >=18   # [osx]
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:

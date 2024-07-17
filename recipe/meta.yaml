@@ -29,7 +29,7 @@ requirements:
     - {{ compiler('cxx') }}
     - {{ compiler('c') }}
     - {{ stdlib("c") }}
-    - libcxxx 17.*   # [osx]
+    - libcxx 17.*   # [osx]
     - cmake
     - make
     - python                                  # [build_platform != target_platform]
@@ -44,7 +44,7 @@ requirements:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
-    - libcxxx 17.*   # [osx]
+    - libcxx 17.*   # [osx]
     - numpy
     - pip
     - folly

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.5.0rc1" %}
+{% set version = "4.5.0rc2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: b307d56dfafa0357cf7753ac7908eaaf569d78575c6ed803be743bbff0a8b835
+  sha256: 617ae7e49636f8fb4becd4370d3f742b2a9aff829194f944585a68bf87e2e0d7
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -27,7 +27,7 @@ build:
   # TODO: the specific on python does not work for now, we need to investigate why.
   # skip: true  # [libevent == "2.1.10" and py>39]
   # skip: true  # [libevent == "2.1.10" and py<39]
-  number: 1
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -122,7 +122,7 @@ requirements:
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
-    - protobuf >=3.5.1, <5
+    - protobuf >=3.5.1
     - lmdb
     - packaging
     # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64

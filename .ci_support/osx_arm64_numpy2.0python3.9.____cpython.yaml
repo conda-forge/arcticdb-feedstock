@@ -45,13 +45,13 @@ lmdb:
 lz4_c:
 - 1.9.3
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 msgpack_c:
 - '6'
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '2.0'
 openssl:
 - '3'
 pcre:
@@ -61,11 +61,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.9.* *_cpython
 spdlog:
 - '1.13'
 target_platform:
-- osx-64
+- osx-arm64
 xxhash:
 - 0.8.2
 zip_keys:

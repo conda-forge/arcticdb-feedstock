@@ -5,7 +5,7 @@ azure_core_cpp:
 azure_identity_cpp:
 - '*'
 azure_storage_blobs_cpp:
-- '*'
+- 12.12.0
 c_compiler:
 - gcc
 c_compiler_version:
@@ -13,9 +13,9 @@ c_compiler_version:
 c_stdlib:
 - sysroot
 c_stdlib_version:
-- '2.12'
+- '2.17'
 cdt_name:
-- cos6
+- cos7
 channel_sources:
 - conda-forge
 channel_targets:

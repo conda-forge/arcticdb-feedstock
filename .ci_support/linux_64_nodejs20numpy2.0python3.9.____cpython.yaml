@@ -45,9 +45,9 @@ lz4_c:
 msgpack_c:
 - '6'
 nodejs:
-- '18'
+- '20'
 numpy:
-- '1.22'
+- '2.0'
 openssl:
 - '3'
 pcre:

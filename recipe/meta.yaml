@@ -47,9 +47,6 @@ requirements:
     - libprotobuf <4                          # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
-    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
-    # https://github.com/conda-forge/libcxx-feedstock/issues/162
-    - libcxx <18  # [osx and build_platform == target_platform]
   host:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -78,9 +75,6 @@ requirements:
     - gflags
     - msgpack-c
     - aws-sdk-cpp
-    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
-    # https://github.com/conda-forge/libcxx-feedstock/issues/162
-    - libcxx <18  # [osx and build_platform == target_platform]
     - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp
@@ -100,9 +94,6 @@ requirements:
     - glog
     - gtest
     - benchmark
-    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
-    # https://github.com/conda-forge/libcxx-feedstock/issues/162
-    - libcxx <18  # [osx and build_platform == target_platform]
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -125,9 +116,6 @@ requirements:
     - protobuf >=3.5.1
     - lmdb
     - packaging
-    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
-    # https://github.com/conda-forge/libcxx-feedstock/issues/162
-    - libcxx <18  # [osx and build_platform == target_platform]
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:
@@ -158,9 +146,6 @@ test:
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
-    # TODO: Resolve the issue with libcxx 18.1.8, only observed for osx_64
-    # https://github.com/conda-forge/libcxx-feedstock/issues/162
-    - libcxx <18  # [osx and build_platform == target_platform]
   source_files:
     - python/tests
   imports:

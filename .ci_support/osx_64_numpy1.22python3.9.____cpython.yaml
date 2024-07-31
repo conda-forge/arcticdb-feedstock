@@ -3,17 +3,17 @@ MACOSX_DEPLOYMENT_TARGET:
 MACOSX_SDK_VERSION:
 - '11.0'
 aws_sdk_cpp:
-- '*'
+- 1.11.329
 azure_core_cpp:
-- '*'
+- 1.13.0
 azure_identity_cpp:
-- '*'
+- 1.8.0
 azure_storage_blobs_cpp:
-- '*'
+- 12.12.0
 c_compiler:
 - clang
 c_compiler_version:
-- '16'
+- '17'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -25,7 +25,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '16'
+- '17'
 fmt:
 - '10'
 folly:
@@ -39,7 +39,7 @@ libboost_devel:
 libcurl:
 - '8'
 libevent:
-- '*'
+- 2.1.12
 lmdb:
 - 0.9.22
 lz4_c:
@@ -51,7 +51,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '1.23'
+- '1.22'
 openssl:
 - '3'
 pcre:
@@ -61,7 +61,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.9.* *_cpython
 spdlog:
 - '1.13'
 target_platform:
@@ -71,11 +71,6 @@ xxhash:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - libevent
-  - aws_sdk_cpp
-  - azure_core_cpp
-  - azure_identity_cpp
-  - azure_storage_blobs_cpp
 - - python
   - numpy
 zstd:

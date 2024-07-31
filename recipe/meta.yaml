@@ -39,13 +39,7 @@ requirements:
     - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
-    # The build of libcxx 18 is currently broken on macOS.
-    # See: https://github.com/conda-forge/libcxx-feedstock/issues/162
-    - libcxx <18                              # [osx and x86_64]
   host:
-    # The build of libcxx 18 is currently broken on macOS.
-    # See: https://github.com/conda-forge/libcxx-feedstock/issues/162
-    - libcxx <18                              # [osx and x86_64]
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python

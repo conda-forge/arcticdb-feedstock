@@ -36,7 +36,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf <4                             # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -52,7 +52,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf <4
+    - libprotobuf
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
@@ -92,10 +92,6 @@ requirements:
   # See install_requires: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - glog
     - python
-    # To keep in sync with `install_requires` in setup.cfg.
-    # Enforce the same major NumPy version at runtime.
-    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
-    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator

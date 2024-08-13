@@ -40,6 +40,8 @@ libcurl:
 - '8'
 libevent:
 - 2.1.12
+libprotobuf:
+- 4.25.3
 lmdb:
 - 0.9.22
 lz4_c:

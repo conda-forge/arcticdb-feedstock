@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.4.3" %}
+{% set version = "4.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: cef2a75e50588b4a2683305c99f5eadd507c6ee0f302675c9a833252668a61d8
+  sha256: c22dff1f1caa39a8776a68eb02a2035d796a7778c8f86d24be49c0efba725455
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
@@ -19,7 +19,7 @@ build:
   skip: true  # [osx and py<39]
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
-  number: 6
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -36,7 +36,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf                             # [build_platform != target_platform]
+    - libprotobuf <4                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -45,13 +45,14 @@ requirements:
     - python
     - numpy
     - pip
+    - libboost-devel
     - folly
     - lz4-c
     - prometheus-cpp
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf
+    - libprotobuf <4
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
@@ -91,16 +92,20 @@ requirements:
   # See install_requires: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - glog
     - python
+    # To keep in sync with `install_requires` in setup.cfg.
+    # Enforce the same major NumPy version at runtime.
+    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
+    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator
-    - msgpack-python
+    - msgpack-python >=0.5.0
     - psutil
     - pyyaml
     # Resolves https://github.com/man-group/ArcticDB/issues/465
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
-    - protobuf >=3.5.1, <5
+    - protobuf >=3.5.1
     - lmdb
     - packaging
 test:
@@ -128,6 +133,7 @@ test:
     - virtualenv
     - pymongo
     - mock
+    - trustme
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm

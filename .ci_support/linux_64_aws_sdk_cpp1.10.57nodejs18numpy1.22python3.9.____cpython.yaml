@@ -34,6 +34,8 @@ gflags:
 - '2.2'
 glog:
 - '0.7'
+libboost_devel:
+- '1.84'
 libcurl:
 - '8'
 libevent:
@@ -45,7 +47,7 @@ lz4_c:
 msgpack_c:
 - '6'
 nodejs:
-- '20'
+- '18'
 numpy:
 - '1.22'
 openssl:
@@ -69,6 +71,11 @@ zip_keys:
   - cxx_compiler_version
 - - c_stdlib_version
   - cdt_name
+- - libevent
+  - aws_sdk_cpp
+  - azure_core_cpp
+  - azure_identity_cpp
+  - azure_storage_blobs_cpp
 - - python
   - numpy
 zstd:

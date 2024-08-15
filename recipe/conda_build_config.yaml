@@ -20,11 +20,37 @@ folly:
   - "2023.09.25.00"
 xxhash:
   - 0.8.2
+
+# Coupling dependencies specification together.
+# We create several (here 3 builds) of the package with different versions of the dependencies
+# so that potential future update in the targeted environment can be perform more easily.
+# See: https://docs.conda.io/projects/conda-build/en/stable/resources/variants.html#coupling-keys
+# "*" specifies to use the latest compatible version of the package.
+libevent:
+  - "2.1.10"
+  - "2.1.10"
+  - "2.1.10"
 aws_sdk_cpp:
   - "1.10.57"
+  - "1.11.210"
+  - "*"
 azure_core_cpp:
+  - "1.11.1"
+  - "1.11.1"
   - "1.11.1"
 azure_identity_cpp:
   - "*"
+  - "*"
+  - "*"
 azure_storage_blobs_cpp:
   - "*"
+  - "*"
+  - "*"
+
+zip_keys:
+  - libevent
+  - aws_sdk_cpp
+  - azure_core_cpp
+  - azure_identity_cpp
+  - azure_storage_blobs_cpp
+

@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- 1.10.57
+- '*'
 azure_core_cpp:
 - 1.11.1
 azure_identity_cpp:
@@ -47,9 +47,9 @@ lz4_c:
 msgpack_c:
 - '6'
 nodejs:
-- '18'
+- '20'
 numpy:
-- '1.22'
+- '2.0'
 openssl:
 - '3'
 pcre:

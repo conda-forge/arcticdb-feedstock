@@ -19,7 +19,7 @@ build:
   skip: true  # [osx and py<39]
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

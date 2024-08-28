@@ -10,6 +10,7 @@ source:
   sha256: afea9aae893c7fe9f74f11e926a7ad994bc1660272df07990dbe0b313af83b35
   patches:
     - patches/0001-Skip-pyarrow.patch
+    - patches/0002-maint-fmt-11-support.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.

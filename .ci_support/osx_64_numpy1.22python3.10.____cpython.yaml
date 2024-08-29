@@ -13,7 +13,7 @@ azure_storage_blobs_cpp:
 c_compiler:
 - clang
 c_compiler_version:
-- '16'
+- '17'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -25,11 +25,11 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '16'
+- '17'
 fmt:
-- '10'
+- '11'
 folly:
-- 2024.02.19.00
+- 2023.09.25.00
 gflags:
 - '2.2'
 glog:

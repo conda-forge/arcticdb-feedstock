@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.5.0rc4" %}
+{% set version = "4.5.1rc0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: afea9aae893c7fe9f74f11e926a7ad994bc1660272df07990dbe0b313af83b35
+  sha256: b2537f2ba45eb7fab9d593a34315da29c07a302d791c905cc83e5abf53d2bc71
   patches:
     - patches/0001-Skip-pyarrow.patch
     - patches/0002-maint-fmt-11-support.patch
@@ -28,7 +28,7 @@ build:
   # TODO: the specific on python does not work for now, we need to investigate why.
   # skip: true  # [libevent == "2.1.10" and py>39]
   # skip: true  # [libevent == "2.1.10" and py<39]
-  number: 1
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

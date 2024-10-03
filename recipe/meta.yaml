@@ -16,7 +16,7 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 3
+  number: 4
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

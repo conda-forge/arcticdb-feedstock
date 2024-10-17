@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "4.5.1" %}
+{% set version = "0.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: a6c74394c33f5b09d0bfbf4398c7eeae92cec1c335a36e8d1f40db4932445ccd
+  sha256: a78abcbe1e8007d22abefc33e7889c64853e101de63b4bec2b971312787bca2b
   patches:
     - patches/0002-maint-fmt-11-support.patch
 

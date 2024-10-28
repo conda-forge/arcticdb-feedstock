@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 634e950c30a1622a6427be3dacc6ff54b154d47089d1e7286e8cec5c503bebf4
+  sha256: aef50f324a46f231ed4d2cd7c8aa2b3b43d810709cf52a3a72b13a4e3a83143a
   patches:
     - patches/0001-Skip-pyarrow.patch
     - patches/0002-maint-fmt-11-support.patch

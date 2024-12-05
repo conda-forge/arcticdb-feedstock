@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- 1.10.57
+- 1.11.210
 azure_core_cpp:
 - 1.11.1
 azure_identity_cpp:
@@ -25,7 +25,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '13'
 docker_image:
-- quay.io/condaforge/linux-anvil-cos7-x86_64
+- quay.io/condaforge/linux-anvil-x86_64:alma9
 fmt:
 - '11'
 folly:
@@ -47,7 +47,7 @@ lz4_c:
 msgpack_c:
 - '6'
 nodejs:
-- '18'
+- '22'
 numpy:
 - '1.22'
 openssl:

@@ -8,36 +8,36 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_aws_sdk_cpp1.10.57nodejs18numpy1.22python3.9.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs18numpy1.22python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs18_h4c74100cf6
       linux_64_aws_sdk_cpp1.10.57nodejs20numpy1.22python3.9.____cpython:
         CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs20numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs20_hf50c9ebf2d
-      linux_64_aws_sdk_cpp1.11.210nodejs18numpy1.22python3.9.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.11.210nodejs18numpy1.22python3.9.____cpython
+      linux_64_aws_sdk_cpp1.10.57nodejs22numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs22numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.210nodejs1_h2f8e829a2b
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        SHORT_CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs22_h0fa186704d
       linux_64_aws_sdk_cpp1.11.210nodejs20numpy1.22python3.9.____cpython:
         CONFIG: linux_64_aws_sdk_cpp1.11.210nodejs20numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.210nodejs2_h87f18f0149
-      linux_64_aws_sdk_cpp_nodejs18numpy1.22python3.9.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp_nodejs18numpy1.22python3.9.____cpython
+      linux_64_aws_sdk_cpp1.11.210nodejs22numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.11.210nodejs22numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
-        SHORT_CONFIG: linux_64_aws_sdk_cpp_nodejs18numpy1_h93d63ea7ec
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.210nodejs2_h34e53e0373
       linux_64_aws_sdk_cpp_nodejs20numpy1.22python3.9.____cpython:
         CONFIG: linux_64_aws_sdk_cpp_nodejs20numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-cos7-x86_64
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_64_aws_sdk_cpp_nodejs20numpy1_hb91c86fd44
+      linux_64_aws_sdk_cpp_nodejs22numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp_nodejs22numpy1.22python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        SHORT_CONFIG: linux_64_aws_sdk_cpp_nodejs22numpy1_h38eb6117cc
   timeoutInMinutes: 360
   variables: {}
 

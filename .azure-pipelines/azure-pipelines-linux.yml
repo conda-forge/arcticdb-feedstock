@@ -8,16 +8,6 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_aws_sdk_cpp1.10.57nodejs20numpy1.22python3.9.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs20numpy1.22python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs20_hf50c9ebf2d
-      linux_64_aws_sdk_cpp1.10.57nodejs22numpy1.22python3.9.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs22numpy1.22python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: linux_64_aws_sdk_cpp1.10.57nodejs22_h0fa186704d
       linux_64_aws_sdk_cpp1.11.210nodejs20numpy1.22python3.9.____cpython:
         CONFIG: linux_64_aws_sdk_cpp1.11.210nodejs20numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -28,6 +18,16 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.210nodejs2_h34e53e0373
+      linux_64_aws_sdk_cpp1.11.458nodejs20numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.11.458nodejs20numpy1.22python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.458nodejs2_h276ae11ca0
+      linux_64_aws_sdk_cpp1.11.458nodejs22numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.11.458nodejs22numpy1.22python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.458nodejs2_hfaf2d73121
       linux_64_aws_sdk_cpp_nodejs20numpy1.22python3.9.____cpython:
         CONFIG: linux_64_aws_sdk_cpp_nodejs20numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'

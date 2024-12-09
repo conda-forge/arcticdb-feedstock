@@ -9,6 +9,7 @@ source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: f088b8d15e5d1ccad53938bf639ac2848bfbdac29b83ced45707208ce61afbfe
   patches:
+    - patches/0001-Skip-pyarrow.patch
     - patches/0002-maint-fmt-11-support.patch
 
 build:
@@ -17,6 +18,12 @@ build:
   skip: true  # [win]
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
+  # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
+  # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
+  skip: true  # [libevent == "2.1.10" and osx]
+  # TODO: the specific on python does not work for now, we need to investigate why.
+  # skip: true  # [libevent == "2.1.10" and py>39]
+  # skip: true  # [libevent == "2.1.10" and py<39]
   number: 0
 
   entry_points:
@@ -34,7 +41,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf                             # [build_platform != target_platform]
+    - libprotobuf <4                          # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -51,7 +58,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf
+    - libprotobuf <4
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
@@ -92,6 +99,10 @@ requirements:
   # See install_requires: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - glog
     - python
+    # To keep in sync with `install_requires` in setup.cfg.
+    # Enforce the same major NumPy version at runtime.
+    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
+    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator
@@ -110,10 +121,11 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    - pyarrow
+    # We disable pyarrow because the environement is too constrained.
+    # Only one test is skipped via the patch applied above.
+    # - pyarrow
     - pytest-cpp
     - pytest-timeout
-    - pytest-xdist
     - packaging
     - future
     - mock
@@ -153,8 +165,8 @@ test:
     #  - `test_filter_numeric_isnotin_signed` is generally flaky
     #  - for `test_write_non_timestamp_index`, see #246
     #  - for `test_write_not_sorted_multi_index_exception`, see #247
-    #  - `test_compat_write_read` - there is problem with resolving the path 
-    #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path 
+    #  - `test_compat_write_read` - there is problem with resolving the path
+    #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path
     - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_write_read and not test_modify_old_library_option_with_current"
 
 about:
@@ -175,12 +187,9 @@ about:
 
 extra:
   recipe-maintainers:
-    - DrNickClarke
-    - Alex-PLACET
-    - muhammadhamzasajjad
-    - IvoDD
     - joe-iddon
     - G-D-Petrov
+    - IvoDD
     - Hind-M
     - Klaim
     - JohanMabille

@@ -17,12 +17,6 @@ build:
   skip: true  # [win]
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
-  # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
-  # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
-  skip: true  # [libevent == "2.1.10" and osx]
-  # TODO: the specific on python does not work for now, we need to investigate why.
-  # skip: true  # [libevent == "2.1.10" and py>39]
-  # skip: true  # [libevent == "2.1.10" and py<39]
   number: 0
 
   entry_points:
@@ -40,7 +34,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf <4                          # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -57,7 +51,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf <4
+    - libprotobuf
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
@@ -120,9 +114,7 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    # We disable pyarrow because the environement is too constrained.
-    # Only one test is skipped via the patch applied above.
-    # - pyarrow
+    - pyarrow
     - pytest-cpp
     - pytest-timeout
     - packaging

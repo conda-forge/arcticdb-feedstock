@@ -241,6 +241,7 @@ Feedstock Maintainers
 * [@jjerphan](https://github.com/jjerphan/)
 * [@joe-iddon](https://github.com/joe-iddon/)
 * [@mehertz](https://github.com/mehertz/)
+* [@ognyanstoimenov](https://github.com/ognyanstoimenov/)
 * [@phoebusm](https://github.com/phoebusm/)
 * [@poodlewars](https://github.com/poodlewars/)
 * [@qc00](https://github.com/qc00/)

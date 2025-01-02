@@ -38,6 +38,9 @@ requirements:
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
+    # Temporary workaround for:
+    # https://github.com/conda-forge/abseil-cpp-feedstock/issues/87
+    - libabseil <20240722.0  # [osx]
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python

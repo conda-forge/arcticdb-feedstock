@@ -43,7 +43,7 @@ libevent:
 lmdb:
 - 0.9.22
 lz4_c:
-- 1.9.3
+- '1.10'
 msgpack_c:
 - '6'
 nodejs:

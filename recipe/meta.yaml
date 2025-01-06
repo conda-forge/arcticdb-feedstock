@@ -16,7 +16,7 @@ build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 2
+  number: 3
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -44,6 +44,7 @@ requirements:
     - numpy
     - pip
     - libboost-devel
+    - liblzma-devel
     - folly
     - lz4-c
     - prometheus-cpp
@@ -159,8 +160,8 @@ test:
     #  - `test_filter_numeric_isnotin_signed` is generally flaky
     #  - for `test_write_non_timestamp_index`, see #246
     #  - for `test_write_not_sorted_multi_index_exception`, see #247
-    #  - `test_compat_write_read` - there is problem with resolving the path 
-    #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path 
+    #  - `test_compat_write_read` - there is problem with resolving the path
+    #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path
     - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_write_read and not test_modify_old_library_option_with_current"
 
 about:

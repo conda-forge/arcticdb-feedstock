@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- '*'
+- 1.11.210
 azure_core_cpp:
 - 1.11.1
 azure_identity_cpp:
@@ -45,11 +45,11 @@ liblzma_devel:
 lmdb:
 - 0.9.22
 lz4_c:
-- '1.10'
+- '1.9'
 msgpack_c:
 - '6'
 nodejs:
-- '22'
+- '20'
 numpy:
 - '1.22'
 openssl:
@@ -71,7 +71,8 @@ xxhash:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - libevent
+- - lz4_c
+  - libevent
   - aws_sdk_cpp
   - azure_core_cpp
   - azure_identity_cpp

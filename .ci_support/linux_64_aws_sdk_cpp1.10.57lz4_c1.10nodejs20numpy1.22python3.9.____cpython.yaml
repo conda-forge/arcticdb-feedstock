@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- '*'
+- 1.10.57
 azure_core_cpp:
 - 1.11.1
 azure_identity_cpp:
@@ -71,7 +71,8 @@ xxhash:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - libevent
+- - lz4_c
+  - libevent
   - aws_sdk_cpp
   - azure_core_cpp
   - azure_identity_cpp

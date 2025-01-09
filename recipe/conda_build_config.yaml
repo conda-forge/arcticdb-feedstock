@@ -18,6 +18,11 @@ xxhash:
 # The fourth line comes from the specifications of the `main` branch.
 # See: https://docs.conda.io/projects/conda-build/en/stable/resources/variants.html#coupling-keys
 # "*" specifies to use the latest compatible version of the package.
+lz4_c:
+  - "1.9"
+  - "1.9"
+  - "1.9"
+  - "*"
 libevent:
   - "2.1.10"
   - "2.1.10"
@@ -45,6 +50,7 @@ azure_storage_blobs_cpp:
   - "*"
 
 zip_keys:
+  - lz4_c
   - libevent
   - aws_sdk_cpp
   - azure_core_cpp

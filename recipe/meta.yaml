@@ -12,6 +12,8 @@ source:
     - patches/0002-maint-fmt-11-support.patch
 
 build:
+  # DEBUG: only build for Windows
+  skip: true  # [not win]
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
   number: 4

@@ -12,12 +12,9 @@ source:
     - patches/0002-maint-fmt-11-support.patch
 
 build:
-  # We skip the build on Windows because of linkage problems with libprotobuf.
-  # See: https://github.com/man-group/ArcticDB/pull/449
-  skip: true  # [win]
   # not ready yet; needs to unpin pybind11
   skip: true  # [py>=312]
-  number: 3
+  number: 4
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

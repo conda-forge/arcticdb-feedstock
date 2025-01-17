@@ -13,8 +13,6 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  # not ready yet; needs to unpin pybind11
-  skip: true  # [py>=312]
   number: 0
 
   entry_points:

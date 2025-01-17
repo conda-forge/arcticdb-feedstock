@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 213f6eb980e98bd2ae37f42737ac998a8a18a87dd6b1ea28de8c46d97c10a686
-  patches:
-    - patches/0002-maint-fmt-11-support.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.

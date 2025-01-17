@@ -87,9 +87,6 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
-    # Enforce the same major NumPy version at runtime.
-    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
-    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator

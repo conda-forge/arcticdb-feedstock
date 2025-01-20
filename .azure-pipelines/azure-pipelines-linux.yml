@@ -8,16 +8,6 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_aws_sdk_cpp1.10.57lz4_c1.10nodejs20numpy1.22python3.9.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.10.57lz4_c1.10nodejs20numpy1.22python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: linux_64_aws_sdk_cpp1.10.57lz4_c1.1_heb7a1ad708
-      linux_64_aws_sdk_cpp1.10.57lz4_c1.10nodejs22numpy1.22python3.9.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.10.57lz4_c1.10nodejs22numpy1.22python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-        SHORT_CONFIG: linux_64_aws_sdk_cpp1.10.57lz4_c1.1_h5701119b82
       linux_64_aws_sdk_cpp1.11.210lz4_c1.9nodejs20numpy1.22python3.9.____cpython:
         CONFIG: linux_64_aws_sdk_cpp1.11.210lz4_c1.9nodejs20numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -28,6 +18,16 @@ jobs:
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
         SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.210lz4_c1._hfb1e91060d
+      linux_64_aws_sdk_cpp1.11.488lz4_c1.10nodejs20numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.11.488lz4_c1.10nodejs20numpy1.22python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.488lz4_c1._h0262a66567
+      linux_64_aws_sdk_cpp1.11.488lz4_c1.10nodejs22numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.11.488lz4_c1.10nodejs22numpy1.22python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+        SHORT_CONFIG: linux_64_aws_sdk_cpp1.11.488lz4_c1._h7139d4f413
       linux_64_aws_sdk_cpp_lz4_c1.9nodejs20numpy1.22python3.9.____cpython:
         CONFIG: linux_64_aws_sdk_cpp_lz4_c1.9nodejs20numpy1.22python3.9.____cpython
         UPLOAD_PACKAGES: 'True'

@@ -8,18 +8,6 @@ jobs:
     vmImage: ubuntu-latest
   strategy:
     matrix:
-      linux_64_aws_sdk_cpp1.10.57azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.22python3.10.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.10.57azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.22python3.10.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_aws_sdk_cpp1.10.57azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.22python3.9.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.10.57azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.22python3.9.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
-      linux_64_aws_sdk_cpp1.10.57azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.23python3.11.____cpython:
-        CONFIG: linux_64_aws_sdk_cpp1.10.57azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.23python3.11.____cpython
-        UPLOAD_PACKAGES: 'True'
-        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
       linux_64_aws_sdk_cpp1.11.210azure_core_cpp1.11.1libevent2.1.10lz4_c1.9numpy1.22python3.10.____cpython:
         CONFIG: linux_64_aws_sdk_cpp1.11.210azure_core_cpp1.11.1libevent2.1.10lz4_c1.9numpy1.22python3.10.____cpython
         UPLOAD_PACKAGES: 'True'
@@ -30,6 +18,18 @@ jobs:
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
       linux_64_aws_sdk_cpp1.11.210azure_core_cpp1.11.1libevent2.1.10lz4_c1.9numpy1.23python3.11.____cpython:
         CONFIG: linux_64_aws_sdk_cpp1.11.210azure_core_cpp1.11.1libevent2.1.10lz4_c1.9numpy1.23python3.11.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+      linux_64_aws_sdk_cpp1.11.488azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.22python3.10.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.11.488azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.22python3.10.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+      linux_64_aws_sdk_cpp1.11.488azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.22python3.9.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.11.488azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.22python3.9.____cpython
+        UPLOAD_PACKAGES: 'True'
+        DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
+      linux_64_aws_sdk_cpp1.11.488azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.23python3.11.____cpython:
+        CONFIG: linux_64_aws_sdk_cpp1.11.488azure_core_cpp1.11.1libevent2.1.10lz4_c1.10numpy1.23python3.11.____cpython
         UPLOAD_PACKAGES: 'True'
         DOCKER_IMAGE: quay.io/condaforge/linux-anvil-x86_64:alma9
       linux_64_aws_sdk_cpp_azure_core_cpp1.11.1libevent2.1.10lz4_c1.9numpy1.22python3.10.____cpython:

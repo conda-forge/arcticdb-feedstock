@@ -48,6 +48,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
+    - libabseil
     - libprotobuf
     - openssl
     - libcurl

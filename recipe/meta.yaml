@@ -24,7 +24,7 @@ build:
   # TODO: the specific on python does not work for now, we need to investigate why.
   # skip: true  # [libevent == "2.1.10" and py>39]
   # skip: true  # [libevent == "2.1.10" and py<39]
-  number: 4
+  number: 5
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

@@ -34,6 +34,8 @@ gflags:
 - '2.2'
 glog:
 - '0.7'
+libabseil:
+- '20240722'
 libboost_devel:
 - '1.86'
 libcurl:

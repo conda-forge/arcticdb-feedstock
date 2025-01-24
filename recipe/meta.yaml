@@ -14,6 +14,7 @@ build:
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
   number: 0
+>>>>>>> a947ee6a4f0be3412d0f67ef570e71817b3a6ae4
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

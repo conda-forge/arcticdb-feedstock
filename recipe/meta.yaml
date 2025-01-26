@@ -125,6 +125,9 @@ test:
     - pymongo
     - mock
     - trustme
+    - psutil
+    - memray
+    - pytest-memray
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm

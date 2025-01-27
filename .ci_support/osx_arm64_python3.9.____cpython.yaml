@@ -57,7 +57,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '2.0'
 openssl:
 - '3'
 pcre:
@@ -67,7 +67,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.9.* *_cpython
 spdlog:
 - '1.15'
 target_platform:

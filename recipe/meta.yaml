@@ -15,8 +15,6 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  # not ready yet; needs to unpin pybind11
-  skip: true  # [py>=312]
   # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
   # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
   skip: true  # [libevent == "2.1.10" and osx]

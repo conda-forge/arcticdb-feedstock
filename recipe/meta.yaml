@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.1.2rc0" %}
+{% set version = "5.2.4rc2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,9 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 2c09089f85568528b7f275dc3064564379321f1436a7cd160445d32038fb8ea4
+  sha256: f161ca9a4ec2cfc67aae687a8cf055067ec83a9fd5b0afe76322af3913e40326 
   patches:
     - patches/0001-Skip-pyarrow.patch
-    - patches/0002-maint-fmt-11-support.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
@@ -59,6 +58,7 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
+    - libabseil
     - libprotobuf <4
     - openssl
     - libcurl
@@ -66,10 +66,7 @@ requirements:
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9
     - zstd
-    # TODO: pybind 2.11.X became stricter regarding the handling of reference counts
-    # See: https://github.com/pybind/pybind11/issues/4748#issuecomment-1639445403
-    # See: https://github.com/man-group/ArcticDB/pull/647
-    - pybind11 <2.11
+    - pybind11
     - pcre
     - gflags
     - msgpack-c
@@ -101,9 +98,6 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
-    # Enforce the same major NumPy version at runtime.
-    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
-    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator
@@ -143,6 +137,9 @@ test:
     - pymongo
     - mock
     - trustme
+    - psutil
+    - memray
+    - pytest-memray
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
@@ -204,3 +201,4 @@ extra:
     - vasil-pashov
     - phoebusm
     - alexowens90
+    - ognyanstoimenov

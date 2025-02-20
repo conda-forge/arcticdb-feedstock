@@ -40,7 +40,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf <4                          # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -59,7 +59,7 @@ requirements:
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
     - libabseil
-    - libprotobuf <4
+    - libprotobuf
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols

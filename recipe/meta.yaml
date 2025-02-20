@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f161ca9a4ec2cfc67aae687a8cf055067ec83a9fd5b0afe76322af3913e40326 
+  sha256: f161ca9a4ec2cfc67aae687a8cf055067ec83a9fd5b0afe76322af3913e40326
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -21,7 +21,7 @@ build:
   # TODO: the specific on python does not work for now, we need to investigate why.
   # skip: true  # [libevent == "2.1.10" and py>39]
   # skip: true  # [libevent == "2.1.10" and py<39]
-  number: 4
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

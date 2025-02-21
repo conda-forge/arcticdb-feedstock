@@ -1,7 +1,7 @@
 aws_sdk_cpp:
 - 1.11.489
 azure_core_cpp:
-- '*'
+- 1.11.1
 azure_identity_cpp:
 - '*'
 azure_storage_blobs_cpp:
@@ -41,7 +41,7 @@ libboost_devel:
 libcurl:
 - '8'
 libevent:
-- '*'
+- 2.1.10
 liblzma_devel:
 - '5'
 libprotobuf:
@@ -55,7 +55,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '2.0'
 openssl:
 - '3'
 pcre:
@@ -65,7 +65,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.12.* *_cpython
 spdlog:
 - '1.15'
 target_platform:

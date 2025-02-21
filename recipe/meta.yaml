@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.1.2" %}
+{% set version = "5.2.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,16 +7,13 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f088b8d15e5d1ccad53938bf639ac2848bfbdac29b83ced45707208ce61afbfe
-  patches:
-    - patches/0001-Skip-pyarrow.patch
-    - patches/0002-maint-fmt-11-support.patch
+  sha256: a9f18f87ec5d0f6e49945c204c85134c5eedfcfe92ff74126b317917015d19c0
 
 build:
   # Only build for Linux and Python 3.9
   skip: true  # [not linux]
   skip: true  # [not py==39]
-  number: 4
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -33,7 +30,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf <4                          # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -51,17 +48,15 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf <4
+    - libabseil
+    - libprotobuf
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9
     - zstd
-    # TODO: pybind 2.11.X became stricter regarding the handling of reference counts
-    # See: https://github.com/pybind/pybind11/issues/4748#issuecomment-1639445403
-    # See: https://github.com/man-group/ArcticDB/pull/647
-    - pybind11 <2.11
+    - pybind11
     - pcre
     - gflags
     - msgpack-c
@@ -93,11 +88,7 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
-    # Enforce the same major version of NumPy at runtime.
-    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
-    - {{ pin_compatible('numpy') }}
-    # See: https://github.com/conda-forge/arcticdb-feedstock/pull/149#issuecomment-1910448953
-    - pandas <2.2.0
+    - pandas
     - attrs
     - decorator
     - msgpack-python >=0.5.0
@@ -120,7 +111,6 @@ test:
     # - pyarrow
     - pytest-cpp
     - pytest-timeout
-    - pytest-xdist
     - packaging
     - future
     - mock
@@ -137,6 +127,9 @@ test:
     - pymongo
     - mock
     - trustme
+    - psutil
+    - memray
+    - pytest-memray
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
@@ -160,9 +153,11 @@ test:
     #  - `test_filter_numeric_isnotin_signed` is generally flaky
     #  - for `test_write_non_timestamp_index`, see #246
     #  - for `test_write_not_sorted_multi_index_exception`, see #247
-    #  - `test_compat_write_read` - there is problem with resolving the path
+    #  - `test_compat` - remove after arcticdb #2194 is merged
     #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path
-    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_write_read and not test_modify_old_library_option_with_current"
+    #  - `test_pandas_pickling` - https://github.com/conda-forge/arcticdb-feedstock/pull/393#issuecomment-2626884786
+    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
+      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling"
 
 about:
   home: https://arcticdb.io/
@@ -182,9 +177,10 @@ about:
 
 extra:
   recipe-maintainers:
-    - IvoDD
+    - ognyanstoimenov
     - joe-iddon
     - G-D-Petrov
+    - IvoDD
     - Hind-M
     - Klaim
     - JohanMabille

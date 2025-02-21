@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.1.2rc0" %}
+{% set version = "5.2.4rc2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,24 +7,21 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 2c09089f85568528b7f275dc3064564379321f1436a7cd160445d32038fb8ea4
+  sha256: f161ca9a4ec2cfc67aae687a8cf055067ec83a9fd5b0afe76322af3913e40326
   patches:
     - patches/0001-Skip-pyarrow.patch
-    - patches/0002-maint-fmt-11-support.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  # not ready yet; needs to unpin pybind11
-  skip: true  # [py>=312]
   # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
   # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
   skip: true  # [libevent == "2.1.10" and osx]
   # TODO: the specific on python does not work for now, we need to investigate why.
   # skip: true  # [libevent == "2.1.10" and py>39]
   # skip: true  # [libevent == "2.1.10" and py<39]
-  number: 4
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -41,7 +38,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf <4                          # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -59,17 +56,15 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf <4
+    - libabseil
+    - libprotobuf
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9
     - zstd
-    # TODO: pybind 2.11.X became stricter regarding the handling of reference counts
-    # See: https://github.com/pybind/pybind11/issues/4748#issuecomment-1639445403
-    # See: https://github.com/man-group/ArcticDB/pull/647
-    - pybind11 <2.11
+    - pybind11
     - pcre
     - gflags
     - msgpack-c
@@ -101,9 +96,6 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
-    # Enforce the same major NumPy version at runtime.
-    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
-    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator
@@ -143,6 +135,9 @@ test:
     - pymongo
     - mock
     - trustme
+    - psutil
+    - memray
+    - pytest-memray
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
@@ -166,9 +161,11 @@ test:
     #  - `test_filter_numeric_isnotin_signed` is generally flaky
     #  - for `test_write_non_timestamp_index`, see #246
     #  - for `test_write_not_sorted_multi_index_exception`, see #247
-    #  - `test_compat_write_read` - there is problem with resolving the path
+    #  - `test_compat` - remove after arcticdb #2194 is merged
     #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path
-    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_write_read and not test_modify_old_library_option_with_current"
+    #  - `test_pandas_pickling` - https://github.com/conda-forge/arcticdb-feedstock/pull/393#issuecomment-2626884786
+    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
+      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling"
 
 about:
   home: https://arcticdb.io/
@@ -188,6 +185,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - ognyanstoimenov
     - joe-iddon
     - G-D-Petrov
     - IvoDD

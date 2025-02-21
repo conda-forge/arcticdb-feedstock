@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- 1.11.210
+- 1.11.489
 azure_core_cpp:
 - 1.11.1
 azure_identity_cpp:
@@ -34,6 +34,8 @@ gflags:
 - '2.2'
 glog:
 - '0.7'
+libabseil:
+- '20240722'
 libboost_devel:
 - '1.86'
 libcurl:
@@ -42,16 +44,18 @@ libevent:
 - 2.1.10
 liblzma_devel:
 - '5'
+libprotobuf:
+- 5.28.3
 lmdb:
 - 0.9.22
 lz4_c:
-- '1.9'
+- '1.10'
 msgpack_c:
 - '6'
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '1.23'
 openssl:
 - '3'
 pcre:
@@ -61,7 +65,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.11.* *_cpython
 spdlog:
 - '1.15'
 target_platform:
@@ -71,9 +75,7 @@ xxhash:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - lz4_c
-  - libevent
-  - aws_sdk_cpp
+- - libevent
   - azure_core_cpp
   - azure_identity_cpp
   - azure_storage_blobs_cpp

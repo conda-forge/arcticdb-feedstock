@@ -55,7 +55,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '1.22'
+- '2.0'
 openssl:
 - '3'
 pcre:

@@ -10,15 +10,9 @@ source:
   sha256: a9f18f87ec5d0f6e49945c204c85134c5eedfcfe92ff74126b317917015d19c0
 
 build:
-  # We skip the build on Windows because of linkage problems with libprotobuf.
-  # See: https://github.com/man-group/ArcticDB/pull/449
-  skip: true  # [win]
-  # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
-  # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
-  skip: true  # [libevent == "2.1.10" and osx]
-  # TODO: the specific on python does not work for now, we need to investigate why.
-  # skip: true  # [libevent == "2.1.10" and py>39]
-  # skip: true  # [libevent == "2.1.10" and py<39]
+  # Only build for Linux and Python 3.9
+  skip: true  # [not linux]
+  skip: true  # [not py==39]
   number: 0
 
   entry_points:
@@ -36,7 +30,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf <4                          # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -54,17 +48,15 @@ requirements:
     - double-conversion
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
-    - libprotobuf <4
+    - libabseil
+    - libprotobuf
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9
     - zstd
-    # TODO: pybind 2.11.X became stricter regarding the handling of reference counts
-    # See: https://github.com/pybind/pybind11/issues/4748#issuecomment-1639445403
-    # See: https://github.com/man-group/ArcticDB/pull/647
-    - pybind11 <2.11
+    - pybind11
     - pcre
     - gflags
     - msgpack-c
@@ -96,11 +88,7 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
-    # Enforce the same major version of NumPy at runtime.
-    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
-    - {{ pin_compatible('numpy') }}
-    # See: https://github.com/conda-forge/arcticdb-feedstock/pull/149#issuecomment-1910448953
-    - pandas <2.2.0
+    - pandas
     - attrs
     - decorator
     - msgpack-python >=0.5.0
@@ -139,6 +127,9 @@ test:
     - pymongo
     - mock
     - trustme
+    - psutil
+    - memray
+    - pytest-memray
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
@@ -186,9 +177,10 @@ about:
 
 extra:
   recipe-maintainers:
-    - IvoDD
+    - ognyanstoimenov
     - joe-iddon
     - G-D-Petrov
+    - IvoDD
     - Hind-M
     - Klaim
     - JohanMabille

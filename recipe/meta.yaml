@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.2.1" %}
+{% set version = "5.2.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 7add51acdb981941f726f387150d4a7b133db579ce5b2106d8f1808b77e425c0
+  sha256: a9f18f87ec5d0f6e49945c204c85134c5eedfcfe92ff74126b317917015d19c0
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
@@ -151,11 +151,11 @@ test:
     #  - `test_filter_numeric_isnotin_signed` is generally flaky
     #  - for `test_write_non_timestamp_index`, see #246
     #  - for `test_write_not_sorted_multi_index_exception`, see #247
-    #  - `test_compat_write_read` - there is problem with resolving the path
+    #  - `test_compat` - remove after arcticdb #2194 is merged
     #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path
     #  - `test_pandas_pickling` - https://github.com/conda-forge/arcticdb-feedstock/pull/393#issuecomment-2626884786
     - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
-      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_write_read and not test_modify_old_library_option_with_current and not test_pandas_pickling"
+      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling"
 
 about:
   home: https://arcticdb.io/

@@ -49,7 +49,7 @@ requirements:
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
     - libabseil
-    - libprotobuf <6
+    - libprotobuf
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
@@ -68,7 +68,7 @@ requirements:
     - xxhash
     - semimap
     - grpcio-tools
-    - protobuf <6
+    - protobuf
     - spdlog
     - unordered_dense
     - recycle

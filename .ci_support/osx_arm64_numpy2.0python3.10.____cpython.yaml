@@ -44,6 +44,8 @@ libevent:
 - 2.1.12
 liblzma_devel:
 - '5'
+libprotobuf:
+- 5.28.3
 lmdb:
 - 0.9.22
 lz4_c:

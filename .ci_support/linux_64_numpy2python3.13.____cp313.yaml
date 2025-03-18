@@ -1,5 +1,5 @@
 aws_sdk_cpp:
-- 1.11.489
+- 1.11.510
 azure_core_cpp:
 - 1.14.0
 azure_identity_cpp:
@@ -35,7 +35,7 @@ gflags:
 glog:
 - '0.7'
 libabseil:
-- '20240722'
+- '20250127'
 libboost_devel:
 - '1.86'
 libcurl:
@@ -45,7 +45,7 @@ libevent:
 liblzma_devel:
 - '5'
 libprotobuf:
-- 5.28.3
+- 5.29.3
 lmdb:
 - 0.9.22
 lz4_c:

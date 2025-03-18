@@ -12,7 +12,7 @@ source:
 build:
   # DEBUG: only build for Windows
   skip: true  # [not win]
-  number: 1
+  number: 3
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -125,8 +125,10 @@ test:
     - mock
     - trustme
     - psutil
-    - memray
-    - pytest-memray
+    # TODO: memray is not available for Windows yet
+    # See: https://github.com/conda-forge/memray-feedstock/blob/5cafb70cc172b74b00991ae1e08a2ba5b2b7ffcb/recipe/meta.yaml#L13
+    - memray                   # [not win]
+    - pytest-memray            # [not win]
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm

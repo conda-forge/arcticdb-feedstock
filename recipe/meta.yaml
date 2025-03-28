@@ -9,6 +9,9 @@ source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: f088b8d15e5d1ccad53938bf639ac2848bfbdac29b83ced45707208ce61afbfe
 
+  patches:
+    - patches/patch_fmt.patch
+
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449

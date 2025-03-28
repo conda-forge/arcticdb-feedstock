@@ -1,0 +1,14 @@
+diff --git a/cpp/arcticdb/entity/atom_key.hpp b/cpp/arcticdb/entity/atom_key.hpp
+index de86603c3..5197615c3 100644
+--- a/cpp/arcticdb/entity/atom_key.hpp
++++ b/cpp/arcticdb/entity/atom_key.hpp
+@@ -322,7 +322,8 @@ struct formatter<AtomKey> {
+     auto format(const arcticdb::entity::AtomKey &key, FormatContext &ctx) const {
+         formatter<FormattableRef < arcticdb::entity::AtomKey, DefaultAtomKeyFormat>>
+         f;
+-        return f.format(formattable(key), ctx);
++        auto formattable = FormattableRef<arcticdb::entity::AtomKey, DefaultAtomKeyFormat>{key};
++        return f.format(formattable, ctx);
+     }
+ };
+ }

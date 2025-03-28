@@ -26,6 +26,8 @@ cxx_compiler:
 - clangxx
 cxx_compiler_version:
 - '18'
+fmt:
+- '11.1'
 folly:
 - 2023.09.25.00
 gflags:

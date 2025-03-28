@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.2.6" %}
+{% set version = "5.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: a8deb4bd73a95094e01b4670b933e039adbf5568101fc57cf902f0070ae38170
+  sha256: f088b8d15e5d1ccad53938bf639ac2848bfbdac29b83ced45707208ce61afbfe
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  number: 3
+  number: 5
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -88,6 +88,9 @@ requirements:
     - glog
     - python
     # To keep in sync with `install_requires` in setup.cfg.
+    # Enforce the same major NumPy version at runtime.
+    # See: https://conda-forge.org/docs/maintainer/knowledge_base/#building-against-numpy
+    - {{ pin_compatible('numpy') }}
     - pandas
     - attrs
     - decorator

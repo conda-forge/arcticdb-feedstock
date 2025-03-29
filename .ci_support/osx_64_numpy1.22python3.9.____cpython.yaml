@@ -34,30 +34,26 @@ gflags:
 - '2.2'
 glog:
 - '0.7'
-libabseil:
-- '20250127'
 libboost_devel:
 - '1.86'
 libcurl:
 - '8'
 libevent:
 - 2.1.12
-liblzma_devel:
-- '5'
 libprotobuf:
-- 5.29.3
+- 5.28.3
 lmdb:
 - 0.9.22
 lz4_c:
 - '1.10'
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 msgpack_c:
 - '6'
 nodejs:
 - '18'
 numpy:
-- '2.0'
+- '1.22'
 openssl:
 - '3'
 pcre:
@@ -71,7 +67,7 @@ python:
 spdlog:
 - '1.15'
 target_platform:
-- osx-arm64
+- osx-64
 xxhash:
 - 0.8.2
 zip_keys:

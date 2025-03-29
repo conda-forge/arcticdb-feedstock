@@ -34,18 +34,14 @@ gflags:
 - '2.2'
 glog:
 - '0.7'
-libabseil:
-- '20250127'
 libboost_devel:
 - '1.86'
 libcurl:
 - '8'
 libevent:
 - 2.1.12
-liblzma_devel:
-- '5'
 libprotobuf:
-- 5.29.3
+- 5.28.3
 lmdb:
 - 0.9.22
 lz4_c:
@@ -57,7 +53,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '2.0'
+- '1.23'
 openssl:
 - '3'
 pcre:
@@ -67,7 +63,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.10.* *_cpython
+- 3.11.* *_cpython
 spdlog:
 - '1.15'
 target_platform:

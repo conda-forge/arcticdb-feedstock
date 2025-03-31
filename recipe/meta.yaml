@@ -12,6 +12,9 @@ source:
     - patches/0002-maint-fmt-11-support.patch
 
 build:
+  # Skip at the creation of this branch
+  # TODO: remove the skip when opening the first PR
+  skip: true
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]

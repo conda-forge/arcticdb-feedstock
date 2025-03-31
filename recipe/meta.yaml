@@ -16,6 +16,8 @@ build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
+  # not ready yet; needs to unpin pybind11
+  skip: true  # [py>=312]
   number: 5
 
   entry_points:
@@ -39,7 +41,7 @@ requirements:
   host:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
-    - python <3.12
+    - python
     - setuptools
     - numpy <2
     - pip

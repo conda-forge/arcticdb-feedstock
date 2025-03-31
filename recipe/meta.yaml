@@ -8,12 +8,20 @@ package:
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: a8deb4bd73a95094e01b4670b933e039adbf5568101fc57cf902f0070ae38170
+  patches:
+    - patches/0001-Skip-pyarrow.patch
 
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]
-  number: 3
+
+  # Skip all builds but the ones for Linux and python 3.9 for the `libevent-2.1.10` specification.
+  skip: true  # [libevent == "2.1.10" and osx]
+  skip: true  # [libevent == "2.1.10" and py>39]
+  skip: true  # [libevent == "2.1.10" and py<39]
+
+  number: 4
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -106,7 +114,9 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    - pyarrow
+    # We disable pyarrow because the environement is too constrained.
+    # Only one test is skipped via the patch applied above.
+    # - pyarrow
     - pytest-cpp
     - pytest-timeout
     - packaging

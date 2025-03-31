@@ -43,7 +43,7 @@ requirements:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
     - setuptools
-    - numpy <2
+    - numpy
     - pip
     - libboost-devel
     - liblzma-devel
@@ -61,7 +61,7 @@ requirements:
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9
     - zstd
-    - pybind11
+    - pybind11 <2.11
     - pcre
     - gflags
     - msgpack-c

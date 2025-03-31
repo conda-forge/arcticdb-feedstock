@@ -125,7 +125,6 @@ test:
     # We disable pyarrow because the environement is too constrained.
     # Only one test is skipped via the patch applied above.
     # - pyarrow
-    - pyarrow
     - pytest-cpp
     - pytest-timeout
     - packaging

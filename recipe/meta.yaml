@@ -41,7 +41,7 @@ requirements:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
     - python
     - setuptools
-    - numpy
+    - numpy <2
     - pip
     - libboost-devel
     - liblzma-devel

@@ -10,6 +10,9 @@ source:
   sha256: a771dbdc3bcc148fad8a72e33cf0807f91e24b4c983253eb07353fd80c2c56f3
 
 build:
+  # Skip at the creation of this branch
+  # TODO: remove the skip when opening the first PR
+  skip: true
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
   skip: true  # [win]

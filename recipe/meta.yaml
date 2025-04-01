@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.2.4" %}
+{% set version = "5.2.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: a9f18f87ec5d0f6e49945c204c85134c5eedfcfe92ff74126b317917015d19c0
+  sha256: 7a09d35bc03e415d901bb09aa881ab7843a0ba57206cefa15fb4ed9dca6a5119
   patches:
     - patches/0001-Skip-pyarrow.patch
 
@@ -21,7 +21,7 @@ build:
   skip: true  # [libevent == "2.1.10" and py>39]
   skip: true  # [libevent == "2.1.10" and py<39]
 
-  number: 4
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

@@ -10,9 +10,14 @@ source:
   sha256: a9f18f87ec5d0f6e49945c204c85134c5eedfcfe92ff74126b317917015d19c0
 
 build:
-  # Only build for Linux and Python 3.9
-  skip: true  # [not linux]
-  skip: true  # [not py==39]
+  # The `libevent-2.1.10` branch was previously used in the past
+  # to be able to specify alternative builds of arcticdb.
+  # This specification was relaxed at a point, and since #421,
+  # #422, and #423, it is now present on the `main` and other version
+  # branches (e.g. `5.2.x`) on the feedstock.
+  #
+  # Thus this branch is now archived, hence the unconditional `skip: True`.
+  skip: True
   number: 3
 
   entry_points:

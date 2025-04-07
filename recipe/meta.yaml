@@ -114,7 +114,9 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    - pyarrow
+    # We disable pyarrow because the environement is too constrained.
+    # Only one test is skipped via the patch applied above.
+    # - pyarrow
     - pytest-cpp
     - pytest-timeout
     - packaging

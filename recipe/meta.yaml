@@ -14,13 +14,8 @@ source:
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
-  skip: true  # [win]
-
-  # Skip all builds but the ones for Linux and python 3.9 for the `libevent-2.1.10` specification.
-  skip: true  # [libevent == "2.1.10" and osx]
-  skip: true  # [libevent == "2.1.10" and py>39]
-  skip: true  # [libevent == "2.1.10" and py<39]
-
+  # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
+  skip: true  # [win or (libevent == "2.1.10" and not linux and not py==39)]
   number: 5
 
   entry_points:

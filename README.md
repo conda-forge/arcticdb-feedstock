@@ -39,143 +39,213 @@ Current build status
         <table>
           <thead><tr><th>Variant</th><th>Status</th></tr></thead>
           <tbody><tr>
-              <td>linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2.0python3.10.____cpython</td>
+              <td>linux_64_libevent2.1.10numpy2.0python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2.0python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.10numpy2.0python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2.0python3.11.____cpython</td>
+              <td>linux_64_libevent2.1.10numpy2.0python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2.0python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.10numpy2.0python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2.0python3.12.____cpython</td>
+              <td>linux_64_libevent2.1.10numpy2.0python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2.0python3.12.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.10numpy2.0python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2.0python3.9.____cpython</td>
+              <td>linux_64_libevent2.1.10numpy2.0python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2.0python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.10numpy2.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2python3.13.____cp313</td>
+              <td>linux_64_libevent2.1.10numpy2python3.13.____cp313</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp1.11.1libevent2.1.10numpy2python3.13.____cp313" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.10numpy2python3.13.____cp313" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp_libevent_numpy2.0python3.10.____cpython</td>
+              <td>linux_64_libevent2.1.12numpy2.0python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp_libevent_numpy2.0python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.12numpy2.0python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp_libevent_numpy2.0python3.11.____cpython</td>
+              <td>linux_64_libevent2.1.12numpy2.0python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp_libevent_numpy2.0python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.12numpy2.0python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp_libevent_numpy2.0python3.12.____cpython</td>
+              <td>linux_64_libevent2.1.12numpy2.0python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp_libevent_numpy2.0python3.12.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.12numpy2.0python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp_libevent_numpy2.0python3.9.____cpython</td>
+              <td>linux_64_libevent2.1.12numpy2.0python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp_libevent_numpy2.0python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.12numpy2.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>linux_64_azure_core_cpp_libevent_numpy2python3.13.____cp313</td>
+              <td>linux_64_libevent2.1.12numpy2python3.13.____cp313</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_azure_core_cpp_libevent_numpy2python3.13.____cp313" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=linux&configuration=linux%20linux_64_libevent2.1.12numpy2python3.13.____cp313" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_azure_core_cpp_libevent_numpy2.0python3.10.____cpython</td>
+              <td>osx_64_libevent2.1.10numpy2.0python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_azure_core_cpp_libevent_numpy2.0python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.10numpy2.0python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_azure_core_cpp_libevent_numpy2.0python3.11.____cpython</td>
+              <td>osx_64_libevent2.1.10numpy2.0python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_azure_core_cpp_libevent_numpy2.0python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.10numpy2.0python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_azure_core_cpp_libevent_numpy2.0python3.12.____cpython</td>
+              <td>osx_64_libevent2.1.10numpy2.0python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_azure_core_cpp_libevent_numpy2.0python3.12.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.10numpy2.0python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_azure_core_cpp_libevent_numpy2.0python3.9.____cpython</td>
+              <td>osx_64_libevent2.1.10numpy2.0python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_azure_core_cpp_libevent_numpy2.0python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.10numpy2.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_64_azure_core_cpp_libevent_numpy2python3.13.____cp313</td>
+              <td>osx_64_libevent2.1.10numpy2python3.13.____cp313</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_azure_core_cpp_libevent_numpy2python3.13.____cp313" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.10numpy2python3.13.____cp313" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_azure_core_cpp_libevent_numpy2.0python3.10.____cpython</td>
+              <td>osx_64_libevent2.1.12numpy2.0python3.10.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_azure_core_cpp_libevent_numpy2.0python3.10.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.12numpy2.0python3.10.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_azure_core_cpp_libevent_numpy2.0python3.11.____cpython</td>
+              <td>osx_64_libevent2.1.12numpy2.0python3.11.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_azure_core_cpp_libevent_numpy2.0python3.11.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.12numpy2.0python3.11.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_azure_core_cpp_libevent_numpy2.0python3.12.____cpython</td>
+              <td>osx_64_libevent2.1.12numpy2.0python3.12.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_azure_core_cpp_libevent_numpy2.0python3.12.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.12numpy2.0python3.12.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_azure_core_cpp_libevent_numpy2.0python3.9.____cpython</td>
+              <td>osx_64_libevent2.1.12numpy2.0python3.9.____cpython</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_azure_core_cpp_libevent_numpy2.0python3.9.____cpython" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.12numpy2.0python3.9.____cpython" alt="variant">
                 </a>
               </td>
             </tr><tr>
-              <td>osx_arm64_azure_core_cpp_libevent_numpy2python3.13.____cp313</td>
+              <td>osx_64_libevent2.1.12numpy2python3.13.____cp313</td>
               <td>
                 <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
-                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_azure_core_cpp_libevent_numpy2python3.13.____cp313" alt="variant">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_64_libevent2.1.12numpy2python3.13.____cp313" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.10numpy2.0python3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.10numpy2.0python3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.10numpy2.0python3.11.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.10numpy2.0python3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.10numpy2.0python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.10numpy2.0python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.10numpy2.0python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.10numpy2.0python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.10numpy2python3.13.____cp313</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.10numpy2python3.13.____cp313" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.12numpy2.0python3.10.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.12numpy2.0python3.10.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.12numpy2.0python3.11.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.12numpy2.0python3.11.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.12numpy2.0python3.12.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.12numpy2.0python3.12.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.12numpy2.0python3.9.____cpython</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.12numpy2.0python3.9.____cpython" alt="variant">
+                </a>
+              </td>
+            </tr><tr>
+              <td>osx_arm64_libevent2.1.12numpy2python3.13.____cp313</td>
+              <td>
+                <a href="https://dev.azure.com/conda-forge/feedstock-builds/_build/latest?definitionId=19491&branchName=main">
+                  <img src="https://dev.azure.com/conda-forge/feedstock-builds/_apis/build/status/arcticdb-feedstock?branchName=main&jobName=osx&configuration=osx%20osx_arm64_libevent2.1.12numpy2python3.13.____cp313" alt="variant">
                 </a>
               </td>
             </tr>

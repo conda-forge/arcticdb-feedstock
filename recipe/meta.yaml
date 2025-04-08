@@ -21,7 +21,7 @@ build:
   skip: true  # [libevent == "2.1.10" and py>39]
   skip: true  # [libevent == "2.1.10" and py<39]
 
-  number: 2
+  number: 3
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

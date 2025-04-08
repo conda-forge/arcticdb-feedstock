@@ -5,7 +5,7 @@ MACOSX_SDK_VERSION:
 aws_sdk_cpp:
 - 1.11.510
 azure_core_cpp:
-- '*'
+- 1.11.1
 azure_identity_cpp:
 - '*'
 azure_storage_blobs_cpp:
@@ -39,7 +39,7 @@ libboost_devel:
 libcurl:
 - '8'
 libevent:
-- '*'
+- 2.1.10
 liblzma_devel:
 - '5'
 libprotobuf:

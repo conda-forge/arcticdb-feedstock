@@ -12,30 +12,9 @@ nodejs:
 xxhash:
   - 0.8.2
 
-# Coupling dependencies specification together.
-# The first  line comes from the specifications of the `libevent-2.1.10` branch.
-# The second and third line come from the alternative specifications of the `libevent-2.1.10` branch.
-# The fourth line comes from the specifications of the `main` branch.
-# See: https://docs.conda.io/projects/conda-build/en/stable/resources/variants.html#coupling-keys
-# "*" specifies to use the latest compatible version of the package.
 libevent:
   - "2.1.10"
-  - "*"
-azure_core_cpp:
-  - "1.11.1"
-  - "*"
-azure_identity_cpp:
-  - "*"
-  - "*"
-azure_storage_blobs_cpp:
-  - "*"
-  - "*"
-
-zip_keys:
-  - libevent
-  - azure_core_cpp
-  - azure_identity_cpp
-  - azure_storage_blobs_cpp
+  - "2.1.12"
 
 channel_targets:
   - conda-forge arcticdb_rc

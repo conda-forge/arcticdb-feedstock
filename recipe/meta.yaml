@@ -14,13 +14,8 @@ source:
 build:
   # We skip the build on Windows because of linkage problems with libprotobuf.
   # See: https://github.com/man-group/ArcticDB/pull/449
-  skip: true  # [win]
   # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
-  # See: https://github.com/conda-forge/arcticdb-feedstock/blob/cfb0ce12a21703d55389d1147a689790447b0c03/recipe/meta.yaml#L15-L17
-  skip: true  # [libevent == "2.1.10" and osx]
-  # TODO: the specific on python does not work for now, we need to investigate why.
-  # skip: true  # [libevent == "2.1.10" and py>39]
-  # skip: true  # [libevent == "2.1.10" and py<39]
+  skip: true  # [win or (libevent == "2.1.10" and not linux and not py==39)]
   number: 6
 
   entry_points:

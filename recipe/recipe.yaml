@@ -1,0 +1,230 @@
+context:
+  name: "arcticdb"
+  version: "5.2.6"
+
+package:
+  name: ${{ name }}
+  version: ${{ version }}
+
+source:
+  url: https://github.com/man-group/ArcticDB/archive/refs/tags/v${{ version }}.tar.gz
+  sha256: a8deb4bd73a95094e01b4670b933e039adbf5568101fc57cf902f0070ae38170
+  patches:
+    - patches/0001-Skip-pyarrow.patch
+
+build:
+  skip:
+    # We skip the build on Windows because of linkage problems with libprotobuf.
+    # See: https://github.com/man-group/ArcticDB/pull/449
+    - win
+
+    # # Skip all builds but the ones for Linux and python 3.9 for the `libevent-2.1.10` specification.
+    # TODO: find a way to refine this condition
+    # - libevent == "2.1.10" and osx
+    # - libevent == "2.1.10" and py>39
+    # - libevent == "2.1.10" and py<39
+  number: 6
+  python:
+    entry_points:
+      - arcticdb_update_storage = arcticdb.scripts.update_storage:main
+
+requirements:
+  build:
+    - ${{ compiler('cxx') }}
+    - ${{ compiler('c') }}
+    - ${{ stdlib("c") }}
+    - cmake
+    - make
+    - if: build_platform != target_platform
+      then:
+        - python
+        - numpy
+        - grpcio-tools
+        - protobuf
+        - cross-python_${{ target_platform }}
+        - libprotobuf
+        - pkg-config
+        - gnuconfig
+  host:
+    # This environment specification must be maintained in sync with the one upstream:
+    # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+    - python
+    - setuptools
+    - numpy
+    - pip
+    - libboost-devel
+    - liblzma-devel
+    - folly
+    - lz4-c
+    - prometheus-cpp
+    - double-conversion
+    - libevent
+    - libabseil
+    - libprotobuf
+    - openssl
+    - libcurl
+    # TODO: Fix builds for missing symbols
+    # See: https://github.com/man-group/ArcticDB/pull/1050
+    - libmongocxx <3.9
+    - zstd
+    - pybind11
+    - pcre
+    - gflags
+    - msgpack-c
+    - aws-sdk-cpp
+    - azure-core-cpp
+    - azure-identity-cpp
+    - azure-storage-blobs-cpp
+    - bitmagic
+    - xxhash
+    - semimap
+    - grpcio-tools
+    - protobuf
+    - spdlog
+    - unordered_dense
+    - recycle
+    # lmdb's version is constrained in `conda_build_config.yaml` because
+    # specifying it here does not overide the conda-forge's global pinning.
+    - lmdb
+    - lmdbxx
+    - fmt
+    - glog
+    - gtest
+    - benchmark
+    - entt
+  run:
+    # This environment specification must be maintained in sync with the one upstream:
+    # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+    # See install_requires: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
+    - glog
+    - python
+    # To keep in sync with `install_requires` in setup.cfg.
+    - pandas
+    - attrs
+    - decorator
+    - msgpack-python >=0.5.0
+    - psutil
+    - pyyaml
+    # Resolves https://github.com/man-group/ArcticDB/issues/465
+    - aws-crt-cpp >=0.19.8
+    - prometheus-cpp
+    - protobuf >=3.5.1
+    - lmdb
+    - packaging
+
+tests:
+  - script:
+      - npm install -g azurite
+      # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
+      # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
+      # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
+      - export ARCTICDB_FAST_TESTS_ONLY=1
+      # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
+      #
+      # For now, we skip the following tests:
+      #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
+      #  - `test_lmdb_warnings_when_reopened` also currently fails.
+      #  - `test_column_stats_string_column_minmax` fails for linux.
+      #  - `test_force_compact_symbol_list_lock_held_past_ttl` also currently fails for MacOS.
+      #  - `test_filter_numeric_isnotin_signed` is generally flaky
+      #  - for `test_write_non_timestamp_index`, see #246
+      #  - for `test_write_not_sorted_multi_index_exception`, see #247
+      #  - `test_compat` - remove after arcticdb #2194 is merged
+      #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path
+      #  - `test_pandas_pickling` - https://github.com/conda-forge/arcticdb-feedstock/pull/393#issuecomment-2626884786
+      - |
+        ARCTICDB_RAND_SEED=$RANDOM pytest python/tests \
+          --verbose \
+          --reruns 5 \
+          --reruns-delay 1 \
+          -k "not Azure \
+              and not azurite \
+              and not test_lmdb_warnings_when_reopened \
+              and not test_force_compact_symbol_list_lock_held_past_ttl \
+              and not test_write_non_timestamp_index \
+              and not test_write_not_sorted_multi_index_exception \
+              and not test_map_size_bad_input \
+              and not test_map_size_parsing \
+              and not lmdb \
+              and not test_column_stats_string_column_minmax \
+              and not test_filter_numeric_isnotin_signed \
+              and not test_filter_numeric_isnotin_unsigned \
+              and not test_compat_ \
+              and not test_modify_old_library_option_with_current \
+              and not test_pandas_pickling"
+    requirements:
+      run:
+        # This environment specification must be maintained in sync with the one upstream:
+        # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+        # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
+        - pytest
+        # We disable pyarrow because the environement is too constrained.
+        # Only one test is skipped via the patch applied above.
+        # TODO: find a way to add a condition to only exclude it for libevent 2.1.10
+        # - pyarrow
+        - pytest-cpp
+        - pytest-timeout
+        - packaging
+        - future
+        - mock
+        - boto3
+        - moto
+        - flask  # Used by moto
+        - flask-cors
+        - hypothesis <6.73
+        - azure-storage-blob
+        - azure-identity
+        - coverage
+        - asv
+        - virtualenv
+        - pymongo
+        - mock
+        - trustme
+        - psutil
+        - memray
+        - pytest-memray
+        # Extra dependencies
+        - pytest-rerunfailures
+        - nodejs  # for npm
+    files:
+      source:
+        - python/tests
+  - python:
+      imports:
+        - arcticdb
+
+about:
+  homepage: https://arcticdb.io/
+  summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.
+  description: |
+    **ArcticDB** is a high performance, serverless **DataFrame database** built for
+    the Python Data Science ecosystem. Launched in March 2023, it is the successor
+    to [Arctic](https://github.com/man-group/arctic).
+    ArcticDB offers an intuitive Python-centric API enabling you to read and write
+    Pandas DataFrames to S3 or LMDB utilising a fast C++ data-processing and
+    compression engine.
+  license: BUSL-1.1
+  license_family: OTHER
+  license_file: LICENSE.txt
+  documentation: https://docs.arcticdb.io
+  repository: https://github.com/man-group/ArcticDB
+
+extra:
+  recipe-maintainers:
+    - ognyanstoimenov
+    - joe-iddon
+    - G-D-Petrov
+    - IvoDD
+    - Hind-M
+    - Klaim
+    - JohanMabille
+    - DerThorsten
+    - jjerphan
+    - mehertz
+    - jamesmunro
+    - qc00
+    - willdealtry
+    - poodlewars
+    - vasil-pashov
+    - phoebusm
+    - alexowens90

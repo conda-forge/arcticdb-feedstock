@@ -3,17 +3,13 @@ MACOSX_SDK_VERSION:        # [osx and x86_64]
 c_stdlib_version:          # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
 lmdb:
-  - 0.9.22
+  - "0.9.22"
 nodejs:
   - "18"
 folly:
   - "2023.09.25.00"
 xxhash:
-  - 0.8.2
-
+  - "0.8.2"
 libevent:
   - "2.1.10"
   - "2.1.12"
-
-zip_keys:
-  - libevent

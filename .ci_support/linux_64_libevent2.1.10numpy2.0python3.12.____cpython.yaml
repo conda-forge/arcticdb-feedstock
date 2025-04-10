@@ -52,8 +52,6 @@ lz4_c:
 - '1.10'
 msgpack_c:
 - '6'
-nodejs:
-- '18'
 numpy:
 - '2.0'
 openssl:

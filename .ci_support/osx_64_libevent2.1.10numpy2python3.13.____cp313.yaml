@@ -54,8 +54,6 @@ macos_machine:
 - x86_64-apple-darwin13.4.0
 msgpack_c:
 - '6'
-nodejs:
-- '18'
 numpy:
 - '2'
 openssl:

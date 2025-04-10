@@ -387,6 +387,7 @@ Feedstock Maintainers
 * [@jamesmunro](https://github.com/jamesmunro/)
 * [@jjerphan](https://github.com/jjerphan/)
 * [@joe-iddon](https://github.com/joe-iddon/)
+* [@maxim-morozov](https://github.com/maxim-morozov/)
 * [@mehertz](https://github.com/mehertz/)
 * [@ognyanstoimenov](https://github.com/ognyanstoimenov/)
 * [@phoebusm](https://github.com/phoebusm/)

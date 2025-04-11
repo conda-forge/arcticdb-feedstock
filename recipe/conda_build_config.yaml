@@ -10,10 +10,3 @@ folly:
   - "2023.09.25.00"
 xxhash:
   - 0.8.2
-
-libevent:
-  - "2.1.10"
-  - "2.1.12"
-
-zip_keys:
-  - libevent

@@ -10,6 +10,7 @@ source:
   sha256: a8deb4bd73a95094e01b4670b933e039adbf5568101fc57cf902f0070ae38170
 
 build:
+  skip: true  # [win]
   number: 6
 
   entry_points:

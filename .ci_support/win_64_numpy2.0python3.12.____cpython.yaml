@@ -1,7 +1,3 @@
-MACOSX_DEPLOYMENT_TARGET:
-- '11.0'
-MACOSX_SDK_VERSION:
-- '11.0'
 aws_sdk_cpp:
 - 1.11.510
 azure_core_cpp:
@@ -11,21 +7,15 @@ azure_identity_cpp:
 azure_storage_blobs_cpp:
 - 12.13.0
 c_compiler:
-- clang
-c_compiler_version:
-- '18'
+- vs2019
 c_stdlib:
-- macosx_deployment_target
-c_stdlib_version:
-- '11.0'
+- vs
 channel_sources:
 - conda-forge
 channel_targets:
 - conda-forge main
 cxx_compiler:
-- clangxx
-cxx_compiler_version:
-- '18'
+- vs2019
 fmt:
 - '11.1'
 folly:
@@ -41,7 +31,7 @@ libboost_devel:
 libcurl:
 - '8'
 libevent:
-- 2.1.10
+- 2.1.12
 liblzma_devel:
 - '5'
 libprotobuf:
@@ -50,8 +40,6 @@ lmdb:
 - 0.9.22
 lz4_c:
 - '1.10'
-macos_machine:
-- arm64-apple-darwin20.0.0
 msgpack_c:
 - '6'
 nodejs:
@@ -67,16 +55,14 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.12.* *_cpython
 spdlog:
 - '1.15'
 target_platform:
-- osx-arm64
+- win-64
 xxhash:
 - 0.8.2
 zip_keys:
-- - c_compiler_version
-  - cxx_compiler_version
 - - python
   - numpy
 zstd:

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.3.2" %}
+{% set version = "5.3.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 2e09d7358fdade44d090feba2e2cadf5b9f6102a09eecdeeed6f29d91ba0a471
+  sha256: 36638317a993a0728b7c388808e69f0aa1ddc67e594c70816d56dbba46241f56
 
 build:
   skip: true  # [win]
@@ -155,7 +155,8 @@ test:
     #  - `test_storage_mover_clone_old_library` - fails despite pyarrow present, investigate
     #  - `test_write_new_read_old` - fails despite pyarrow present, investigate
     - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
-      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library and not test_write_new_read_old"
+      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
+      and not test_write_new_read_old"
 
 about:
   home: https://arcticdb.io/

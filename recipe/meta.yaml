@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.4.0" %}
+{% set version = "5.5.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d08cda9864f037a09418801f4f7844e608dcf395a3b03dd1608d989805e9064d
+  sha256: d6b8630b9e2a5349826f49030480e646af4762551ec349f50a9ea1f9afdb6b93
 
 build:
   skip: true  # [win]

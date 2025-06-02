@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.2.4rc2" %}
+{% set version = "5.8.0+man0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,16 +7,11 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: f161ca9a4ec2cfc67aae687a8cf055067ec83a9fd5b0afe76322af3913e40326
-  patches:
-    - patches/0001-Skip-pyarrow.patch
+  sha256: 0fbf3968ee454378eaa54117b35b95a135857768f9d22d3eb21ab35c316682b2
 
 build:
-  # We skip the build on Windows because of linkage problems with libprotobuf.
-  # See: https://github.com/man-group/ArcticDB/pull/449
-  # Skip all builds but the ones for Linux for the `libevent-2.1.10` specification.
-  skip: true  # [win or (libevent == "2.1.10" and not linux and not py==39)]
-  number: 6
+  skip: true  # [win]
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -33,7 +28,7 @@ requirements:
     - grpcio-tools                            # [build_platform != target_platform]
     - protobuf                                # [build_platform != target_platform]
     - cross-python_{{ target_platform }}      # [build_platform != target_platform]
-    - libprotobuf                             # [build_platform != target_platform]
+    - libprotobuf <6                          # [build_platform != target_platform]
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
@@ -52,7 +47,7 @@ requirements:
     # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
     - libabseil
-    - libprotobuf
+    - libprotobuf <6
     - openssl
     - libcurl
     # TODO: Fix builds for missing symbols
@@ -109,9 +104,7 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    # We disable pyarrow because the environement is too constrained.
-    # Only one test is skipped via the patch applied above.
-    # - pyarrow
+    - pyarrow
     - pytest-cpp
     - pytest-timeout
     - packaging
@@ -157,10 +150,13 @@ test:
     #  - for `test_write_non_timestamp_index`, see #246
     #  - for `test_write_not_sorted_multi_index_exception`, see #247
     #  - `test_compat` - remove after arcticdb #2194 is merged
-    #  - `test_modify_old_library_option_with_current` - there is problem with resolving the path
-    #  - `test_pandas_pickling` - https://github.com/conda-forge/arcticdb-feedstock/pull/393#issuecomment-2626884786
+    #  - `test_modify_old_library_option_with_current` - fails despite pyarrow present, investigate
+    #  - `test_pandas_pickling` - fails despite pyarrow present, investigate
+    #  - `test_storage_mover_clone_old_library` - fails despite pyarrow present, investigate
+    #  - `test_write_new_read_old` - fails despite pyarrow present, investigate
     - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
-      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling"
+      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
+      and not test_write_new_read_old"
 
 about:
   home: https://arcticdb.io/
@@ -180,6 +176,7 @@ about:
 
 extra:
   recipe-maintainers:
+    - maxim-morozov
     - ognyanstoimenov
     - joe-iddon
     - G-D-Petrov

@@ -1,16 +1,12 @@
 #!/bin/bash
 
 export ARCTICDB_USING_CONDA=1
-# Compiling ArcticDB with all cores might freeze machines due to swapping
-# around binary operators' template specialization expansion and compilation.
-# See: https://github.com/man-group/ArcticDB/blob/master/cpp/arcticdb/processing/operation_dispatch_binary.hpp#L451-L473
-#
-# It also has been observed to hang on `version/symbol_list.cpp`.
-# The feedstock's machine have 6.759GiB of RAM and 2 (physical?) cores so we cap it to that.
-# We build with only 1 thread to prevent these freezes from happening.
+# Compiling ArcticDB with all cores might freeze machines due to swapping.
+# We build with only 1 core to prevent these freezes from happening.
 export CMAKE_BUILD_PARALLEL_LEVEL=1
 
-# Required to be able to include headers from glog since glog 0.7
+# Workaround for: https://github.com/conda-forge/glog-feedstock/issues/26
+# Required to be able to include headers from glog since glog 0.7.
 # See: https://github.com/google/glog/pull/1030
 export CXXFLAGS="$CXXFLAGS -DGLOG_USE_GLOG_EXPORT"
 

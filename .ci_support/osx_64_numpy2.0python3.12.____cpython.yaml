@@ -21,7 +21,7 @@ c_stdlib_version:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge arcticdb_rc
+- conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
@@ -44,14 +44,12 @@ libevent:
 - 2.1.12
 liblzma_devel:
 - '5'
-libprotobuf:
-- 5.29.3
 lmdb:
 - 0.9.22
 lz4_c:
 - '1.10'
 macos_machine:
-- arm64-apple-darwin20.0.0
+- x86_64-apple-darwin13.4.0
 msgpack_c:
 - '6'
 nodejs:
@@ -67,11 +65,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.9.* *_cpython
+- 3.12.* *_cpython
 spdlog:
 - '1.15'
 target_platform:
-- osx-arm64
+- osx-64
 xxhash:
 - 0.8.2
 zip_keys:

@@ -21,7 +21,7 @@ c_stdlib_version:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge arcticdb_rc
+- conda-forge main
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
@@ -41,11 +41,9 @@ libboost_devel:
 libcurl:
 - '8'
 libevent:
-- 2.1.10
+- 2.1.12
 liblzma_devel:
 - '5'
-libprotobuf:
-- 5.29.3
 lmdb:
 - 0.9.22
 lz4_c:
@@ -67,7 +65,7 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.11.* *_cpython
+- 3.9.* *_cpython
 spdlog:
 - '1.15'
 target_platform:

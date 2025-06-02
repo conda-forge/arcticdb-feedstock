@@ -1,3 +1,8 @@
+bot:
+  abi_migration_branches:
+  - rc
+  - 5.1.x
+  - 5.2.x
 build_platform:
   osx_arm64: osx_64
 conda_build:

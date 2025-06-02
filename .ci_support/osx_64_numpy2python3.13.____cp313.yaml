@@ -21,7 +21,7 @@ c_stdlib_version:
 channel_sources:
 - conda-forge
 channel_targets:
-- conda-forge main
+- conda-forge arcticdb_rc
 cxx_compiler:
 - clangxx
 cxx_compiler_version:

@@ -18,7 +18,7 @@ build:
   # See: https://github.com/man-group/ArcticDB/pull/449
   # Skip all builds but the ones for Linux and python 3.9 for the `libevent-2.1.10` specification.
   skip: true  # [py>=312 or win or (libevent == "2.1.10" and not linux and not py==39)]
-  number: 9
+  number: 10
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

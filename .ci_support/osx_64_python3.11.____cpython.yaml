@@ -27,7 +27,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '18'
 fmt:
-- '11.1'
+- '11.2'
 folly:
 - 2023.09.25.00
 gflags:
@@ -41,7 +41,7 @@ libboost_devel:
 libcurl:
 - '8'
 libevent:
-- 2.1.10
+- 2.1.12
 liblzma_devel:
 - '5'
 libprotobuf:
@@ -57,7 +57,7 @@ msgpack_c:
 nodejs:
 - '18'
 numpy:
-- '2.0'
+- '2'
 openssl:
 - '3'
 pcre:
@@ -77,7 +77,5 @@ xxhash:
 zip_keys:
 - - c_compiler_version
   - cxx_compiler_version
-- - python
-  - numpy
 zstd:
 - '1.5'

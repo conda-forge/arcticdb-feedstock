@@ -5,15 +5,15 @@ MACOSX_SDK_VERSION:
 aws_sdk_cpp:
 - 1.11.510
 azure_core_cpp:
-- 1.14.0
+- 1.15.0
 azure_identity_cpp:
-- 1.10.0
+- 1.11.0
 azure_storage_blobs_cpp:
 - 12.13.0
 c_compiler:
 - clang
 c_compiler_version:
-- '18'
+- '19'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -25,7 +25,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '18'
+- '19'
 fmt:
 - '11.2'
 folly:

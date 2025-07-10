@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.8.0" %}
+{% set version = "5.9.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 578f2e52bdb9f15a4aeac733313e0d8eaaad0919e988dedefe22bf7e570c59e9
+  sha256: 93a57f1df7b8fbda5b34325b09b4656d50070cb47f157ad208650d711073ffd5
   patches:
     - 0001-maint-Add-support-for-libprotobuf-6.patch
 
 build:
   skip: true  # [win]
-  number: 2
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -81,6 +81,7 @@ requirements:
     - gtest
     - benchmark
     - entt
+    - sparrow
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml

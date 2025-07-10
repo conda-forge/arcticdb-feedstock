@@ -1,0 +1,54 @@
+From edb2784719e82ab019985f4302a3aa32b9704e45 Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Thu, 10 Jul 2025 12:47:12 +0200
+Subject: [PATCH] maint: Add support for libprotobuf 6
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ cpp/arcticdb/codec/segment.cpp       | 2 +-
+ cpp/arcticdb/python/python_utils.hpp | 2 +-
+ environment-dev.yml                  | 2 +-
+ 3 files changed, 3 insertions(+), 3 deletions(-)
+
+diff --git a/cpp/arcticdb/codec/segment.cpp b/cpp/arcticdb/codec/segment.cpp
+index 60ef22171..fa27b2663 100644
+--- a/cpp/arcticdb/codec/segment.cpp
++++ b/cpp/arcticdb/codec/segment.cpp
+@@ -97,7 +97,7 @@ SegmentHeaderProtoWrapper decode_protobuf_header(const uint8_t* data, size_t hea
+     google::protobuf::io::ArrayInputStream ais(data, static_cast<int>(header_bytes_size));
+ 
+     auto arena = std::make_unique<google::protobuf::Arena>();
+-    auto seg_hdr = google::protobuf::Arena::CreateMessage<arcticdb::proto::encoding::SegmentHeader>(arena.get());
++    auto seg_hdr = google::protobuf::Arena::Create<arcticdb::proto::encoding::SegmentHeader>(arena.get());
+     seg_hdr->ParseFromZeroCopyStream(&ais);
+     ARCTICDB_TRACE(log::codec(), "Decoded protobuf header: {}", seg_hdr->DebugString());
+     return {seg_hdr, std::move(arena)};
+diff --git a/cpp/arcticdb/python/python_utils.hpp b/cpp/arcticdb/python/python_utils.hpp
+index 1d963dd24..e84cb266b 100644
+--- a/cpp/arcticdb/python/python_utils.hpp
++++ b/cpp/arcticdb/python/python_utils.hpp
+@@ -115,7 +115,7 @@ PyObject** fill_with_none(PyObject** ptr_dest, size_t count, PythonHandlerData&
+ template<typename Msg>
+ py::object pb_to_python(const Msg & out){
+     std::string_view full_name = out.descriptor()->full_name();
+-    auto & name = out.descriptor()->name();
++    const auto & name = out.descriptor()->name();
+     std::string_view pkg_name = full_name.substr(0, full_name.size() - name.size());
+     if(pkg_name[pkg_name.size()-1] == '.'){
+         pkg_name = pkg_name.substr(0, pkg_name.size()-1);
+diff --git a/environment-dev.yml b/environment-dev.yml
+index d533aeb39..ecd026e7d 100644
+--- a/environment-dev.yml
++++ b/environment-dev.yml
+@@ -31,7 +31,7 @@ dependencies:
+   - cyrus-sasl
+   - aws-sdk-cpp >=1.11.405
+   - prometheus-cpp
+-  - libprotobuf <6
++  - libprotobuf
+   - openssl
+   - libcurl
+   - bitmagic
+-- 
+2.50.0
+

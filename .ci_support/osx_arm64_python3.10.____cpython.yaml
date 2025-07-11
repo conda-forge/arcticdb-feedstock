@@ -35,7 +35,7 @@ gflags:
 glog:
 - '0.7'
 libabseil:
-- '20250127'
+- '20250512'
 libboost_devel:
 - '1.86'
 libcurl:
@@ -45,7 +45,7 @@ libevent:
 liblzma_devel:
 - '5'
 libprotobuf:
-- 5.29.3
+- 6.31.1
 lmdb:
 - 0.9.22
 lz4_c:

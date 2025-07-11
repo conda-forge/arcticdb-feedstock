@@ -35,7 +35,7 @@ gflags:
 glog:
 - '0.7'
 libabseil:
-- '20250127'
+- '20250512'
 libboost_devel:
 - '1.86'
 libcurl:

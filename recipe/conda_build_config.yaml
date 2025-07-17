@@ -2,13 +2,61 @@ MACOSX_SDK_VERSION:        # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
 c_stdlib_version:          # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
+c_compiler_version:
+  - '13'                   # [linux]
+  - '18'                   # [osx]
+cxx_compiler_version:
+  - '13'                   # [linux]
+  - '18'                   # [osx]
 lmdb:
-  - 0.9.22
+  - '0.9.22'
 nodejs:
   - "18"
 folly:
-  - "2023.09.25.00"
+  - '2023.09.25.00'
 xxhash:
-  - 0.8.2
+  - '0.8.2'
 numpy:
-  - "1.22"
+  - '1.22'
+aws_sdk_cpp:
+  - '1.11.510'
+azure_core_cpp:
+  - '1.14.0'
+azure_identity_cpp:
+  - '1.10.0'
+azure_storage_blobs_cpp:
+  - '12.13.0'
+c_stdlib_version:
+  - '2.17'
+fmt:
+  - '11.2'
+gflags:
+  - '2.2'
+glog:
+  - '0.7'
+libboost_devel:
+  - '1.86'
+libcurl:
+  - '8'
+libevent:
+  - '2.1.12'
+liblzma_devel:
+  - '5'
+libprotobuf:
+  - '5.29.3'
+lz4_c:
+  - '1.10'
+msgpack_c:
+  - '6'
+nodejs:
+  - '18'
+numpy:
+  - '1.22'
+openssl:
+  - '3'
+pcre:
+  - '8'
+spdlog:
+  - '1.15'
+zstd:
+  - '1.5'

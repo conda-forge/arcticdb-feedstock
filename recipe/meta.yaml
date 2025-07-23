@@ -7,13 +7,13 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 7c8f7be3e537b65ff4d384b032a1d87e2ce6add5b2dfc067e728e1aea30bb5ab
+  sha256: 7f66519394a718aa3e989e6bdb80d61eb2bbfd461517bbd506ec34a470f25077
   patches:
     - 0001-maint-Add-support-for-libprotobuf-6.patch
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

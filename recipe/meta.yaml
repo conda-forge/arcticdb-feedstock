@@ -13,7 +13,7 @@ source:
 
 build:
   skip: true  # [win]
-  number: 2
+  number: 3
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

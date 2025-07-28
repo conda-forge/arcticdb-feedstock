@@ -57,7 +57,7 @@ requirements:
     - libmongocxx <3.9
     - zstd
     - pybind11
-    - pcre
+    - pcre2
     - gflags
     - msgpack-c
     - aws-sdk-cpp

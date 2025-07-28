@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.9.3" %}
+{% set version = "5.10.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 318866ed74a539276d582ecd1ca428b3dbac41f07366f7e40029aad278c08441
+  sha256: fc4fc9bdf5f31415a9ecded8c8ef981eb295788e30e78b8a093eb8eed18bb48c
   patches:
     - 0001-maint-Add-support-for-libprotobuf-6.patch
 
@@ -57,7 +57,7 @@ requirements:
     - libmongocxx <3.9
     - zstd
     - pybind11
-    - pcre
+    - pcre2
     - gflags
     - msgpack-c
     - aws-sdk-cpp

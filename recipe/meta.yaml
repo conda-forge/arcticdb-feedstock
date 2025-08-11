@@ -32,8 +32,10 @@ requirements:
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
-  # This environment specification must be maintained in sync with the one upstream:
-  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+    # This environment specification must be maintained in sync with the one upstream:
+    # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+    # Note that some dependencies' versions are constrained in `conda_build_config.yaml`
+    # because specifying it here does not overide the conda-forge's global pinning.
     - python
     - setuptools
     - numpy
@@ -44,7 +46,6 @@ requirements:
     - lz4-c
     - prometheus-cpp
     - double-conversion
-    # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
     - libabseil
     - libprotobuf
@@ -70,8 +71,6 @@ requirements:
     - spdlog
     - unordered_dense
     - recycle
-    # lmdb's version is constrained in `conda_build_config.yaml` because
-    # specifying it here does not overide the conda-forge's global pinning.
     - lmdb
     - lmdbxx
     - fmt

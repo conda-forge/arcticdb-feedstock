@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.10.0" %}
+{% set version = "6.0.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: fc4fc9bdf5f31415a9ecded8c8ef981eb295788e30e78b8a093eb8eed18bb48c
+  sha256: 3bac8fac6b3e213346b59d8c44a2331ac0a30122349041892213fb8310657153
   patches:
     - 0001-maint-Add-support-for-libprotobuf-6.patch
 

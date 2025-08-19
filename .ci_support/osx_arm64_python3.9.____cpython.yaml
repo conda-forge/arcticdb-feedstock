@@ -37,7 +37,7 @@ glog:
 libabseil:
 - '20250512'
 libboost_devel:
-- '1.86'
+- '1.88'
 libcurl:
 - '8'
 libevent:

@@ -29,7 +29,7 @@ docker_image:
 fmt:
 - '11.2'
 folly:
-- 2023.09.25.00
+- 2025.04.14.00
 gflags:
 - '2.2'
 glog:
@@ -37,7 +37,7 @@ glog:
 libabseil:
 - '20250512'
 libboost_devel:
-- '1.86'
+- '1.88'
 libcurl:
 - '8'
 libevent:

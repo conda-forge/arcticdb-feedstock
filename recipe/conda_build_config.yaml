@@ -2,15 +2,11 @@ MACOSX_SDK_VERSION:        # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
 c_stdlib_version:          # [osx and x86_64]
   - "11.0"                 # [osx and x86_64]
-c_compiler_version:        # [osx]
-- 18                       # [osx]
-cxx_compiler_version:      # [osx]
-- 18                       # [osx]
 lmdb:
   - 0.9.22
 nodejs:
   - "18"
 folly:
-  - "2023.09.25.00"
+  - "2025.04.14.00"
 xxhash:
   - 0.8.2

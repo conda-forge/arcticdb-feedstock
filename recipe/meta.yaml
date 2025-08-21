@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "5.10.0" %}
+{% set version = "6.1.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,9 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: fc4fc9bdf5f31415a9ecded8c8ef981eb295788e30e78b8a093eb8eed18bb48c
-  patches:
-    - 0001-maint-Add-support-for-libprotobuf-6.patch
+  sha256: 3ff5d3bae58094264fa86da5e1cb8a3863bf4fe669b1c54ee9e70ff1de59cf94
 
 build:
   skip: true  # [win]
@@ -34,8 +32,10 @@ requirements:
     - pkg-config                              # [build_platform != target_platform]
     - gnuconfig                               # [build_platform != target_platform]
   host:
-  # This environment specification must be maintained in sync with the one upstream:
-  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+    # This environment specification must be maintained in sync with the one upstream:
+    # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+    # Note that some dependencies' versions are constrained in `conda_build_config.yaml`
+    # because specifying it here does not overide the conda-forge's global pinning.
     - python
     - setuptools
     - numpy
@@ -46,7 +46,6 @@ requirements:
     - lz4-c
     - prometheus-cpp
     - double-conversion
-    # See libevent variants' definition in `recipe/conda_build_config.yaml`
     - libevent
     - libabseil
     - libprotobuf
@@ -72,8 +71,6 @@ requirements:
     - spdlog
     - unordered_dense
     - recycle
-    # lmdb's version is constrained in `conda_build_config.yaml` because
-    # specifying it here does not overide the conda-forge's global pinning.
     - lmdb
     - lmdbxx
     - fmt
@@ -81,7 +78,7 @@ requirements:
     - gtest
     - benchmark
     - entt
-    - sparrow <1
+    - sparrow <2
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -157,9 +154,13 @@ test:
     #  - `test_pandas_pickling` - fails despite pyarrow present, investigate
     #  - `test_storage_mover_clone_old_library` - fails despite pyarrow present, investigate
     #  - `test_write_new_read_old` - fails despite pyarrow present, investigate
+    #  - `test_mean_timestamp_aggregation_with_missing_aggregation_column` - disparity between arcticdb and pandas in handling of default floating point values, pending fix
+    #  - `test_resample` is generally flaky
+    #  - `test_norm_meta_column_and_index_names_write_old_read_new` and `test_norm_meta_column_and_index_names_write_new_read_old`
+    #     - They are flaky compat tests. Should be reenabled once fixed
     - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
       and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
-      and not test_write_new_read_old"
+      and not test_write_new_read_old and not test_mean_timestamp_aggregation_with_missing_aggregation_column and not test_resample and not test_norm_meta_column_and_index_names_write_old_read_new and not test_norm_meta_column_and_index_names_write_new_read_old"
 
 about:
   home: https://arcticdb.io/

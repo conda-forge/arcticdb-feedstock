@@ -126,6 +126,7 @@ test:
     - psutil
     - memray
     - pytest-memray
+    - retrying
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm

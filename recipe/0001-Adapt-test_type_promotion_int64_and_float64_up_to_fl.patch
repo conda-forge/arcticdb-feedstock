@@ -1,0 +1,69 @@
+From b5c877c46b2a7abbdbd813ca187437da0ff047e2 Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Tue, 26 Aug 2025 11:16:39 +0200
+Subject: [PATCH] Adapt `test_type_promotion_int64_and_float64_up_to_float64`
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ .../version_store/test_column_type_changes.py     | 15 ++++++++-------
+ python/tests/util/mark.py                         |  4 ++++
+ 2 files changed, 12 insertions(+), 7 deletions(-)
+
+diff --git a/python/tests/unit/arcticdb/version_store/test_column_type_changes.py b/python/tests/unit/arcticdb/version_store/test_column_type_changes.py
+index aedde05af..f093327e2 100644
+--- a/python/tests/unit/arcticdb/version_store/test_column_type_changes.py
++++ b/python/tests/unit/arcticdb/version_store/test_column_type_changes.py
+@@ -17,7 +17,7 @@ from arcticdb_ext.storage import KeyType
+ from arcticdb.util.test import assert_frame_equal
+ from arcticdb_ext.types import DataType
+ 
+-from tests.util.mark import MACOS, MACOS_WHEEL_BUILD
++from tests.util.mark import ARM64
+ 
+ 
+ @pytest.mark.parametrize("dynamic_schema", [True, False])
+@@ -241,12 +241,13 @@ def test_type_promotion_int64_and_float64_up_to_float64(lmdb_version_store_dynam
+     data = lib.read("test").data.astype(original_type)
+ 
+     assert data.iloc[0, 0] == np.iinfo(original_type).min  # out by one compared to original
+-    if MACOS: # Should be related to the disparity of overflow handling in ARM64 vs x86_64 rather than OS
+-        # e.g. (int32_t)(double(std::numeric_limits<int32_t>::max()) + 1)
+-        # -2147483648 on linux, 2147483647 on macOS
+-        assert data.iloc[1, 0] == np.iinfo(original_type).max
+-    else:
+-        assert data.iloc[1, 0] == np.iinfo(original_type).min  # overflowed
++
++    # x86_64 and arm64 have different overflow handling, so we need to check for both
++    # e.g. (int32_t)(double(std::numeric_limits<int32_t>::max()) + 1) is:
++    # -2147483648 on x86_64,
++    #  2147483647 on ARM64
++    expected_overflow = np.iinfo(original_type).max if ARM64 else np.iinfo(original_type).min
++    assert data.iloc[1, 0] == expected_overflow
+     assert data.iloc[2, 0] == 2 ** 53 - 1  # fine, this fits in float64 which has an 11 bit exponent
+     assert data.iloc[3, 0] == 2 ** 53  # also fine
+     assert data.iloc[4, 0] == 2 ** 53  # off by one, should be 2 ** 53 + 1 but we lost precision
+diff --git a/python/tests/util/mark.py b/python/tests/util/mark.py
+index 0e0929f46..d72a714bb 100644
+--- a/python/tests/util/mark.py
++++ b/python/tests/util/mark.py
+@@ -9,6 +9,7 @@ As of the Change Date specified in that file, in accordance with the Business So
+ import os
+ import sys
+ import pytest
++import platform
+ from typing import Union
+ from datetime import date
+ from numpy import datetime64
+@@ -20,6 +21,9 @@ MACOS = sys.platform.lower().startswith("darwin")
+ LINUX = sys.platform.lower().startswith("linux")
+ WINDOWS = sys.platform.lower().startswith("win32")
+ 
++# Architecture detection
++ARM64 = platform.machine().lower() in ("arm64", "aarch64")
++
+ # TODO: Some tests are either segfaulting or failing on MacOS with conda builds.
+ # This is meant to be used as a temporary flag to skip/xfail those tests.
+ ARCTICDB_USING_CONDA = marks.ARCTICDB_USING_CONDA
+-- 
+2.50.1
+

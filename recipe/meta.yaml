@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.1.1" %}
+{% set version = "6.1.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 04dc2034c73e77607dc339407646834eafe4818e71da261e778cef9ace985a7a
+  sha256: 28437721beba1efe1a26d71c8695030d582aad5d1f6f43a5f42c2b455cee579c
   patches:
     - 0001-Adapt-test_type_promotion_int64_and_float64_up_to_fl.patch
 

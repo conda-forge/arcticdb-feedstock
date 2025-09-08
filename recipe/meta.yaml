@@ -8,8 +8,6 @@ package:
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 79a4b7cad9a7ef866783011af0fb59acf7ab480bb446e1e23ab012c6c03c59d1
-  patches:
-    - 0001-Adapt-test_type_promotion_int64_and_float64_up_to_fl.patch
 
 build:
   skip: true  # [win]

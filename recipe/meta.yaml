@@ -98,6 +98,7 @@ requirements:
     - protobuf >=3.5.1
     - lmdb
     - packaging
+    - sparrow >=1.1.2,<2
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:

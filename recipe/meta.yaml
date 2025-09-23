@@ -80,6 +80,8 @@ requirements:
     - entt
     - sparrow-devel >=1.1.2,<2
   run:
+    # TODO: fix runtime requirements of sparrow
+    - sparrow >=1.1.2,<2
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See install_requires: https://github.com/man-group/ArcticDB/blob/master/setup.cfg

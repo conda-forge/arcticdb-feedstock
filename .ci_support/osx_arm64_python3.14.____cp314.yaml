@@ -19,7 +19,7 @@ c_stdlib:
 c_stdlib_version:
 - '11.0'
 channel_sources:
-- conda-forge
+- conda-forge,conda-forge/label/python_rc
 channel_targets:
 - conda-forge main
 cxx_compiler:
@@ -51,7 +51,7 @@ lmdb:
 lz4_c:
 - '1.10'
 macos_machine:
-- x86_64-apple-darwin13.4.0
+- arm64-apple-darwin20.0.0
 msgpack_c:
 - '6'
 nodejs:
@@ -67,11 +67,11 @@ pin_run_as_build:
     min_pin: x.x
     max_pin: x.x
 python:
-- 3.12.* *_cpython
+- 3.14.* *_cp314
 spdlog:
 - '1.15'
 target_platform:
-- osx-64
+- osx-arm64
 xxhash:
 - 0.8.2
 zip_keys:

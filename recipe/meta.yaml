@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 452d67c3bad8a387beb8e2a393a85f396aad8ca8e4cf894b13555b9689ae83ae
+  sha256: 46a484a9910074675801c7ee43b04e58d344008ada87ff2dab90a38a1ec5ad57
 
 build:
   skip: true  # [win]
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

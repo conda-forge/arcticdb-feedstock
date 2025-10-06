@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.1.1" %}
+{% set version = "6.2.4" %}
 
 package:
   name: {{ name|lower }}
@@ -7,13 +7,11 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 04dc2034c73e77607dc339407646834eafe4818e71da261e778cef9ace985a7a
-  patches:
-    - 0001-Adapt-test_type_promotion_int64_and_float64_up_to_fl.patch
+  sha256: 59f0d88dd4dcf0924a3c65d03c5c983307732f5c6ac0b03cda2158df643c0fd0
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -80,7 +78,7 @@ requirements:
     - gtest
     - benchmark
     - entt
-    - sparrow <2
+    - sparrow-devel >=1.1.2,<2
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml

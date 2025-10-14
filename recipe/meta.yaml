@@ -79,6 +79,12 @@ requirements:
     - benchmark
     - entt
     - sparrow-devel >=1.1.2,<2
+    # Note: nlohmann_json is not a direct dependency of ArcticDB, but is required
+    # by a target in sparrow for the build to complete. Adding it here does not
+    # create a new dependency for ArcticDB itself at runtime because
+    # nlohmann_json does not have runtime requirements.
+    # TODO: Remove once https://github.com/conda-forge/sparrow-feedstock/issues/35 is resolved.
+    - nlohmann_json
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml

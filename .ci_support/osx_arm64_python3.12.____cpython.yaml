@@ -27,7 +27,7 @@ cxx_compiler:
 cxx_compiler_version:
 - '19'
 fmt:
-- '11.2'
+- '12.0'
 folly:
 - 2025.04.14.00
 gflags:
@@ -69,7 +69,7 @@ pin_run_as_build:
 python:
 - 3.12.* *_cpython
 spdlog:
-- '1.15'
+- '1.16'
 target_platform:
 - osx-arm64
 xxhash:

@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.2.4" %}
+{% set version = "6.2.5" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 59f0d88dd4dcf0924a3c65d03c5c983307732f5c6ac0b03cda2158df643c0fd0
+  sha256: 11b0968106d9c74c9216e3a03fad1c97950ba9229cf31941f371b2bfc32a8d6c
 
 build:
   skip: true  # [win]
@@ -79,6 +79,12 @@ requirements:
     - benchmark
     - entt
     - sparrow-devel >=1.1.2,<2
+    # Note: nlohmann_json is not a direct dependency of ArcticDB, but is required
+    # by a target in sparrow for the build to complete. Adding it here does not
+    # create a new dependency for ArcticDB itself at runtime because
+    # nlohmann_json does not have runtime requirements.
+    # TODO: Remove once https://github.com/conda-forge/sparrow-feedstock/issues/35 is resolved.
+    - nlohmann_json
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml

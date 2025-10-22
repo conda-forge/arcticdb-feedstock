@@ -5,11 +5,11 @@ MACOSX_SDK_VERSION:
 aws_sdk_cpp:
 - 1.11.606
 azure_core_cpp:
-- 1.16.0
+- 1.16.1
 azure_identity_cpp:
-- 1.12.0
+- 1.13.2
 azure_storage_blobs_cpp:
-- 12.14.0
+- 12.15.0
 c_compiler:
 - clang
 c_compiler_version:
@@ -59,7 +59,7 @@ nodejs:
 numpy:
 - '2'
 openssl:
-- '3'
+- '3.5'
 pcre2:
 - '10.46'
 pin_run_as_build:

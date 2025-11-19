@@ -36,8 +36,6 @@ libabseil:
 - '20250512'
 libboost_devel:
 - '1.88'
-libcurl:
-- '8'
 libevent:
 - 2.1.12
 liblzma_devel:

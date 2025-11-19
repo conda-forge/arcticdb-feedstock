@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.2.5" %}
+{% set version = "6.3.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,11 +7,11 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 11b0968106d9c74c9216e3a03fad1c97950ba9229cf31941f371b2bfc32a8d6c
+  sha256: 298a062c359a99ef7c6791474e45d4760862817a2a9f7f0f41666b9b2cae4286
 
 build:
   skip: true  # [win]
-  number: 1
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -50,7 +50,8 @@ requirements:
     - libabseil
     - libprotobuf
     - openssl
-    - libcurl
+    # TODO: understand why libcurl >=8.17 causes runtime failures
+    - libcurl <8.17
     # TODO: Fix builds for missing symbols
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9
@@ -79,12 +80,6 @@ requirements:
     - benchmark
     - entt
     - sparrow-devel >=1.1.2,<2
-    # Note: nlohmann_json is not a direct dependency of ArcticDB, but is required
-    # by a target in sparrow for the build to complete. Adding it here does not
-    # create a new dependency for ArcticDB itself at runtime because
-    # nlohmann_json does not have runtime requirements.
-    # TODO: Remove once https://github.com/conda-forge/sparrow-feedstock/issues/35 is resolved.
-    - nlohmann_json
   run:
   # This environment specification must be maintained in sync with the one upstream:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
@@ -104,6 +99,8 @@ requirements:
     - protobuf >=3.5.1
     - lmdb
     - packaging
+    # TODO: understand why libcurl >=8.17 causes runtime failures
+    - libcurl <8.17
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:

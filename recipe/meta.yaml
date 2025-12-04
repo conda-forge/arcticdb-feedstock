@@ -11,6 +11,7 @@ source:
 
 build:
   number: 3
+  skip: true  # [win and py>=314]
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

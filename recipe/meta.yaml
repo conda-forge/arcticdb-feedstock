@@ -6,12 +6,11 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: ee4be67c7753b05094260f7bb87a424d88d7950c2aca192ffe175f6072ef6f34
+  url: https://github.com/man-group/ArcticDB/archive/refs/heads/build/windows-conda-build.tar.gz
+  sha256: 037c12541499c1ece4acc1277fbe550e23680d32f97ecbe05a00873df9954ad5
 
 build:
-  skip: true  # [win]
-  number: 2
+  number: 3
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -127,8 +126,9 @@ test:
     - mock
     - trustme
     - psutil
-    - memray
-    - pytest-memray
+    # Use memray and pytest-memray only on Linux and MacOS
+    - memray                 # [unix]
+    - pytest-memray          # [unix]
     - retrying
   # Extra dependencies
     - pytest-rerunfailures

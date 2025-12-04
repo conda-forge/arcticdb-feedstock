@@ -1,6 +1,10 @@
 @echo off
 setlocal EnableDelayedExpansion
 
+:: Necessary so that it can build with Ninja
+set CMAKE_GENERATOR_PLATFORM=
+set CMAKE_GENERATOR_TOOLSET=
+
 :: Use 'windows-cl-conda-release' as the cmake preset
 set ARCTIC_CMAKE_PRESET=windows-cl-conda-release
 

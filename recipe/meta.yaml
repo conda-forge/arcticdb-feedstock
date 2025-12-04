@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/heads/build/windows-conda-build.tar.gz
-  sha256: 037c12541499c1ece4acc1277fbe550e23680d32f97ecbe05a00873df9954ad5
+  sha256: bbda127293c8f360629a451ffd02cbb28e19a26b3d99f744744696eb7ba67d49
 
 build:
   number: 3

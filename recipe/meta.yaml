@@ -117,7 +117,7 @@ test:
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
     - polars
-    - pyarrow
+    - pyarrow  # [unix]
     - pytest-cpp
     - pytest-timeout
     - packaging

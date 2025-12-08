@@ -25,3 +25,7 @@ set "CXXFLAGS=%CXXFLAGS% -DGLOG_USE_GLOG_EXPORT"
 
 if errorlevel 1 exit 1
 
+echo "Freeing up disk space"
+rmdir /s /q %SRC_DIR%\cpp\out
+echo "End of freeing up disk space"
+echo "End of build script"

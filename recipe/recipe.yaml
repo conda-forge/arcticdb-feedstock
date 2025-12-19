@@ -145,7 +145,7 @@ tests:
         - nodejs  # for npm
     files:
       source:
-        - python/tests
+        - python/tests/
     script:
       - npm install -g azurite
       # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage

@@ -13,7 +13,7 @@ source:
 build:
   number: 2
   skip:
-    - win
+    - win and py>=314
   python:
     entry_points:
       - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -25,6 +25,7 @@ requirements:
     - ${{ stdlib("c") }}
     - cmake
     - make
+    - sccache
     - if: build_platform != target_platform
       then:
         - python
@@ -32,7 +33,15 @@ requirements:
         - grpcio-tools
         - protobuf
         - cross-python_${{ target_platform }}
-        - libprotobuf
+        - if: win
+          then:
+            # We have to use the build of `libprotobuf 5.29.3` introduced by this PR (or more recent ones).
+            # https://github.com/conda-forge/libprotobuf-feedstock/pull/277
+            - libprotobuf ==5.29.3 h*_3
+            # This version of libabseil is required for libprotobuf 5.29.3.
+            - libabseil ==20250127.1
+          else:
+            - libprotobuf
         - pkg-config
         - gnuconfig
   host:
@@ -51,8 +60,16 @@ requirements:
     - prometheus-cpp
     - double-conversion
     - libevent
-    - libabseil
-    - libprotobuf
+    - if: win
+      then:
+        # We have to use the build of `libprotobuf 5.29.3` introduced by this PR (or more recent ones).
+        # https://github.com/conda-forge/libprotobuf-feedstock/pull/277
+        - libprotobuf ==5.29.3 h*_3
+        # This version of libabseil is required for libprotobuf 5.29.3.
+        - libabseil ==20250127.1
+      else:
+        - libabseil
+        - libprotobuf
     - openssl
     # TODO: understand why libcurl >=8.17 causes runtime failures
     - libcurl <8.17
@@ -117,7 +134,10 @@ tests:
         # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
         - pytest
         - polars
-        - pyarrow
+        # PyArrow constraints the environment too much on Windows, so we skip it for now.
+        - if: unix
+          then:
+            - pyarrow
         - pytest-cpp
         - pytest-timeout
         - packaging
@@ -137,8 +157,11 @@ tests:
         - mock
         - trustme
         - psutil
-        - memray
-        - pytest-memray
+        # Memray and pytest-memray are not available on Windows, so we skip them for now.
+        - if: unix
+          then:
+            - memray
+            - pytest-memray
         - retrying
         # Extra dependencies
         - pytest-rerunfailures

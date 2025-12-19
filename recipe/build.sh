@@ -9,11 +9,6 @@ if [[ "$target_platform" == linux* ]]; then
   export CMAKE_BUILD_PARALLEL_LEVEL=1
 fi
 
-# Workaround for: https://github.com/conda-forge/glog-feedstock/issues/26
-# Required to be able to include headers from glog since glog 0.7.
-# See: https://github.com/google/glog/pull/1030
-export CXXFLAGS="$CXXFLAGS -DGLOG_USE_GLOG_EXPORT"
-
 if [[ "$CONDA_BUILD_CROSS_COMPILATION" == "1" ]]; then
   # Get an updated config.sub and config.guess
   # (see https://conda-forge.org/docs/maintainer/knowledge_base.html#cross-compilation)

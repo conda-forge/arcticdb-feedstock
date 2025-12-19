@@ -11,7 +11,7 @@ source:
   sha256: fcc85f085e65e001529f9ae717b8e7c04d4f88578c967f4b4f3b363d4cc2fcf9
 
 build:
-  number: 2
+  number: 3
   skip:
     # grpcio-tools is not available for Python 3.14 on Windows yet
     - win and match(python, ">=3.14")

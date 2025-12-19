@@ -1,9 +1,13 @@
 #!/bin/bash
 
 export ARCTICDB_USING_CONDA=1
-# Compiling ArcticDB with all cores might freeze machines due to swapping.
-# We build with only 1 core to prevent these freezes from happening.
-export CMAKE_BUILD_PARALLEL_LEVEL=1
+
+if [[ "$target_platform" == linux* ]]; then
+  # On all Linux targets, compiling ArcticDB with all cores might freeze machines due to
+  # OOM or swapping when the binary operators' templates specializations are being compiled.
+  # We build with only 1 core to prevent these freezes from happening.
+  export CMAKE_BUILD_PARALLEL_LEVEL=1
+fi
 
 # Workaround for: https://github.com/conda-forge/glog-feedstock/issues/26
 # Required to be able to include headers from glog since glog 0.7.

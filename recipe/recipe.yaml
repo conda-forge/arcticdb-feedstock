@@ -177,33 +177,39 @@ tests:
       source:
         - python/tests/
     script:
-      - npm install -g azurite
-      # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
-      # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
-      # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
-      - export ARCTICDB_FAST_TESTS_ONLY=1
-      # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
-      #
-      # For now, we skip the following tests:
-      #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
-      #  - `test_lmdb_warnings_when_reopened` also currently fails.
-      #  - `test_column_stats_string_column_minmax` fails for linux.
-      #  - `test_force_compact_symbol_list_lock_held_past_ttl` also currently fails for MacOS.
-      #  - `test_filter_numeric_isnotin_signed` is generally flaky
-      #  - for `test_write_non_timestamp_index`, see #246
-      #  - for `test_write_not_sorted_multi_index_exception`, see #247
-      #  - `test_compat` - remove after arcticdb #2194 is merged
-      #  - `test_modify_old_library_option_with_current` - fails despite pyarrow present, investigate
-      #  - `test_pandas_pickling` - fails despite pyarrow present, investigate
-      #  - `test_storage_mover_clone_old_library` - fails despite pyarrow present, investigate
-      #  - `test_write_new_read_old` - fails despite pyarrow present, investigate
-      #  - `test_mean_timestamp_aggregation_with_missing_aggregation_column` - disparity between arcticdb and pandas in handling of default floating point values, pending fix
-      #  - `test_resample` is generally flaky
-      #  - `test_norm_meta_column_and_index_names_write_old_read_new` and `test_norm_meta_column_and_index_names_write_new_read_old`
-      #     - They are flaky compat tests. Should be reenabled once fixed
-      - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
-        and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
-        and not test_write_new_read_old and not test_mean_timestamp_aggregation_with_missing_aggregation_column and not test_resample and not test_norm_meta_column_and_index_names_write_old_read_new and not test_norm_meta_column_and_index_names_write_new_read_old and test_scan_object_sizes_by_stream_threading"
+      # This script's syntax needs to be adapted for Windows (ArcticDB is already tested upstream).
+      # This can be portably rewritten with the python interpreter and `pytest.main` Python API.
+      - if: unix
+        then:
+          - npm install -g azurite
+          # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
+          # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
+          # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
+          - export ARCTICDB_FAST_TESTS_ONLY=1
+          # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
+          #
+          # For now, we skip the following tests:
+          #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
+          #  - `test_lmdb_warnings_when_reopened` also currently fails.
+          #  - `test_column_stats_string_column_minmax` fails for linux.
+          #  - `test_force_compact_symbol_list_lock_held_past_ttl` also currently fails for MacOS.
+          #  - `test_filter_numeric_isnotin_signed` is generally flaky
+          #  - for `test_write_non_timestamp_index`, see #246
+          #  - for `test_write_not_sorted_multi_index_exception`, see #247
+          #  - `test_compat` - remove after arcticdb #2194 is merged
+          #  - `test_modify_old_library_option_with_current` - fails despite pyarrow present, investigate
+          #  - `test_pandas_pickling` - fails despite pyarrow present, investigate
+          #  - `test_storage_mover_clone_old_library` - fails despite pyarrow present, investigate
+          #  - `test_write_new_read_old` - fails despite pyarrow present, investigate
+          #  - `test_mean_timestamp_aggregation_with_missing_aggregation_column` - disparity between arcticdb and pandas in handling of default floating point values, pending fix
+          #  - `test_resample` is generally flaky
+          #  - `test_norm_meta_column_and_index_names_write_old_read_new` and `test_norm_meta_column_and_index_names_write_new_read_old`
+          #     - They are flaky compat tests. Should be reenabled once fixed
+          - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
+            and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
+            and not test_write_new_read_old and not test_mean_timestamp_aggregation_with_missing_aggregation_column and not test_resample and not test_norm_meta_column_and_index_names_write_old_read_new and not test_norm_meta_column_and_index_names_write_new_read_old and test_scan_object_sizes_by_stream_threading"
+        else:
+          - echo Skipping tests on Windows for now (ArcticDB is tested upstream).
 
 about:
   homepage: https://arcticdb.io/

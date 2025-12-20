@@ -7,13 +7,14 @@ package:
   version: ${{ version }}
 
 source:
-  url: https://github.com/man-group/ArcticDB/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: cdd35efd5662fea77a1721af176fdf9029cf66f53245bf6999da3c457d338f3c
+  url: https://github.com/man-group/ArcticDB/archive/refs/heads/master.tar.gz
+  sha256: 0acded22c900266ff4b89a88cc441e963946ba034be3477abb4e9517144c5833
 
 build:
-  number: 2
+  number: 3
   skip:
-    - win
+    # grpcio-tools is not available for Python 3.14 on Windows yet
+    - win and match(python, ">=3.14")
   python:
     entry_points:
       - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -25,6 +26,7 @@ requirements:
     - ${{ stdlib("c") }}
     - cmake
     - make
+    - sccache
     - if: build_platform != target_platform
       then:
         - python
@@ -32,7 +34,18 @@ requirements:
         - grpcio-tools
         - protobuf
         - cross-python_${{ target_platform }}
-        - libprotobuf
+        - if: win
+          then:
+            # `libprotobuf 6` cannot be installed on Windows in this environment because it is too constrained.
+            # We have to use the build of `libprotobuf 5.29.3` (or more recent ones) introduced by this PR
+            # to resolve ABI incompatibilities after migrating to C++20.
+            # https://github.com/conda-forge/libprotobuf-feedstock/pull/277
+            # A similar patch would also be required for `libprotobuf 6`.
+            - libprotobuf ==5.29.3 h*_3
+            # This version of libabseil is required for libprotobuf 5.29.3.
+            - libabseil ==20250127.1
+          else:
+            - libprotobuf
         - pkg-config
         - gnuconfig
   host:
@@ -51,8 +64,19 @@ requirements:
     - prometheus-cpp
     - double-conversion
     - libevent
-    - libabseil
-    - libprotobuf
+    - if: win
+      then:
+        # `libprotobuf 6` cannot be installed on Windows in this environment because it is too constrained.
+        # We have to use the build of `libprotobuf 5.29.3` (or more recent ones) introduced by this PR
+        # to resolve ABI incompatibilities after migrating to C++20.
+        # https://github.com/conda-forge/libprotobuf-feedstock/pull/277
+        # A similar patch would also be required for `libprotobuf 6`.
+        - libprotobuf ==5.29.3 h*_3
+        # This version of libabseil is required for libprotobuf 5.29.3.
+        - libabseil ==20250127.1
+      else:
+        - libabseil
+        - libprotobuf
     - openssl
     # TODO: understand why libcurl >=8.17 causes runtime failures
     - libcurl <8.17
@@ -117,7 +141,10 @@ tests:
         # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
         - pytest
         - polars
-        - pyarrow
+        # PyArrow constraints the environment too much on Windows, so we skip it for now.
+        - if: unix
+          then:
+            - pyarrow
         - pytest-cpp
         - pytest-timeout
         - packaging
@@ -137,8 +164,11 @@ tests:
         - mock
         - trustme
         - psutil
-        - memray
-        - pytest-memray
+        # Memray and pytest-memray are not available on Windows, so we skip them for now.
+        - if: unix
+          then:
+            - memray
+            - pytest-memray
         - retrying
         # Extra dependencies
         - pytest-rerunfailures
@@ -147,33 +177,39 @@ tests:
       source:
         - python/tests/
     script:
-      - npm install -g azurite
-      # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
-      # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
-      # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
-      - export ARCTICDB_FAST_TESTS_ONLY=1
-      # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
-      #
-      # For now, we skip the following tests:
-      #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
-      #  - `test_lmdb_warnings_when_reopened` also currently fails.
-      #  - `test_column_stats_string_column_minmax` fails for linux.
-      #  - `test_force_compact_symbol_list_lock_held_past_ttl` also currently fails for MacOS.
-      #  - `test_filter_numeric_isnotin_signed` is generally flaky
-      #  - for `test_write_non_timestamp_index`, see #246
-      #  - for `test_write_not_sorted_multi_index_exception`, see #247
-      #  - `test_compat` - remove after arcticdb #2194 is merged
-      #  - `test_modify_old_library_option_with_current` - fails despite pyarrow present, investigate
-      #  - `test_pandas_pickling` - fails despite pyarrow present, investigate
-      #  - `test_storage_mover_clone_old_library` - fails despite pyarrow present, investigate
-      #  - `test_write_new_read_old` - fails despite pyarrow present, investigate
-      #  - `test_mean_timestamp_aggregation_with_missing_aggregation_column` - disparity between arcticdb and pandas in handling of default floating point values, pending fix
-      #  - `test_resample` is generally flaky
-      #  - `test_norm_meta_column_and_index_names_write_old_read_new` and `test_norm_meta_column_and_index_names_write_new_read_old`
-      #     - They are flaky compat tests. Should be reenabled once fixed
-      - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
-        and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
-        and not test_write_new_read_old and not test_mean_timestamp_aggregation_with_missing_aggregation_column and not test_resample and not test_norm_meta_column_and_index_names_write_old_read_new and not test_norm_meta_column_and_index_names_write_new_read_old and test_scan_object_sizes_by_stream_threading"
+      # This script's syntax needs to be adapted for Windows (ArcticDB is already tested upstream).
+      # This can be portably rewritten with the python interpreter and `pytest.main` Python API.
+      - if: unix
+        then:
+          - npm install -g azurite
+          # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
+          # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
+          # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
+          - export ARCTICDB_FAST_TESTS_ONLY=1
+          # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
+          #
+          # For now, we skip the following tests:
+          #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
+          #  - `test_lmdb_warnings_when_reopened` also currently fails.
+          #  - `test_column_stats_string_column_minmax` fails for linux.
+          #  - `test_force_compact_symbol_list_lock_held_past_ttl` also currently fails for MacOS.
+          #  - `test_filter_numeric_isnotin_signed` is generally flaky
+          #  - for `test_write_non_timestamp_index`, see #246
+          #  - for `test_write_not_sorted_multi_index_exception`, see #247
+          #  - `test_compat` - remove after arcticdb #2194 is merged
+          #  - `test_modify_old_library_option_with_current` - fails despite pyarrow present, investigate
+          #  - `test_pandas_pickling` - fails despite pyarrow present, investigate
+          #  - `test_storage_mover_clone_old_library` - fails despite pyarrow present, investigate
+          #  - `test_write_new_read_old` - fails despite pyarrow present, investigate
+          #  - `test_mean_timestamp_aggregation_with_missing_aggregation_column` - disparity between arcticdb and pandas in handling of default floating point values, pending fix
+          #  - `test_resample` is generally flaky
+          #  - `test_norm_meta_column_and_index_names_write_old_read_new` and `test_norm_meta_column_and_index_names_write_new_read_old`
+          #     - They are flaky compat tests. Should be reenabled once fixed
+          - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
+            and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
+            and not test_write_new_read_old and not test_mean_timestamp_aggregation_with_missing_aggregation_column and not test_resample and not test_norm_meta_column_and_index_names_write_old_read_new and not test_norm_meta_column_and_index_names_write_new_read_old and test_scan_object_sizes_by_stream_threading"
+        else:
+          - echo Skipping tests on Windows for now (ArcticDB is tested upstream).
 
 about:
   homepage: https://arcticdb.io/

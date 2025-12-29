@@ -1,6 +1,6 @@
 context:
   name: "arcticdb"
-  version: "6.5.0"
+  version: "6.7.0"
 
 package:
   name: ${{ name }}
@@ -8,10 +8,10 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v${{ version }}.tar.gz
-  sha256: cdd35efd5662fea77a1721af176fdf9029cf66f53245bf6999da3c457d338f3c
+  sha256: 5aa734588ade30a8c84661e7328d3ffa9a49ef1a2f26295fa59c37aa3635eb5d
 
 build:
-  number: 2
+  number: 0
   skip:
     - win
   python:

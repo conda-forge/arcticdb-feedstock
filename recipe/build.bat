@@ -20,7 +20,3 @@ set ARCTICDB_USING_CONDA=1
 
 if errorlevel 1 exit 1
 
-echo Freeing up disk space
-rmdir /s /q %SRC_DIR%\cpp\out
-echo End of freeing up disk space
-

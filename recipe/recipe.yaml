@@ -11,9 +11,10 @@ source:
   sha256: 5aa734588ade30a8c84661e7328d3ffa9a49ef1a2f26295fa59c37aa3635eb5d
 
 build:
-  number: 0
+  number: 1
   skip:
-    - win
+    # grpcio-tools is not available for Python 3.14 on Windows yet
+    - win and match(python, ">=3.14")
   python:
     entry_points:
       - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -33,7 +34,18 @@ requirements:
         - grpcio-tools
         - protobuf
         - cross-python_${{ target_platform }}
-        - libprotobuf
+        - if: win
+          then:
+            # `libprotobuf 6` cannot be installed on Windows in this environment because it is too constrained.
+            # We have to use the build of `libprotobuf 5.29.3` (or more recent ones) introduced by this PR
+            # to resolve ABI incompatibilities after migrating to C++20.
+            # https://github.com/conda-forge/libprotobuf-feedstock/pull/277
+            # A similar patch would also be required for `libprotobuf 6`.
+            - libprotobuf ==5.29.3 h*_3
+            # This version of libabseil is required for libprotobuf 5.29.3.
+            - libabseil ==20250127.1
+          else:
+            - libprotobuf
         - pkg-config
         - gnuconfig
   host:
@@ -52,8 +64,19 @@ requirements:
     - prometheus-cpp
     - double-conversion
     - libevent
-    - libabseil
-    - libprotobuf
+    - if: win
+      then:
+        # `libprotobuf 6` cannot be installed on Windows in this environment because it is too constrained.
+        # We have to use the build of `libprotobuf 5.29.3` (or more recent ones) introduced by this PR
+        # to resolve ABI incompatibilities after migrating to C++20.
+        # https://github.com/conda-forge/libprotobuf-feedstock/pull/277
+        # A similar patch would also be required for `libprotobuf 6`.
+        - libprotobuf ==5.29.3 h*_3
+        # This version of libabseil is required for libprotobuf 5.29.3.
+        - libabseil ==20250127.1
+      else:
+        - libabseil
+        - libprotobuf
     - openssl
     # TODO: understand why libcurl >=8.17 causes runtime failures
     - libcurl <8.17
@@ -118,7 +141,10 @@ tests:
         # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
         - pytest
         - polars
-        - pyarrow
+        # PyArrow constraints the environment too much on Windows, so we skip it for now.
+        - if: unix
+          then:
+            - pyarrow
         - pytest-cpp
         - pytest-timeout
         - packaging
@@ -138,8 +164,11 @@ tests:
         - mock
         - trustme
         - psutil
-        - memray
-        - pytest-memray
+        # Memray and pytest-memray are not available on Windows, so we skip them for now.
+        - if: unix
+          then:
+            - memray
+            - pytest-memray
         - retrying
         # Extra dependencies
         - pytest-rerunfailures

@@ -25,6 +25,7 @@ requirements:
     - ${{ stdlib("c") }}
     - cmake
     - make
+    - sccache
     - if: build_platform != target_platform
       then:
         - python

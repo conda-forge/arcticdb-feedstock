@@ -8,7 +8,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/heads/master.tar.gz
-  sha256: 0acded22c900266ff4b89a88cc441e963946ba034be3477abb4e9517144c5833
+  sha256: aeed10f7bc3b71c836cc2129b8c1b09aa194ff2f80288c298a217c8f32cac556
 
 build:
   number: 3

@@ -24,12 +24,16 @@ gflags:
 - '2.2'
 glog:
 - '0.7'
+libabseil:
+- '20250512'
 libboost_devel:
 - '1.88'
 libevent:
 - 2.1.12
 liblzma_devel:
 - '5'
+libprotobuf:
+- 6.31.1
 lmdb:
 - 0.9.22
 lz4_c:

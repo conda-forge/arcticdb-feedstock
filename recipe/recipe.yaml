@@ -12,9 +12,6 @@ source:
 
 build:
   number: 1
-  skip:
-    # grpcio-tools is not available for Python 3.14 on Windows yet
-    - win and match(python, ">=3.14")
   python:
     entry_points:
       - arcticdb_update_storage = arcticdb.scripts.update_storage:main

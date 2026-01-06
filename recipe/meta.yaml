@@ -1,0 +1,207 @@
+{% set name = "arcticdb" %}
+{% set version = "6.6.0" %}
+
+package:
+  name: {{ name|lower }}
+  version: {{ version }}
+
+source:
+  url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
+  sha256: 310e7e67a9a42d02f341c9f70e4a0330ab55d4d9b2f3b9dde9af4308a52afdd3
+
+build:
+  number: 1
+
+  entry_points:
+    - arcticdb_update_storage = arcticdb.scripts.update_storage:main
+
+requirements:
+  build:
+    - {{ compiler('cxx') }}
+    - {{ compiler('c') }}
+    - {{ stdlib("c") }}
+    - cmake
+    - make
+    - sccache
+    - python                                  # [build_platform != target_platform]
+    - numpy                                   # [build_platform != target_platform]
+    - grpcio-tools                            # [build_platform != target_platform]
+    - protobuf                                # [build_platform != target_platform]
+    - cross-python_{{ target_platform }}      # [build_platform != target_platform]
+    - libprotobuf                             # [build_platform != target_platform]
+    - pkg-config                              # [build_platform != target_platform]
+    - gnuconfig                               # [build_platform != target_platform]
+  host:
+    # This environment specification must be maintained in sync with the one upstream:
+    # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+    # Note that some dependencies' versions are constrained in `conda_build_config.yaml`
+    # because specifying it here does not overide the conda-forge's global pinning.
+    - python
+    - setuptools
+    - numpy
+    - pip
+    - libboost-devel
+    - liblzma-devel
+    - folly
+    - lz4-c
+    - prometheus-cpp
+    - double-conversion
+    - libevent
+    - libabseil
+    - libprotobuf
+    - openssl
+    # TODO: understand why libcurl >=8.17 causes runtime failures
+    - libcurl <8.17
+    # TODO: Fix builds for missing symbols
+    # See: https://github.com/man-group/ArcticDB/pull/1050
+    - libmongocxx <3.9
+    - zstd
+    - pybind11
+    - pcre2
+    - gflags
+    - msgpack-c
+    - aws-sdk-cpp
+    - azure-core-cpp
+    - azure-identity-cpp
+    - azure-storage-blobs-cpp
+    - bitmagic
+    - xxhash
+    - semimap
+    - grpcio-tools
+    - protobuf
+    - spdlog
+    - unordered_dense
+    - recycle
+    - lmdb
+    - lmdbxx
+    - fmt
+    - glog
+    - gtest
+    - benchmark
+    - entt
+    - sparrow-devel >=1.1.2,<2
+  run:
+  # This environment specification must be maintained in sync with the one upstream:
+  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+  # See install_requires: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
+    - glog
+    - python
+    # To keep in sync with `install_requires` in setup.cfg.
+    - pandas
+    - attrs
+    - decorator
+    - msgpack-python >=0.5.0
+    - psutil
+    - pyyaml
+    # Resolves https://github.com/man-group/ArcticDB/issues/465
+    - aws-crt-cpp >=0.19.8
+    - prometheus-cpp
+    - protobuf >=3.5.1
+    - lmdb
+    - packaging
+    # TODO: understand why libcurl >=8.17 causes runtime failures
+    - libcurl <8.17
+test:
+  requires:
+  # This environment specification must be maintained in sync with the one upstream:
+  # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
+  # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
+    - pytest
+    - polars
+    - pytest-cpp
+    - pytest-timeout
+    - packaging
+    - future
+    - mock
+    - boto3
+    - moto
+    - flask  # Used by moto
+    - flask-cors
+    - hypothesis <6.73
+    - azure-storage-blob
+    - azure-identity
+    - coverage
+    - asv
+    - virtualenv
+    - pymongo
+    - mock
+    - trustme
+    - psutil
+    - retrying
+    # Memray and pytest-memray are not available on Windows, so we skip them for now.
+    - memray                          # [unix]
+    - pytest-memray                   # [unix]
+    # PyArrow constraints the environment too much on Windows, so we skip it for now.
+    - pyarrow                         # [unix]
+  # Extra dependencies
+    - pytest-rerunfailures
+    - nodejs  # for npm
+  source_files:
+    - python/tests
+  imports:
+    - arcticdb
+  commands:
+    - npm install -g azurite
+    # Skip slow tests, which includes the ones for MongoDB and Azure Blob Storage
+    # See: https://github.com/conda-forge/arcticdb-feedstock/issues/151
+    # See: https://github.com/conda-forge/arcticdb-feedstock/issues/152
+    - export ARCTICDB_FAST_TESTS_ONLY=1
+    # Machines have 2 CPUs, we retry in case of failure to be sure all configurations' builds are published.
+    #
+    # For now, we skip the following tests:
+    #  - Tests for Azure are deactivated for now (not present for MacOS, fails for Linux).
+    #  - `test_lmdb_warnings_when_reopened` also currently fails.
+    #  - `test_column_stats_string_column_minmax` fails for linux.
+    #  - `test_force_compact_symbol_list_lock_held_past_ttl` also currently fails for MacOS.
+    #  - `test_filter_numeric_isnotin_signed` is generally flaky
+    #  - for `test_write_non_timestamp_index`, see #246
+    #  - for `test_write_not_sorted_multi_index_exception`, see #247
+    #  - `test_compat` - remove after arcticdb #2194 is merged
+    #  - `test_modify_old_library_option_with_current` - fails despite pyarrow present, investigate
+    #  - `test_pandas_pickling` - fails despite pyarrow present, investigate
+    #  - `test_storage_mover_clone_old_library` - fails despite pyarrow present, investigate
+    #  - `test_write_new_read_old` - fails despite pyarrow present, investigate
+    #  - `test_mean_timestamp_aggregation_with_missing_aggregation_column` - disparity between arcticdb and pandas in handling of default floating point values, pending fix
+    #  - `test_resample` is generally flaky
+    #  - `test_norm_meta_column_and_index_names_write_old_read_new` and `test_norm_meta_column_and_index_names_write_new_read_old`
+    #     - They are flaky compat tests. Should be reenabled once fixed
+    - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
+      and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
+      and not test_write_new_read_old and not test_mean_timestamp_aggregation_with_missing_aggregation_column and not test_resample and not test_norm_meta_column_and_index_names_write_old_read_new and not test_norm_meta_column_and_index_names_write_new_read_old and test_scan_object_sizes_by_stream_threading"
+
+about:
+  home: https://arcticdb.io/
+  summary: ArcticDB is a high performance, serverless DataFrame database built for the Python Data Science ecosystem.
+  description: |
+    **ArcticDB** is a high performance, serverless **DataFrame database** built for
+    the Python Data Science ecosystem. Launched in March 2023, it is the successor
+    to [Arctic](https://github.com/man-group/arctic).
+    ArcticDB offers an intuitive Python-centric API enabling you to read and write
+    Pandas DataFrames to S3 or LMDB utilising a fast C++ data-processing and
+    compression engine.
+  license: BUSL-1.1
+  license_family: OTHER
+  license_file: LICENSE.txt
+  doc_url: https://docs.arcticdb.io
+  dev_url: https://github.com/man-group/ArcticDB
+
+extra:
+  recipe-maintainers:
+    - maxim-morozov
+    - ognyanstoimenov
+    - joe-iddon
+    - G-D-Petrov
+    - IvoDD
+    - Hind-M
+    - Klaim
+    - JohanMabille
+    - DerThorsten
+    - jjerphan
+    - mehertz
+    - jamesmunro
+    - qc00
+    - willdealtry
+    - poodlewars
+    - vasil-pashov
+    - phoebusm
+    - alexowens90

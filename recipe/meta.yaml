@@ -22,6 +22,7 @@ requirements:
     - {{ stdlib("c") }}
     - cmake
     - make
+    - sccache
     - python                                  # [build_platform != target_platform]
     - numpy                                   # [build_platform != target_platform]
     - grpcio-tools                            # [build_platform != target_platform]

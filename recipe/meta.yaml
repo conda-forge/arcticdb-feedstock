@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.3.1" %}
+{% set version = "6.6.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,9 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: 298a062c359a99ef7c6791474e45d4760862817a2a9f7f0f41666b9b2cae4286
+  sha256: 310e7e67a9a42d02f341c9f70e4a0330ab55d4d9b2f3b9dde9af4308a52afdd3
 
 build:
-  skip: true  # [win]
   number: 1
 
   entry_points:
@@ -23,6 +22,7 @@ requirements:
     - {{ stdlib("c") }}
     - cmake
     - make
+    - sccache
     - python                                  # [build_platform != target_platform]
     - numpy                                   # [build_platform != target_platform]
     - grpcio-tools                            # [build_platform != target_platform]
@@ -107,7 +107,7 @@ test:
   # See: https://github.com/man-group/ArcticDB/blob/master/environment_unix.yml
   # See `options.extras_require`: https://github.com/man-group/ArcticDB/blob/master/setup.cfg
     - pytest
-    - pyarrow
+    - polars
     - pytest-cpp
     - pytest-timeout
     - packaging
@@ -127,9 +127,12 @@ test:
     - mock
     - trustme
     - psutil
-    - memray
-    - pytest-memray
     - retrying
+    # Memray and pytest-memray are not available on Windows, so we skip them for now.
+    - memray                          # [unix]
+    - pytest-memray                   # [unix]
+    # PyArrow constraints the environment too much on Windows, so we skip it for now.
+    - pyarrow                         # [unix]
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm
@@ -164,7 +167,7 @@ test:
     #     - They are flaky compat tests. Should be reenabled once fixed
     - ARCTICDB_RAND_SEED=$RANDOM pytest python/tests --verbose --reruns 5 --reruns-delay 1 -k "not Azure and not azurite and not test_lmdb_warnings_when_reopened and not test_force_compact_symbol_list_lock_held_past_ttl and not test_write_non_timestamp_index and not test_write_not_sorted_multi_index_exception and not test_map_size_bad_input
       and not test_map_size_parsing and not lmdb and not test_column_stats_string_column_minmax and not test_filter_numeric_isnotin_signed and not test_filter_numeric_isnotin_unsigned and not test_compat_ and not test_modify_old_library_option_with_current and not test_pandas_pickling and not test_storage_mover_clone_old_library
-      and not test_write_new_read_old and not test_mean_timestamp_aggregation_with_missing_aggregation_column and not test_resample and not test_norm_meta_column_and_index_names_write_old_read_new and not test_norm_meta_column_and_index_names_write_new_read_old"
+      and not test_write_new_read_old and not test_mean_timestamp_aggregation_with_missing_aggregation_column and not test_resample and not test_norm_meta_column_and_index_names_write_old_read_new and not test_norm_meta_column_and_index_names_write_new_read_old and test_scan_object_sizes_by_stream_threading"
 
 about:
   home: https://arcticdb.io/

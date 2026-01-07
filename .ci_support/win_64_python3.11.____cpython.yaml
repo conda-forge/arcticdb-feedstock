@@ -1,0 +1,64 @@
+aws_sdk_cpp:
+- 1.11.606
+azure_core_cpp:
+- 1.16.1
+azure_identity_cpp:
+- 1.13.2
+azure_storage_blobs_cpp:
+- 12.15.0
+c_compiler:
+- vs2022
+c_stdlib:
+- vs
+channel_sources:
+- conda-forge
+channel_targets:
+- conda-forge arcticdb_rc
+cxx_compiler:
+- vs2022
+fmt:
+- '12.0'
+folly:
+- 2025.04.14.00
+gflags:
+- '2.2'
+glog:
+- '0.7'
+libabseil:
+- '20250512'
+libboost_devel:
+- '1.88'
+libevent:
+- 2.1.12
+liblzma_devel:
+- '5'
+libprotobuf:
+- 6.31.1
+lmdb:
+- 0.9.22
+lz4_c:
+- '1.10'
+msgpack_c:
+- '6'
+nodejs:
+- '18'
+numpy:
+- '2'
+openssl:
+- '3.5'
+pcre2:
+- '10.47'
+pin_run_as_build:
+  python:
+    min_pin: x.x
+    max_pin: x.x
+python:
+- 3.11.* *_cpython
+spdlog:
+- '1.16'
+target_platform:
+- win-64
+xxhash:
+- 0.8.2
+zstd:
+- '1.5'

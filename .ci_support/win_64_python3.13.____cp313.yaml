@@ -17,7 +17,7 @@ channel_targets:
 cxx_compiler:
 - vs2022
 fmt:
-- '12.0'
+- '12.1'
 folly:
 - 2025.04.14.00
 gflags:
@@ -55,7 +55,7 @@ pin_run_as_build:
 python:
 - 3.13.* *_cp313
 spdlog:
-- '1.16'
+- '1.17'
 target_platform:
 - win-64
 xxhash:

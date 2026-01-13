@@ -1,5 +1,4 @@
 @echo off
-setlocal EnableDelayedExpansion
 
 :: Some `CMAKE_*` variables (in particular CMAKE_GENERATOR_{PLATFORM,TOOLSET})
 :: are set by mamba / micromamba / conda when the environment is activated.

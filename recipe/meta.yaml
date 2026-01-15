@@ -10,7 +10,7 @@ source:
   sha256: b1e1c1ec8082fd06e11496929c6cf37490645f5438c4d5484ba77dda66b8c3fc
 
 build:
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -50,8 +50,8 @@ requirements:
     - libabseil
     - libprotobuf
     - openssl
-    # TODO: understand why libcurl >=8.17 causes runtime failures
-    - libcurl <8.17
+    # TODO: understand why libcurl ==8.17 causes runtime failures
+    - libcurl >=8.18
     # TODO: Fix builds for missing symbols
     # See: https://github.com/man-group/ArcticDB/pull/1050
     - libmongocxx <3.9
@@ -99,8 +99,8 @@ requirements:
     - protobuf >=3.5.1
     - lmdb
     - packaging
-    # TODO: understand why libcurl >=8.17 causes runtime failures
-    - libcurl <8.17
+    # TODO: understand why libcurl ==8.17 causes runtime failures
+    - libcurl >=8.18
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:

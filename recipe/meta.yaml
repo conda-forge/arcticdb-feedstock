@@ -99,8 +99,8 @@ requirements:
     - protobuf >=3.5.1
     - lmdb
     - packaging
-    # TODO: understand why libcurl >=8.17 causes runtime failures
-    - libcurl <8.17
+    # TODO: understand why libcurl ==8.17 causes runtime failures
+    - libcurl >=8.18
 test:
   requires:
   # This environment specification must be maintained in sync with the one upstream:

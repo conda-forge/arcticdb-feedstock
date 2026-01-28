@@ -60,8 +60,5 @@ target_platform:
 - win-64
 xxhash:
 - 0.8.2
-zip_keys:
-- - python
-  - channel_sources
 zstd:
 - '1.5'

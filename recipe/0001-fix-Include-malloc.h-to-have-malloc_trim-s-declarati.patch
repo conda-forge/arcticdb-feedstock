@@ -1,0 +1,29 @@
+From 5829178c1e88e38e297562a3c71d9a6c5296951a Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Mon, 2 Mar 2026 09:37:44 +0100
+Subject: [PATCH] fix: Include `malloc.h` to have `malloc_trim`'s declaration
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ cpp/arcticdb/util/allocator.cpp | 5 +++++
+ 1 file changed, 5 insertions(+)
+
+diff --git a/cpp/arcticdb/util/allocator.cpp b/cpp/arcticdb/util/allocator.cpp
+index b6a09c044..6e7deecbd 100644
+--- a/cpp/arcticdb/util/allocator.cpp
++++ b/cpp/arcticdb/util/allocator.cpp
+@@ -16,6 +16,11 @@
+ #include <arcticdb/util/thread_cached_int.hpp>
+ #include <folly/concurrency/ConcurrentHashMap.h>
+ 
++#if defined(__linux__) && defined(__GLIBC__)
++// Necessary for `malloc_trim` to be declared.
++#include <malloc.h>
++#endif
++
+ namespace arcticdb {
+ 
+ uint8_t* allocate_detachable_memory(size_t size) { return get_detachable_allocator().allocate(size); }
+-- 
+2.53.0
+

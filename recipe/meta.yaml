@@ -8,6 +8,8 @@ package:
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
   sha256: 863ee854f80fe625553434980ee57ea0e8f8a53b99bbae7c259a8ef326a224da
+  patches:
+    - 0001-fix-Include-malloc.h-to-have-malloc_trim-s-declarati.patch
 
 build:
   number: 0

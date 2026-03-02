@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.9.2" %}
+{% set version = "6.10.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,10 +7,10 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: c740967d13be2063b56d0c3c037708a02f5b4542eaf17209db90920c6c02e415
+  sha256: 863ee854f80fe625553434980ee57ea0e8f8a53b99bbae7c259a8ef326a224da
 
 build:
-  number: 1
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

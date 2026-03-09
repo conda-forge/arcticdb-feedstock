@@ -10,6 +10,8 @@ folly:
   - "2023.09.25.00"
 xxhash:
   - 0.8.2
+aws_sdk_cpp:
+  - "1.11.591"
 
 # Coupling dependencies specification together.
 # See: https://docs.conda.io/projects/conda-build/en/stable/resources/variants.html#coupling-keys

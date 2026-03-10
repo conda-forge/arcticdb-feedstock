@@ -135,7 +135,8 @@ test:
     - memray                          # [unix]
     - pytest-memray                   # [unix]
     # PyArrow constraints the environment too much on Windows, so we skip it for now.
-    - pyarrow                         # [unix]
+    # Commented out due to problems with aws sdk related dependecies
+    # - pyarrow                         # [unix]
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm

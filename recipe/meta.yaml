@@ -62,7 +62,7 @@ requirements:
     - pcre2
     - gflags
     - msgpack-c
-    - aws-sdk-cpp >=1.11.405,<=1.11.591
+    - aws-sdk-cpp
     - azure-core-cpp
     - azure-identity-cpp
     - azure-storage-blobs-cpp

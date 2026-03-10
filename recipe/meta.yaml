@@ -10,6 +10,7 @@ source:
   sha256: 863ee854f80fe625553434980ee57ea0e8f8a53b99bbae7c259a8ef326a224da
   patches:
     - 0001-fix-Include-malloc.h-to-have-malloc_trim-s-declarati.patch
+    - 0001-test-Import-or-skip-pyarrow.patch
 
 build:
   number: 1

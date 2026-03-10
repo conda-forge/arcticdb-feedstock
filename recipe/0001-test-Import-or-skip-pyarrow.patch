@@ -1,0 +1,339 @@
+From a2b0bd2b745db7593fd440dfa94d495c0c345411 Mon Sep 17 00:00:00 2001
+From: Julien Jerphanion <git@jjerphan.xyz>
+Date: Tue, 10 Mar 2026 16:14:26 +0100
+Subject: [PATCH] test: Import or skip `pyarrow`
+
+Signed-off-by: Julien Jerphanion <git@jjerphan.xyz>
+---
+ .../arcticdb/test_unicode_strings.py          |  6 +++-
+ .../test_stress_write_peakmem.py              |  2 +-
+ python/tests/unit/arcticdb/test_arrow_api.py  |  2 +-
+ .../version_store/test_arrow_normalization.py |  2 +-
+ .../test_arrow_pandas_interop.py              |  5 ++-
+ .../arcticdb/version_store/test_arrow_read.py | 11 +++++--
+ .../version_store/test_arrow_writes.py        | 32 ++++++++++---------
+ .../version_store/test_collect_schema.py      | 10 ++++--
+ 8 files changed, 46 insertions(+), 24 deletions(-)
+
+diff --git a/python/tests/integration/arcticdb/test_unicode_strings.py b/python/tests/integration/arcticdb/test_unicode_strings.py
+index db1313d10..1771c3a68 100644
+--- a/python/tests/integration/arcticdb/test_unicode_strings.py
++++ b/python/tests/integration/arcticdb/test_unicode_strings.py
+@@ -5,7 +5,6 @@ from pandas.testing import assert_frame_equal
+ import pandas as pd
+ import numpy as np
+ 
+-from arcticdb.dependencies import pyarrow as pa
+ from arcticdb.options import OutputFormat
+ from arcticdb.util.arrow import cast_string_columns
+ from arcticdb import QueryBuilder
+@@ -23,6 +22,7 @@ def create_dataframe(strings):
+ 
+ 
+ def test_fixed_width_blns(lmdb_version_store, any_arrow_string_format):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store
+     lib.set_arrow_string_format_default(any_arrow_string_format)
+     strings = read_big_list_of_naughty_strings()
+@@ -38,6 +38,7 @@ def test_fixed_width_blns(lmdb_version_store, any_arrow_string_format):
+ 
+ 
+ def test_write_blns(lmdb_version_store, any_arrow_string_format):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store
+     lib.set_arrow_string_format_default(any_arrow_string_format)
+     strings = read_big_list_of_naughty_strings()
+@@ -56,6 +57,7 @@ def test_write_blns(lmdb_version_store, any_arrow_string_format):
+ 
+ 
+ def test_append_blns(lmdb_version_store, any_arrow_string_format):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store
+     lib.set_arrow_string_format_default(any_arrow_string_format)
+     strings = read_big_list_of_naughty_strings()
+@@ -81,6 +83,7 @@ def test_append_blns(lmdb_version_store, any_arrow_string_format):
+ 
+ 
+ def test_update_blns(lmdb_version_store, any_arrow_string_format):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store
+     lib.set_arrow_string_format_default(any_arrow_string_format)
+     strings = read_big_list_of_naughty_strings()
+@@ -109,6 +112,7 @@ def test_update_blns(lmdb_version_store, any_arrow_string_format):
+ 
+ 
+ def test_batch_read_blns(lmdb_version_store, any_arrow_string_format):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store
+     lib.set_arrow_string_format_default(any_arrow_string_format)
+     strings = read_big_list_of_naughty_strings()
+diff --git a/python/tests/stress/arcticdb/version_store/test_stress_write_peakmem.py b/python/tests/stress/arcticdb/version_store/test_stress_write_peakmem.py
+index 6ed087970..ffef217af 100644
+--- a/python/tests/stress/arcticdb/version_store/test_stress_write_peakmem.py
++++ b/python/tests/stress/arcticdb/version_store/test_stress_write_peakmem.py
+@@ -1,6 +1,5 @@
+ import pandas as pd
+ import numpy as np
+-import pyarrow as pa
+ import pytest
+ import tracemalloc
+ import sys
+@@ -71,6 +70,7 @@ def test_peakmem_write_basic(lmdb_version_store_v1):
+ 
+ @pytest.mark.skipif(sys.version_info < (3, 9), reason="Tracemalloc doesn't support `reset_peak` before python 3.9")
+ def test_peakmem_write_arrow_basic(lmdb_version_store_arrow):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store_arrow
+     sym = "sym"
+ 
+diff --git a/python/tests/unit/arcticdb/test_arrow_api.py b/python/tests/unit/arcticdb/test_arrow_api.py
+index 135fbfb0f..da14eb5ce 100644
+--- a/python/tests/unit/arcticdb/test_arrow_api.py
++++ b/python/tests/unit/arcticdb/test_arrow_api.py
+@@ -1,6 +1,5 @@
+ import numpy as np
+ import pandas as pd
+-import pyarrow as pa
+ import polars as pl
+ import pytest
+ 
+@@ -32,6 +31,7 @@ no_str_output_format_args = [
+ 
+ 
+ def expected_output_type(arctic_output_format, library_output_format, output_format_override):
++    pa = pytest.importorskip("pyarrow")
+     expected_output_format = (
+         output_format_override or library_output_format or arctic_output_format or OutputFormat.PANDAS
+     )
+diff --git a/python/tests/unit/arcticdb/version_store/test_arrow_normalization.py b/python/tests/unit/arcticdb/version_store/test_arrow_normalization.py
+index 45c757dc9..234b8acf9 100644
+--- a/python/tests/unit/arcticdb/version_store/test_arrow_normalization.py
++++ b/python/tests/unit/arcticdb/version_store/test_arrow_normalization.py
+@@ -3,7 +3,6 @@ import copy
+ from arcticdb.options import OutputFormat
+ import pandas as pd
+ import numpy as np
+-import pyarrow as pa
+ import pytest
+ 
+ from arcticdb.util.test import assert_frame_equal, assert_frame_equal_with_arrow
+@@ -11,6 +10,7 @@ from arcticdb.exceptions import ArcticDbNotYetImplemented
+ 
+ 
+ def generic_arrow_norm_test(lib, sym, pandas_object, expected_columns, expected_types=None):
++    pa = pytest.importorskip("pyarrow")
+     lib.write(sym, pandas_object)
+     table = lib.read(sym).data
+     assert table.column_names == expected_columns
+diff --git a/python/tests/unit/arcticdb/version_store/test_arrow_pandas_interop.py b/python/tests/unit/arcticdb/version_store/test_arrow_pandas_interop.py
+index ef28b19c2..498aef538 100644
+--- a/python/tests/unit/arcticdb/version_store/test_arrow_pandas_interop.py
++++ b/python/tests/unit/arcticdb/version_store/test_arrow_pandas_interop.py
+@@ -8,7 +8,6 @@ As of the Change Date specified in that file, in accordance with the Business So
+ 
+ import numpy as np
+ import pandas as pd
+-import pyarrow as pa
+ import pytest
+ 
+ from arcticdb.exceptions import InternalException, NormalizationException
+@@ -16,6 +15,7 @@ from arcticdb.util.test import assert_frame_equal
+ 
+ 
+ def test_write_arrow_read_pandas_no_index(lmdb_version_store_arrow):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store_arrow
+     sym = "test_write_arrow_read_pandas_no_index"
+     table = pa.table({"col0": pa.array([0, 1], pa.int64()), "col1": pa.array(["a", "bb"], pa.string())})
+@@ -27,6 +27,7 @@ def test_write_arrow_read_pandas_no_index(lmdb_version_store_arrow):
+ 
+ 
+ def test_write_arrow_read_pandas_with_index(lmdb_version_store_arrow):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store_arrow
+     sym = "test_write_arrow_read_pandas_with_index"
+     table = pa.table(
+@@ -61,6 +62,7 @@ def test_write_pandas_df_with_specified_index_column(lmdb_version_store_v1):
+ 
+ 
+ def test_append_arrow_with_pandas(lmdb_version_store_arrow):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store_arrow
+     sym = "test_append_arrow_with_pandas"
+     df = pd.DataFrame({"col1": np.arange(2, dtype=np.int64), "col2": np.arange(2, dtype=np.float32)})
+@@ -78,6 +80,7 @@ def test_append_arrow_with_pandas(lmdb_version_store_arrow):
+ 
+ 
+ def test_update_arrow_with_pandas(lmdb_version_store_arrow):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_version_store_arrow
+     sym = "test_update_arrow_with_pandas"
+     df = pd.DataFrame({"col1": np.arange(2, dtype=np.int64)}, index=pd.date_range("2025-01-01", periods=2))
+diff --git a/python/tests/unit/arcticdb/version_store/test_arrow_read.py b/python/tests/unit/arcticdb/version_store/test_arrow_read.py
+index 03c50a152..381d0fbaa 100644
+--- a/python/tests/unit/arcticdb/version_store/test_arrow_read.py
++++ b/python/tests/unit/arcticdb/version_store/test_arrow_read.py
+@@ -11,8 +11,9 @@ from arcticdb.util.test import assert_frame_equal, assert_frame_equal_with_arrow
+ from arcticdb.exceptions import SchemaException
+ from arcticdb.version_store.processing import QueryBuilder, where
+ from arcticdb.options import OutputFormat, ArrowOutputStringFormat
+-import pyarrow as pa
+-import pyarrow.compute as pc
++
++pa = pytest.importorskip("pyarrow")
++
+ from arcticdb.util.hypothesis import (
+     use_of_function_scoped_fixtures_in_hypothesis_checked,
+     ENDIANNESS,
+@@ -1119,6 +1120,8 @@ def test_arrow_dynamic_schema_filtered_column(lmdb_version_store_dynamic_schema_
+ 
+ 
+ def test_project_dynamic_schema(lmdb_version_store_dynamic_schema_arrow):
++    pytest.importorskip("pyarrow")
++    import pyarrow.compute as pc
+     lib = lmdb_version_store_dynamic_schema_arrow
+     lib.set_output_format(OutputFormat.PYARROW)
+     sym = "sym"
+@@ -1161,6 +1164,8 @@ def test_project_dynamic_schema_complex(lmdb_version_store_dynamic_schema_arrow)
+ 
+ 
+ def test_aggregation_empty_slices(lmdb_version_store_dynamic_schema_arrow):
++    pytest.importorskip("pyarrow")
++    import pyarrow.compute as pc
+     lib = lmdb_version_store_dynamic_schema_arrow
+     sym = "sym"
+     df_1 = pd.DataFrame(
+@@ -1204,6 +1209,8 @@ def test_aggregation_empty_slices(lmdb_version_store_dynamic_schema_arrow):
+ 
+ 
+ def test_resample_empty_slices(lmdb_version_store_dynamic_schema_arrow):
++    pytest.importorskip("pyarrow")
++    import pyarrow.compute as pc
+     lib = lmdb_version_store_dynamic_schema_arrow
+     sym = "sym"
+ 
+diff --git a/python/tests/unit/arcticdb/version_store/test_arrow_writes.py b/python/tests/unit/arcticdb/version_store/test_arrow_writes.py
+index 9e4a43e5c..c3bdf1194 100644
+--- a/python/tests/unit/arcticdb/version_store/test_arrow_writes.py
++++ b/python/tests/unit/arcticdb/version_store/test_arrow_writes.py
+@@ -10,7 +10,6 @@ from hypothesis import given, settings
+ import hypothesis.strategies as st
+ import numpy as np
+ import pandas as pd
+-import pyarrow as pa
+ import pytest
+ import random
+ 
+@@ -27,6 +26,8 @@ from arcticdb.version_store._normalization import ArrowTableNormalizer
+ from arcticdb_ext.storage import KeyType
+ from tests.util.naughty_strings import read_big_list_of_naughty_strings
+ 
++pa = pytest.importorskip("pyarrow")
++
+ 
+ def test_record_batches_roundtrip():
+     t0 = pa.table({"col": pa.array([0, 1], pa.int64())})
+@@ -865,20 +866,21 @@ def test_batch_append(lmdb_version_store_arrow):
+ 
+ 
+ supported_types = [
+-    pa.bool_(),
+-    pa.uint8(),
+-    pa.uint16(),
+-    pa.uint32(),
+-    pa.uint64(),
+-    pa.int8(),
+-    pa.int16(),
+-    pa.int32(),
+-    pa.int64(),
+-    pa.float32(),
+-    pa.float64(),
+-    pa.string(),
+-    pa.large_string(),
+-    pa.timestamp("ns"),
++    # These are PyArrow dtypes; the specific objects are only created inside tests
++    "bool",
++    "uint8",
++    "uint16",
++    "uint32",
++    "uint64",
++    "int8",
++    "int16",
++    "int32",
++    "int64",
++    "float32",
++    "float64",
++    "string",
++    "large_string",
++    "timestamp_ns",
+ ]
+ num_supported_types = len(supported_types)
+ 
+diff --git a/python/tests/unit/arcticdb/version_store/test_collect_schema.py b/python/tests/unit/arcticdb/version_store/test_collect_schema.py
+index 40c98cb45..ff399777c 100644
+--- a/python/tests/unit/arcticdb/version_store/test_collect_schema.py
++++ b/python/tests/unit/arcticdb/version_store/test_collect_schema.py
+@@ -8,10 +8,10 @@ As of the Change Date specified in that file, in accordance with the Business So
+ 
+ import numpy as np
+ import pandas as pd
+-import pyarrow as pa
+-import polars as pl
+ import pytest
+ 
++import polars as pl
++
+ from arcticdb_ext.exceptions import KeyNotFoundException
+ from arcticdb.exceptions import SchemaException
+ from arcticdb.options import ArrowOutputStringFormat, OutputFormat
+@@ -21,6 +21,7 @@ from arcticdb.util.test import assert_frame_equal_with_arrow, config_context
+ 
+ @pytest.mark.parametrize("num_rows", [0, 1])
+ def test_collect_schema_basic(lmdb_library, num_rows):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_library
+     lib._nvs.set_output_format(OutputFormat.POLARS)
+     lib._nvs._set_allow_arrow_input()
+@@ -48,6 +49,7 @@ def test_collect_schema_basic(lmdb_library, num_rows):
+ 
+ 
+ def test_collect_schema_as_of(lmdb_library):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_library
+     lib._nvs.set_output_format(OutputFormat.POLARS)
+     lib._nvs._set_allow_arrow_input()
+@@ -64,6 +66,7 @@ def test_collect_schema_as_of(lmdb_library):
+ 
+ 
+ def test_collect_schema_while_versions_being_added(lmdb_library):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_library
+     lib._nvs.set_output_format(OutputFormat.POLARS)
+     lib._nvs._set_allow_arrow_input()
+@@ -132,6 +135,7 @@ def test_collect_schema_multiindex(lmdb_library):
+ 
+ 
+ def test_collect_schema_string_types(lmdb_library):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_library
+     lib._nvs.set_output_format(OutputFormat.POLARS)
+     lib._nvs._set_allow_arrow_input()
+@@ -167,6 +171,7 @@ def test_collect_schema_string_types(lmdb_library):
+ 
+ 
+ def test_collect_schema_column_filtering(lmdb_library):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_library
+     lib._nvs.set_output_format(OutputFormat.POLARS)
+     lib._nvs._set_allow_arrow_input()
+@@ -211,6 +216,7 @@ def test_collect_schema_timeseries(lmdb_library):
+ 
+ 
+ def test_collect_schema_with_query(lmdb_library):
++    pa = pytest.importorskip("pyarrow")
+     lib = lmdb_library
+     lib._nvs.set_output_format(OutputFormat.POLARS)
+     lib._nvs._set_allow_arrow_input()
+-- 
+2.53.0
+

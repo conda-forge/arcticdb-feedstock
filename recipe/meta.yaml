@@ -10,9 +10,10 @@ source:
   sha256: 863ee854f80fe625553434980ee57ea0e8f8a53b99bbae7c259a8ef326a224da
   patches:
     - 0001-fix-Include-malloc.h-to-have-malloc_trim-s-declarati.patch
+    - 0001-test-Import-or-skip-pyarrow.patch
 
 build:
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -135,7 +136,8 @@ test:
     - memray                          # [unix]
     - pytest-memray                   # [unix]
     # PyArrow constraints the environment too much on Windows, so we skip it for now.
-    - pyarrow                         # [unix]
+    # Commented out due to problems with aws sdk related dependecies
+    # - pyarrow                         # [unix]
   # Extra dependencies
     - pytest-rerunfailures
     - nodejs  # for npm

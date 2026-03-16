@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.10.1" %}
+{% set version = "6.10.2" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: d61c6e5b1953d8a8b0b44691fa1396d8a2e5fb5dd4304f200beedee45862ef80
+  sha256: e95d775a790af19255fd4d74f19793c9920c0f00b3daabe1fbceaea5f1685e30
   patches:
     - 0001-fix-Include-malloc.h-to-have-malloc_trim-s-declarati.patch
 

@@ -5,7 +5,7 @@ azure_core_cpp:
 azure_identity_cpp:
 - 1.13.3
 azure_storage_blobs_cpp:
-- 12.16.0
+- 12.17.0
 c_compiler:
 - vs2022
 c_stdlib:

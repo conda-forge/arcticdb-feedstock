@@ -10,7 +10,7 @@ source:
   sha256: e4c27ef3f5be918f3f256601272596355d0724b02a3c184e81c890c43f90e1bd
 
 build:
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

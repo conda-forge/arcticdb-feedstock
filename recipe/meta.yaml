@@ -6,11 +6,20 @@ package:
   version: {{ version }}
 
 source:
-  url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-  sha256: e4c27ef3f5be918f3f256601272596355d0724b02a3c184e81c890c43f90e1bd
+  - url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
+    sha256: e4c27ef3f5be918f3f256601272596355d0724b02a3c184e81c890c43f90e1bd
+
+  # LMDB 0.9.35 source — required to build a patched static library (CVE-2019-16224..16228).
+  # These CVE fixes were never upstreamed to the OpenLDAP LMDB project so the
+  # conda-forge lmdb package does not include them.
+  # conda-build strips the single top-level directory from the archive, placing
+  # the contents at cpp/third_party/lmdb/, which is where lmdbcxx/ symlinks expect it.
+  - url: https://github.com/LMDB/lmdb/archive/refs/tags/LMDB_0.9.35.tar.gz
+    sha256: 18b021fd589d30cc08860a9550a30ae51637117451385e9581616da751326632
+    folder: cpp/third_party/lmdb
 
 build:
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main
@@ -23,6 +32,8 @@ requirements:
     - cmake
     - make
     - sccache
+    - patch  # [not win]
+    # On Windows, patch.exe comes from Git for Windows (C:/Program Files/Git/usr/bin/patch.exe)
     - python                                  # [build_platform != target_platform]
     - numpy                                   # [build_platform != target_platform]
     - grpcio-tools                            # [build_platform != target_platform]
@@ -72,7 +83,9 @@ requirements:
     - spdlog
     - unordered_dense
     - recycle
-    - lmdb
+    # lmdb is intentionally absent: we build a patched STATIC library from
+    # the LMDB 0.9.35 source listed above.  The conda-forge lmdb package
+    # is not linked.  lmdbxx is kept because it provides lmdb++.h.
     - lmdbxx
     - fmt
     - glog
@@ -98,7 +111,7 @@ requirements:
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
     - protobuf >=3.5.1
-    - lmdb
+    # lmdb is statically linked; no runtime dependency needed
     - packaging
     # TODO: understand why libcurl ==8.17 causes runtime failures
     - libcurl >=8.18

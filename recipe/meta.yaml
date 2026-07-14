@@ -113,6 +113,9 @@ requirements:
     - aws-crt-cpp >=0.19.8
     - prometheus-cpp
     - protobuf >=3.5.1
+    # sparrow links directly against howardhinnant_date (libdate-tz.so.3) for
+    # timezone handling; sparrow's run_export doesn't re-export it transitively.
+    - howardhinnant_date
     # lmdb is statically linked; no runtime dependency needed
     - packaging
     # TODO: understand why libcurl ==8.17 causes runtime failures

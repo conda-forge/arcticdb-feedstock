@@ -2,6 +2,14 @@
 
 export ARCTICDB_USING_CONDA=1
 
+# The lmdbcxx/ directory contains symlinks into the lmdb and lmdbxx submodules.
+# The LMDB 0.9.35 source is provided as a secondary conda-build source and
+# placed at cpp/third_party/lmdb/ by meta.yaml, so those symlinks resolve.
+# lmdb++.h comes from the lmdbxx conda host package; copy it to the location
+# the symlink in lmdbcxx/ expects.
+mkdir -p cpp/third_party/lmdbxx
+cp "${PREFIX}/include/lmdb++.h" cpp/third_party/lmdbxx/lmdb++.h
+
 if [[ "$target_platform" == linux* ]]; then
   # On all Linux targets, compiling ArcticDB with all cores might freeze machines due to
   # OOM or swapping when the binary operators' templates specializations are being compiled.

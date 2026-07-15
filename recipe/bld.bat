@@ -9,6 +9,15 @@ setlocal EnableDelayedExpansion
 set CMAKE_GENERATOR_PLATFORM=
 set CMAKE_GENERATOR_TOOLSET=
 
+:: Populate lmdbxx/ so the lmdb++.h symlink in lmdbcxx/ resolves.
+:: (LMDB 0.9.35 source is placed at cpp\third_party\lmdb\ by the secondary source in meta.yaml.)
+if not exist "%SRC_DIR%\cpp\third_party\lmdbxx" mkdir "%SRC_DIR%\cpp\third_party\lmdbxx"
+copy /Y "%PREFIX%\Library\include\lmdb++.h" "%SRC_DIR%\cpp\third_party\lmdbxx\lmdb++.h"
+if errorlevel 1 (
+    echo ERROR: Failed to copy lmdb++.h from conda prefix
+    exit /b 1
+)
+
 :: Use 'windows-cl-conda-release' as the cmake preset
 set ARCTIC_CMAKE_PRESET=windows-cl-conda-release
 

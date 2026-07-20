@@ -3,7 +3,7 @@ MACOSX_DEPLOYMENT_TARGET:
 MACOSX_SDK_VERSION:
 - '11.0'
 aws_sdk_cpp:
-- 1.11.747
+- 1.11.833
 azure_core_cpp:
 - 1.16.3
 azure_identity_cpp:
@@ -44,8 +44,6 @@ liblzma_devel:
 - '5'
 libprotobuf:
 - 6.33.5
-lmdb:
-- 0.9.22
 lz4_c:
 - '1.10'
 macos_machine:

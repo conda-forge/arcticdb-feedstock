@@ -244,22 +244,14 @@ In order to produce a uniquely identifiable distribution:
 Feedstock Maintainers
 =====================
 
-* [@DerThorsten](https://github.com/DerThorsten/)
 * [@G-D-Petrov](https://github.com/G-D-Petrov/)
-* [@Hind-M](https://github.com/Hind-M/)
 * [@IvoDD](https://github.com/IvoDD/)
 * [@JohanMabille](https://github.com/JohanMabille/)
-* [@Klaim](https://github.com/Klaim/)
 * [@alexowens90](https://github.com/alexowens90/)
-* [@jamesmunro](https://github.com/jamesmunro/)
 * [@jjerphan](https://github.com/jjerphan/)
-* [@joe-iddon](https://github.com/joe-iddon/)
 * [@maxim-morozov](https://github.com/maxim-morozov/)
-* [@mehertz](https://github.com/mehertz/)
 * [@ognyanstoimenov](https://github.com/ognyanstoimenov/)
 * [@phoebusm](https://github.com/phoebusm/)
 * [@poodlewars](https://github.com/poodlewars/)
-* [@qc00](https://github.com/qc00/)
 * [@vasil-pashov](https://github.com/vasil-pashov/)
-* [@willdealtry](https://github.com/willdealtry/)
 

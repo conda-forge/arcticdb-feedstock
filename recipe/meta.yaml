@@ -1,22 +1,22 @@
 {% set name = "arcticdb" %}
-{% set version = "6.18.6" %}
+{% set version = "6.19.0" %}
 
 package:
   name: {{ name|lower }}
   version: {{ version }}
 
 source:
- - url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-   sha256: b51cb9c7925cbb7833ca89e9765ed10ffb801a3e60127c2a38393e468de7cec9
+  - url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
+    sha256: f48596f298239a64bfe49c8f89d3a22edc04b1b1b218683746c150d79a05ca19
 
   # LMDB 0.9.35 source — required to build a patched static library (CVE-2019-16224..16228).
   # These CVE fixes were never upstreamed to the OpenLDAP LMDB project so the
   # conda-forge lmdb package does not include them.
   # conda-build strips the single top-level directory from the archive, placing
   # the contents at cpp/third_party/lmdb/, which is where lmdbcxx/ symlinks expect it.
- - url: https://github.com/LMDB/lmdb/archive/refs/tags/LMDB_0.9.35.tar.gz
-   sha256: 18b021fd589d30cc08860a9550a30ae51637117451385e9581616da751326632
-   folder: cpp/third_party/lmdb
+  - url: https://github.com/LMDB/lmdb/archive/refs/tags/LMDB_0.9.35.tar.gz
+    sha256: 18b021fd589d30cc08860a9550a30ae51637117451385e9581616da751326632
+    folder: cpp/third_party/lmdb
 
 
 

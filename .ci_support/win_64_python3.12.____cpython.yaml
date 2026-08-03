@@ -21,7 +21,7 @@ fmt:
 folly:
 - 2025.04.14.00
 gflags:
-- '2.2'
+- '2.3'
 glog:
 - '0.7'
 libabseil:

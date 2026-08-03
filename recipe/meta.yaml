@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.19.0" %}
+{% set version = "6.21.0" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: 8a930d539426685f795d546f555714316fefdda1f06fac4ee4fd86035ffab196
+    sha256: 0410f9e66ebee2435ee54e5a64f24858565443e52d64955a47a10fb652f06f20
 
   # LMDB 0.9.35 source — required to build a patched static library (CVE-2019-16224..16228).
   # These CVE fixes were never upstreamed to the OpenLDAP LMDB project so the
@@ -21,7 +21,7 @@ source:
 
 
 build:
-  number: 1
+  number: 0
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

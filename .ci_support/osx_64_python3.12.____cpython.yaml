@@ -13,7 +13,7 @@ azure_storage_blobs_cpp:
 c_compiler:
 - clang
 c_compiler_version:
-- '19'
+- '21'
 c_stdlib:
 - macosx_deployment_target
 c_stdlib_version:
@@ -25,7 +25,7 @@ channel_targets:
 cxx_compiler:
 - clangxx
 cxx_compiler_version:
-- '19'
+- '21'
 fmt:
 - '12.1'
 folly:
@@ -35,7 +35,7 @@ gflags:
 glog:
 - '0.7'
 libabseil:
-- '20260107'
+- '20260526'
 libboost_devel:
 - '1.88'
 libevent:
@@ -43,7 +43,7 @@ libevent:
 liblzma_devel:
 - '5'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 lz4_c:
 - '1.10'
 macos_machine:

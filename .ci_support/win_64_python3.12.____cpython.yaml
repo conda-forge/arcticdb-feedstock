@@ -25,7 +25,7 @@ gflags:
 glog:
 - '0.7'
 libabseil:
-- '20260107'
+- '20260526'
 libboost_devel:
 - '1.88'
 libevent:
@@ -33,7 +33,7 @@ libevent:
 liblzma_devel:
 - '5'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 lz4_c:
 - '1.10'
 msgpack_c:

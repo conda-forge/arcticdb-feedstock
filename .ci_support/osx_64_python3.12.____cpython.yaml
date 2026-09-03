@@ -34,8 +34,10 @@ gflags:
 - '2.3'
 glog:
 - '0.7'
+grpcio_tools:
+- 1.78.1
 libabseil:
-- '20260526'
+- '20260107.1'
 libboost_devel:
 - '1.88'
 libevent:
@@ -43,7 +45,7 @@ libevent:
 liblzma_devel:
 - '5'
 libprotobuf:
-- 7.35.1
+- 6.33.5
 lz4_c:
 - '1.10'
 macos_machine:
@@ -62,6 +64,8 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
+protobuf:
+- 6.33.5
 python:
 - 3.12.* *_cpython
 spdlog:

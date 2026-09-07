@@ -21,7 +21,7 @@ source:
 
 
 build:
-  number: 0
+  number: 1
 
   entry_points:
     - arcticdb_update_storage = arcticdb.scripts.update_storage:main

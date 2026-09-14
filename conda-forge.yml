@@ -1,11 +1,6 @@
-azure:
-  free_disk_space: true
 bot:
   abi_migration_branches:
-  - rc
-build_platform:
-  linux_aarch64: linux_64
-  osx_arm64: osx_64
+    - rc
 conda_build:
   error_overlinking: true
 conda_forge_output_validation: true
@@ -14,4 +9,7 @@ github:
   tooling_branch_name: main
 provider:
   linux_aarch64: default
+  osx_arm64: default
 test: native_and_emulated
+workflow_settings:
+  free_disk_space: quick

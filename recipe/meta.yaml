@@ -1,5 +1,5 @@
 {% set name = "arcticdb" %}
-{% set version = "6.24.0" %}
+{% set version = "6.28.1" %}
 
 package:
   name: {{ name|lower }}
@@ -7,7 +7,7 @@ package:
 
 source:
   - url: https://github.com/man-group/ArcticDB/archive/refs/tags/v{{ version }}.tar.gz
-    sha256: cf4e3f9253d5842ada8a3cdadc1787dd4784d15f47a92212ce2aa22811fd4734
+    sha256: 2034a35b93f472b3611674cb9546ee41ec556b7875d901dd6023e3fc7caa6229
 
   # LMDB 0.9.35 source — required to build a patched static library (CVE-2019-16224..16228).
   # These CVE fixes were never upstreamed to the OpenLDAP LMDB project so the
@@ -83,7 +83,8 @@ requirements:
     - grpcio-tools
     - protobuf
     - spdlog
-    - unordered_dense
+    # 5.0 removes detail::wyhash::hash, used in ArcticDB's entity/atom_key.hpp
+    - unordered_dense <5
     - recycle
     # lmdb is intentionally absent: we build a patched STATIC library from
     # the LMDB 0.9.35 source listed above.  The conda-forge lmdb package

@@ -1,3 +1,5 @@
+DOCKER_PLATFORM:
+- linux/amd64
 aws_sdk_cpp:
 - 1.11.833
 azure_core_cpp:

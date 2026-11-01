@@ -1,5 +1,7 @@
+DOCKER_PLATFORM:
+- linux/amd64
 aws_sdk_cpp:
-- 1.11.833
+- 1.11.905
 azure_core_cpp:
 - 1.16.3
 azure_identity_cpp:
@@ -32,10 +34,8 @@ gflags:
 - '2.3'
 glog:
 - '0.7'
-grpcio_tools:
-- 1.78.1
 libabseil:
-- '20260107.1'
+- '20260526'
 libboost_devel:
 - '1.88'
 libevent:
@@ -43,7 +43,7 @@ libevent:
 liblzma_devel:
 - '5'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 lz4_c:
 - '1.10'
 msgpack_c:
@@ -60,8 +60,6 @@ pin_run_as_build:
   python:
     min_pin: x.x
     max_pin: x.x
-protobuf:
-- 6.33.5
 python:
 - 3.13.* *_cp313
 spdlog:

@@ -1,8 +1,6 @@
 bot:
   abi_migration_branches:
-  - rc
-build_platform:
-  osx_arm64: osx_64
+    - rc
 conda_build:
   error_overlinking: true
 conda_forge_output_validation: true
@@ -10,3 +8,5 @@ github:
   branch_name: main
   tooling_branch_name: main
 test: native_and_emulated
+provider:
+  osx_arm64: default

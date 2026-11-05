@@ -73,11 +73,12 @@ requirements:
     - pcre2
     - gflags
     - msgpack-c
-    # pyarrow (a test dependency) only has libarrow builds compatible with libprotobuf <7 up to aws-sdk-cpp 1.11.833
+    # pyarrow (a test dependency) only has libarrow builds compatible with libprotobuf <7
+    # up to aws-sdk-cpp 1.11.833, azure-core-cpp 1.16.3 and azure-storage-blobs-cpp 12.18.0
     - aws-sdk-cpp <=1.11.833
-    - azure-core-cpp
+    - azure-core-cpp <=1.16.3
     - azure-identity-cpp
-    - azure-storage-blobs-cpp
+    - azure-storage-blobs-cpp <=12.18.0
     - bitmagic
     - xxhash
     - semimap

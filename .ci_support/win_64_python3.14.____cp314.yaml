@@ -21,7 +21,7 @@ glog:
 grpcio_tools:
 - 1.78.1
 libabseil:
-- '20260107.1'
+- '20260817'
 libboost_devel:
 - '1.88'
 libevent:

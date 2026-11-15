@@ -33,13 +33,13 @@ libabseil:
 libboost_devel:
 - '1.88'
 libevent:
-- 2.1.12
+- 2.1.13
 liblzma_devel:
 - '5'
 libprotobuf:
 - 6.33.5
 lz4_c:
-- '1.10'
+- '1.11'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 msgpack_c:

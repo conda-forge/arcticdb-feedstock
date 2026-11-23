@@ -39,7 +39,7 @@ liblzma_devel:
 libprotobuf:
 - 6.33.5
 lz4_c:
-- '1.10'
+- '1.11'
 macos_machine:
 - x86_64-apple-darwin13.4.0
 msgpack_c:

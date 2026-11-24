@@ -1,13 +1,15 @@
 aws_sdk_cpp:
-- 1.11.747
+- 1.11.931
 azure_core_cpp:
-- 1.16.2
+- 1.16.4
 azure_identity_cpp:
 - 1.13.3
 azure_storage_blobs_cpp:
-- 12.16.0
+- 12.19.0
 c_compiler:
-- vs2022
+- vs
+c_compiler_version:
+- '2022'
 c_stdlib:
 - vs
 channel_sources:
@@ -15,17 +17,19 @@ channel_sources:
 channel_targets:
 - conda-forge arcticdb_rc
 cxx_compiler:
-- vs2022
+- vs
+cxx_compiler_version:
+- '2022'
 fmt:
 - '12.1'
 folly:
 - 2025.04.14.00
 gflags:
-- '2.2'
+- '2.3'
 glog:
 - '0.7'
 libabseil:
-- '20260107'
+- '20260526'
 libboost_devel:
 - '1.88'
 libevent:
@@ -33,11 +37,11 @@ libevent:
 liblzma_devel:
 - '5'
 libprotobuf:
-- 6.33.5
+- 7.35.1
 lmdb:
 - 0.9.22
 lz4_c:
-- '1.10'
+- '1.11'
 msgpack_c:
 - '6'
 nodejs:

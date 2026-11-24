@@ -17,3 +17,8 @@ protobuf:
   - 6.33.5
 grpcio_tools:
   - 1.78.1
+# folly 2025.04.14.00 builds for lz4-c 1.11 require snappy >=1.3.1,
+# which conflicts with libmongoc 1.23.2 (snappy <1.3). Remove once
+# libmongoc is rebuilt for snappy 1.3.
+lz4_c:
+  - "1.10"
